@@ -2,6 +2,7 @@ class World {
   character = new Character();
   enemies = [new Chicken(), new Chicken(), new Chicken()];
   clouds = [new Cloud()];
+  backgroundLayers = [new BackgroundLayer()];
   canvas;
   ctx;
 
@@ -38,6 +39,16 @@ class World {
         this.clouds[i].y,
         this.clouds[i].width,
         this.clouds[i].height
+      );
+    }
+
+    for (let i = 0; i < this.backgroundLayers.length; i++) {
+      this.ctx.drawImage(
+        this.backgroundLayers[i].img,
+        this.backgroundLayers[i].x,
+        this.backgroundLayers[i].y,
+        this.backgroundLayers[i].width,
+        this.backgroundLayers[i].height
       );
     }
 
