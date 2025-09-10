@@ -1,6 +1,6 @@
 class BackgroundLayer extends MovableObject {
   x = 0;
-  y = 0;
+  y = 100;
   width = 720;
   height = 400;
 

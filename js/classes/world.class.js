@@ -15,46 +15,24 @@ class World {
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    this.ctx.drawImage(
-      this.character.img,
-      this.character.x,
-      this.character.y,
-      this.character.width,
-      this.character.height
-    );
-    for (let i = 0; i < this.enemies.length; i++) {
-      this.ctx.drawImage(
-        this.enemies[i].img,
-        this.enemies[i].x,
-        this.enemies[i].y,
-        this.enemies[i].width,
-        this.enemies[i].height
-      );
-    }
-
-    for (let i = 0; i < this.clouds.length; i++) {
-      this.ctx.drawImage(
-        this.clouds[i].img,
-        this.clouds[i].x,
-        this.clouds[i].y,
-        this.clouds[i].width,
-        this.clouds[i].height
-      );
-    }
-
-    for (let i = 0; i < this.backgroundLayers.length; i++) {
-      this.ctx.drawImage(
-        this.backgroundLayers[i].img,
-        this.backgroundLayers[i].x,
-        this.backgroundLayers[i].y,
-        this.backgroundLayers[i].width,
-        this.backgroundLayers[i].height
-      );
-    }
+    this.addToWorld(this.character);
+    this.addObjectsToWorld(this.enemies);
+    this.addObjectsToWorld(this.clouds);
+    this.addObjectsToWorld(this.backgroundLayers);
 
     let self = this;
     requestAnimationFrame(function () {
       self.draw();
     });
+  }
+
+  addObjectsToWorld(objects) {
+    for (let i = 0; i < objects.length; i++) {
+      this.addToWorld(objects[i]);
+    }
+  }
+
+  addToWorld(obj) {
+    this.ctx.drawImage(obj.img, obj.x, obj.y, obj.width, obj.height);
   }
 }
