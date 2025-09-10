@@ -1,5 +1,5 @@
 class Cloud extends MovableObject {
-  x = 40;
+  x = Math.random() * 360;
   y = 50;
   width = 360;
   height = 250;
