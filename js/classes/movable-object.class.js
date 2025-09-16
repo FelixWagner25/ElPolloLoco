@@ -5,6 +5,8 @@ class MovableObject {
   y = canvasHeightPx - this.height;
   img;
   imgsCache = {};
+  v;
+  dt = 17; // time step for image change in MilliSeconds
 
   loadImage(path) {
     this.img = new Image();
@@ -23,5 +25,9 @@ class MovableObject {
     console.log("Moving right");
   }
 
-  moveLeft() {}
+  moveLeft() {
+    setInterval(() => {
+      this.x = this.x - this.v;
+    }, this.dt);
+  }
 }

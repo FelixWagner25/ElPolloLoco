@@ -4,7 +4,6 @@ class Cloud extends MovableObject {
   width = 360;
   height = 250;
   v = 0.15;
-  dt = 17; // in MilliSeconds
 
   constructor() {
     super().loadImage(
@@ -14,8 +13,6 @@ class Cloud extends MovableObject {
   }
 
   animateMovement() {
-    setInterval(() => {
-      this.x = this.x - this.v;
-    }, this.dt);
+    this.moveLeft();
   }
 }
