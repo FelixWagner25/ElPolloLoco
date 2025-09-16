@@ -24,8 +24,9 @@ class Character extends MovableObject {
 
   walking() {
     setInterval(() => {
-      let i = this.currentImgIndx % this.imgsWalking.length;
-      this.loadImage(this.imgsWalking[i]);
+      let currentImgIndx = this.currentImgIndx % this.imgsWalking.length;
+      let path = this.imgsWalking[currentImgIndx];
+      this.img = this.imgsCache[path];
       this.currentImgIndx++;
     }, 1000);
   }
