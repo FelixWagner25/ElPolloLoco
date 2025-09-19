@@ -12,6 +12,7 @@ class Character extends MovableObject {
     "../../img/img_pollo_locco/2_character_pepe/2_walk/W-26.png",
   ];
   currentImgIndx = 0;
+  world;
 
   constructor() {
     super();
@@ -24,10 +25,12 @@ class Character extends MovableObject {
 
   walking() {
     setInterval(() => {
-      this.currentImgIndx = this.currentImgIndx % this.imgsWalking.length;
-      let path = this.imgsWalking[this.currentImgIndx];
-      this.img = this.imgsCache[path];
-      this.currentImgIndx++;
+      if (this.world.keyboard.right == true) {
+        this.currentImgIndx = this.currentImgIndx % this.imgsWalking.length;
+        let path = this.imgsWalking[this.currentImgIndx];
+        this.img = this.imgsCache[path];
+        this.currentImgIndx++;
+      }
     }, 1000);
   }
 
