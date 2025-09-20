@@ -3,6 +3,7 @@ class Character extends MovableObject {
   width = 100;
   x = 40;
   y = canvasHeightPx - this.height - 40;
+  v = 10;
   imgsWalking = [
     "../../img/img_pollo_locco/2_character_pepe/2_walk/W-21.png",
     "../../img/img_pollo_locco/2_character_pepe/2_walk/W-22.png",
@@ -26,12 +27,22 @@ class Character extends MovableObject {
   walking() {
     setInterval(() => {
       if (this.world.keyboard.right == true) {
+        this.x += this.v;
+      }
+
+      if (this.world.keyboard.left == true) {
+        this.x -= this.v;
+      }
+    }, 50);
+
+    setInterval(() => {
+      if (this.world.keyboard.right || this.world.keyboard.left) {
         this.currentImgIndx = this.currentImgIndx % this.imgsWalking.length;
         let path = this.imgsWalking[this.currentImgIndx];
         this.img = this.imgsCache[path];
         this.currentImgIndx++;
       }
-    }, 1000);
+    }, 50);
   }
 
   jump() {}
