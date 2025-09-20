@@ -7,6 +7,7 @@ class MovableObject {
   imgsCache = {};
   v;
   dt = 17; // time step for image change in MilliSeconds
+  otherDirection = false;
 
   loadImage(path) {
     this.img = new Image();

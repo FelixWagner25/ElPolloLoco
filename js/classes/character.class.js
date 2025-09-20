@@ -28,10 +28,12 @@ class Character extends MovableObject {
     setInterval(() => {
       if (this.world.keyboard.right == true) {
         this.x += this.v;
+        this.otherDirection = false;
       }
 
       if (this.world.keyboard.left == true) {
         this.x -= this.v;
+        this.otherDirection = true;
       }
     }, 50);
 
