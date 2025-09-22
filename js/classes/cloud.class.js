@@ -5,9 +5,9 @@ class Cloud extends MovableObject {
   height = 250;
   v = 0.15;
 
-  constructor() {
+  constructor(index) {
     super().loadImage(
-      "../../img/img_pollo_locco/5_background/layers/4_clouds/1.png"
+      `../../img/img_pollo_locco/5_background/layers/4_clouds/${index}.png`
     );
     this.animateMovement();
   }
