@@ -3,11 +3,14 @@ class Level {
   clouds;
   numberBackgroundLayers;
   backgroundLayers = [];
+  levelEndX;
 
   constructor(enemies, clouds, numberBackgroundLayers) {
     (this.enemies = enemies),
       (this.clouds = clouds),
       (this.numberBackgroundLayers = numberBackgroundLayers);
+
+    this.levelEndX = (this.numberBackgroundLayers - 1) * 719;
     this.initBackgroundLayers(numberBackgroundLayers);
   }
 

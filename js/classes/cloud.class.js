@@ -1,5 +1,5 @@
 class Cloud extends MovableObject {
-  x = Math.random() * 360;
+  x;
   y = 50;
   width = 360;
   height = 250;
@@ -9,6 +9,7 @@ class Cloud extends MovableObject {
     super().loadImage(
       `../../img/img_pollo_locco/5_background/layers/4_clouds/${index}.png`
     );
+    this.x = Math.random() * 360 * index;
     this.animateMovement();
   }
 

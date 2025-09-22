@@ -26,7 +26,10 @@ class Character extends MovableObject {
 
   walking() {
     setInterval(() => {
-      if (this.world.keyboard.right == true) {
+      if (
+        this.world.keyboard.right == true &&
+        this.x < this.world.level.levelEndX
+      ) {
         this.x += this.v;
         this.otherDirection = false;
       }
