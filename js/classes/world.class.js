@@ -2,7 +2,7 @@ class World {
   character = new Character();
   enemies = level1.enemies;
   clouds = level1.clouds;
-  backgroundLayers = [];
+  backgroundLayers = level1.backgroundLayers;
   canvas;
   ctx;
   keyboard;
@@ -12,7 +12,6 @@ class World {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
     this.keyboard = keyboard;
-    this.initBackgroundLayers();
     this.draw();
     this.setWorld();
   }
@@ -57,34 +56,5 @@ class World {
 
   setWorld() {
     this.character.world = this;
-  }
-
-  initBackgroundLayers() {
-    let j;
-    for (let i = -5; i < 5; i++) {
-      if (i < 0) {
-        j = -(i % 2) + 1;
-      } else {
-        j = (i % 2) + 1;
-      }
-      this.backgroundLayers.push(
-        new BackgroundLayer(
-          `../../img/img_pollo_locco/5_background/layers/3_third_layer/${j}.png`,
-          719 * i
-        )
-      );
-      this.backgroundLayers.push(
-        new BackgroundLayer(
-          `../../img/img_pollo_locco/5_background/layers/2_second_layer/${j}.png`,
-          719 * i
-        )
-      );
-      this.backgroundLayers.push(
-        new BackgroundLayer(
-          `../../img/img_pollo_locco/5_background/layers/1_first_layer/${j}.png`,
-          719 * i
-        )
-      );
-    }
   }
 }

@@ -1,7 +1,7 @@
 class Character extends MovableObject {
   height = 240;
   width = 100;
-  x = 40;
+  x = 100;
   y = canvasHeightPx - this.height - 40;
   v = 10;
   imgsWalking = [
@@ -31,11 +31,11 @@ class Character extends MovableObject {
         this.otherDirection = false;
       }
 
-      if (this.world.keyboard.left == true) {
+      if (this.world.keyboard.left == true && this.x > -100) {
         this.x -= this.v;
         this.otherDirection = true;
       }
-      this.world.cameraX = -this.x;
+      this.world.cameraX = -this.x + 100;
     }, 50);
 
     setInterval(() => {
