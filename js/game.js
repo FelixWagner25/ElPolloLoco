@@ -27,7 +27,6 @@ window.addEventListener("keydown", (event) => {
     case " ":
       keyboard.space = true;
   }
-  console.log(keyboard);
 });
 
 window.addEventListener("keyup", (event) => {
@@ -47,5 +46,4 @@ window.addEventListener("keyup", (event) => {
     case " ":
       keyboard.space = false;
   }
-  console.log(keyboard);
 });
