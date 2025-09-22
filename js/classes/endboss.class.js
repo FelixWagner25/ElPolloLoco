@@ -15,7 +15,6 @@ class Endboss extends MovableObject {
     "../../img/img_pollo_locco/4_enemie_boss_chicken/2_alert/G11.png",
     "../../img/img_pollo_locco/4_enemie_boss_chicken/2_alert/G12.png",
   ];
-  currentImgIndx = 0;
 
   constructor() {
     super();
@@ -30,10 +29,7 @@ class Endboss extends MovableObject {
     this.moveLeft();
 
     setInterval(() => {
-      this.currentImgIndx = this.currentImgIndx % this.imgsWalking.length;
-      let path = this.imgsWalking[this.currentImgIndx];
-      this.img = this.imgsCache[path];
-      this.currentImgIndx++;
+      this.animateWalking();
     }, 1000);
   }
 }
