@@ -13,7 +13,18 @@ class Character extends MovableObject {
     "../../img/img_pollo_locco/2_character_pepe/2_walk/W-25.png",
     "../../img/img_pollo_locco/2_character_pepe/2_walk/W-26.png",
   ];
-  currentImgIndx = 0;
+
+  imgsJumping = [
+    "../../img/img_pollo_locco/2_character_pepe/3_jump/J-31.png",
+    "../../img/img_pollo_locco/2_character_pepe/3_jump/J-32.png",
+    "../../img/img_pollo_locco/2_character_pepe/3_jump/J-33.png",
+    "../../img/img_pollo_locco/2_character_pepe/3_jump/J-34.png",
+    "../../img/img_pollo_locco/2_character_pepe/3_jump/J-35.png",
+    "../../img/img_pollo_locco/2_character_pepe/3_jump/J-36.png",
+    "../../img/img_pollo_locco/2_character_pepe/3_jump/J-37.png",
+    "../../img/img_pollo_locco/2_character_pepe/3_jump/J-38.png",
+    "../../img/img_pollo_locco/2_character_pepe/3_jump/J-39.png",
+  ];
   world;
 
   constructor() {
@@ -22,6 +33,7 @@ class Character extends MovableObject {
       "../../img/img_pollo_locco/2_character_pepe/2_walk/W-21.png"
     );
     this.loadImages(this.imgsWalking);
+    this.loadImages(this.imgsJumping);
     this.walking();
     this.applyGravity();
   }
@@ -44,8 +56,12 @@ class Character extends MovableObject {
     }, 50);
 
     setInterval(() => {
-      if (this.world.keyboard.right || this.world.keyboard.left) {
-        this.animateWalking();
+      if (this.isAboveGround()) {
+        this.playAnimation(this.imgsJumping);
+      } else {
+        if (this.world.keyboard.right || this.world.keyboard.left) {
+          this.playAnimation(this.imgsWalking);
+        }
       }
     }, 50);
   }

@@ -48,9 +48,9 @@ class MovableObject {
     }, this.dt);
   }
 
-  animateWalking() {
-    this.currentImgIndx = this.currentImgIndx % this.imgsWalking.length;
-    let path = this.imgsWalking[this.currentImgIndx];
+  playAnimation(imgsArray) {
+    this.currentImgIndx = this.currentImgIndx % imgsArray.length;
+    let path = imgsArray[this.currentImgIndx];
     this.img = this.imgsCache[path];
     this.currentImgIndx++;
   }
