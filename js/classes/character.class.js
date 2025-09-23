@@ -2,7 +2,8 @@ class Character extends MovableObject {
   height = 240;
   width = 100;
   x = 100;
-  y = canvasHeightPx - this.height - 40;
+  //y = canvasHeightPx - this.height - 40;
+  y = 100;
   v = 10;
   imgsWalking = [
     "../../img/img_pollo_locco/2_character_pepe/2_walk/W-21.png",
@@ -22,6 +23,7 @@ class Character extends MovableObject {
     );
     this.loadImages(this.imgsWalking);
     this.walking();
+    this.applyGravity();
   }
 
   walking() {

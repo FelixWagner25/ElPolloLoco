@@ -1,6 +1,6 @@
 class Chicken extends MovableObject {
-  height = 60;
-  width = 60;
+  height = 70;
+  width = 70;
   y = canvasHeightPx - this.height - 40;
   x = 200 + Math.random() * 500;
   v = 0.15 + Math.random() * 0.25;
