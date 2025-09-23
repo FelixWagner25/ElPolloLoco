@@ -34,27 +34,27 @@ class Character extends MovableObject {
     );
     this.loadImages(this.imgsWalking);
     this.loadImages(this.imgsJumping);
-    this.walking();
     this.applyGravity();
+    this.animate();
   }
 
-  walking() {
+  animate() {
     setInterval(() => {
       if (
         this.world.keyboard.right == true &&
         this.x < this.world.level.levelEndX
       ) {
-        this.x += this.v;
+        this.moveRight();
         this.otherDirection = false;
       }
 
       if (this.world.keyboard.left == true && this.x > -100) {
-        this.x -= this.v;
+        this.moveLeft();
         this.otherDirection = true;
       }
 
       if (this.world.keyboard.up && !this.isAboveGround()) {
-        this.speedY = -20;
+        this.jump();
       }
 
       this.world.cameraX = -this.x + 100;
@@ -70,6 +70,4 @@ class Character extends MovableObject {
       }
     }, 50);
   }
-
-  jump() {}
 }

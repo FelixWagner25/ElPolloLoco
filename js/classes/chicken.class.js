@@ -17,11 +17,13 @@ class Chicken extends MovableObject {
       "../../img/img_pollo_locco/3_enemies_chicken/chicken_normal/1_walk/1_w.png"
     );
     this.loadImages(this.imgsWalking);
-    this.walking();
+    this.animate();
   }
 
-  walking() {
-    this.moveLeft();
+  animate() {
+    setInterval(() => {
+      this.moveLeft();
+    }, this.dt);
 
     setInterval(() => {
       this.playAnimation(this.imgsWalking);

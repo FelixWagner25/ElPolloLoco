@@ -22,10 +22,10 @@ class Endboss extends MovableObject {
       "../../img/img_pollo_locco/4_enemie_boss_chicken/2_alert/G5.png"
     );
     this.loadImages(this.imgsWalking);
-    this.walking();
+    this.animate();
   }
 
-  walking() {
+  animate() {
     this.moveLeft();
 
     setInterval(() => {
