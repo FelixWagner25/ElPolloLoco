@@ -70,4 +70,13 @@ class MovableObject {
     this.img = this.imgsCache[path];
     this.currentImgIndx++;
   }
+
+  isColliding(obj) {
+    return (
+      this.x + this.width > obj.x &&
+      this.x < obj.x &&
+      this.y + this.height > obj.y &&
+      this.y < obj.y + obj.height
+    );
+  }
 }
