@@ -40,22 +40,27 @@ class World {
 
   addToWorld(obj) {
     if (obj.otherDirection == true) {
-      this.ctx.save();
-      this.ctx.translate(obj.width, 0);
-      this.ctx.scale(-1, 1);
-      obj.x = -1 * obj.x;
+      this.flipImage(obj);
     }
-    this.ctx.drawImage(obj.img, obj.x, obj.y, obj.width, obj.height);
-    this.ctx.beginPath();
-    this.ctx.lineWidth = "5";
-    this.ctx.strokeStyle = "blue";
-    this.ctx.rect(obj.x, obj.y, obj.width, obj.height);
-    this.ctx.stroke();
+
+    obj.draw(this.ctx);
+    obj.drawFrame(this.ctx);
 
     if (obj.otherDirection == true) {
-      obj.x = -1 * obj.x;
-      this.ctx.restore();
+      this.flipImageBack(obj);
     }
+  }
+
+  flipImage(obj) {
+    this.ctx.save();
+    this.ctx.translate(obj.width, 0);
+    this.ctx.scale(-1, 1);
+    obj.x = -1 * obj.x;
+  }
+
+  flipImageBack(obj) {
+    obj.x = -1 * obj.x;
+    this.ctx.restore();
   }
 
   setWorld() {
