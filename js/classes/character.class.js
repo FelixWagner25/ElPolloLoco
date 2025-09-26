@@ -5,6 +5,13 @@ class Character extends MovableObject {
   //y = canvasHeightPx - this.height - 40;
   y = 100;
   v = 10;
+  offset = {
+    top: 120,
+    bottom: 30,
+    left: 40,
+    right: 30,
+  };
+
   imgsWalking = [
     "../../img/img_pollo_locco/2_character_pepe/2_walk/W-21.png",
     "../../img/img_pollo_locco/2_character_pepe/2_walk/W-22.png",
