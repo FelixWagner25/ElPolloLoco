@@ -90,8 +90,4 @@ class Character extends MovableObject {
       }
     }, 50);
   }
-
-  isDead() {
-    return this.energy <= 0;
-  }
 }
