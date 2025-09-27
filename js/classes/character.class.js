@@ -32,6 +32,16 @@ class Character extends MovableObject {
     "../../img/img_pollo_locco/2_character_pepe/3_jump/J-38.png",
     "../../img/img_pollo_locco/2_character_pepe/3_jump/J-39.png",
   ];
+
+  imgsDead = [
+    "../../img/img_pollo_locco/2_character_pepe/5_dead/D-51.png",
+    "../../img/img_pollo_locco/2_character_pepe/5_dead/D-52.png",
+    "../../img/img_pollo_locco/2_character_pepe/5_dead/D-53.png",
+    "../../img/img_pollo_locco/2_character_pepe/5_dead/D-54.png",
+    "../../img/img_pollo_locco/2_character_pepe/5_dead/D-55.png",
+    "../../img/img_pollo_locco/2_character_pepe/5_dead/D-56.png",
+    "../../img/img_pollo_locco/2_character_pepe/5_dead/D-57.png",
+  ];
   world;
 
   constructor() {
@@ -41,6 +51,7 @@ class Character extends MovableObject {
     );
     this.loadImages(this.imgsWalking);
     this.loadImages(this.imgsJumping);
+    this.loadImages(this.imgsDead);
     this.applyGravity();
     this.animate();
   }
@@ -70,11 +81,17 @@ class Character extends MovableObject {
     setInterval(() => {
       if (this.isAboveGround()) {
         this.playAnimation(this.imgsJumping);
+      } else if (this.isDead()) {
+        this.playAnimation(this.imgsDead);
       } else {
         if (this.world.keyboard.right || this.world.keyboard.left) {
           this.playAnimation(this.imgsWalking);
         }
       }
     }, 50);
+  }
+
+  isDead() {
+    return this.energy <= 0;
   }
 }

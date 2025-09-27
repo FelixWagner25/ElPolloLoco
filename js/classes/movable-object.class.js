@@ -11,6 +11,7 @@ class MovableObject {
   currentImgIndx = 0;
   speedY = 0;
   gravityAcceleration = 2.5;
+  energy = 100;
   offset = {
     top: 0,
     bottom: 0,
