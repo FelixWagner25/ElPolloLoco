@@ -87,6 +87,10 @@ class MovableObject {
     );
   }
 
+  isDead() {
+    return this.energy <= 0;
+  }
+
   hit() {
     this.energy -= 5;
     if (this.energy < 0) {
