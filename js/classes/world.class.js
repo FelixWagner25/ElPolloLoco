@@ -76,7 +76,7 @@ class World {
             "Collision with character, energy = ",
             this.character.energy
           );
-          this.character.energy -= 5;
+          this.character.hit();
         }
       });
     }, 200);

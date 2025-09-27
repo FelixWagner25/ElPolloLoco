@@ -86,4 +86,11 @@ class MovableObject {
       this.y + this.offset.top < obj.y + obj.height - obj.offset.bottom
     );
   }
+
+  hit() {
+    this.energy -= 5;
+    if (this.energy < 0) {
+      this.energy = 0;
+    }
+  }
 }
