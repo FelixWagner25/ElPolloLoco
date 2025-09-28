@@ -90,7 +90,7 @@ class Character extends MovableObject {
         this.playAnimation(this.imgsJumping);
       } else if (this.isDead()) {
         this.playAnimation(this.imgsDead);
-      } else if (this.isHurt) {
+      } else if (this.isHurt()) {
         this.playAnimation(this.imgsHurt);
       } else {
         if (this.world.keyboard.right || this.world.keyboard.left) {

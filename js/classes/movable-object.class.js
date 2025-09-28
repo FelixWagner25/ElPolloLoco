@@ -12,7 +12,7 @@ class MovableObject {
   speedY = 0;
   gravityAcceleration = 2.5;
   energy = 100;
-  isHurt = false;
+  latestHit = 0;
   offset = {
     top: 0,
     bottom: 0,
@@ -96,12 +96,14 @@ class MovableObject {
     this.energy -= 5;
     if (this.energy < 0) {
       this.energy = 0;
+    } else {
+      this.latestHit = new Date().getTime();
     }
-    this.isHurt = true;
-    console.log(this.isHurt);
+  }
 
-    setInterval(() => {
-      this.isHurt = false;
-    }, 100);
+  isHurt() {
+    let passedTimeMs = new Date().getTime() - this.latestHit;
+    let passedTimeS = passedTimeMs / 1000;
+    return passedTimeS < 1;
   }
 }
