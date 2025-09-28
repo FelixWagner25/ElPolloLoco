@@ -12,6 +12,7 @@ class MovableObject {
   speedY = 0;
   gravityAcceleration = 2.5;
   energy = 100;
+  isHurt = false;
   offset = {
     top: 0,
     bottom: 0,
@@ -96,5 +97,11 @@ class MovableObject {
     if (this.energy < 0) {
       this.energy = 0;
     }
+    this.isHurt = true;
+    console.log(this.isHurt);
+
+    setInterval(() => {
+      this.isHurt = false;
+    }, 100);
   }
 }

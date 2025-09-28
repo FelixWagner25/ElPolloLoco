@@ -42,6 +42,12 @@ class Character extends MovableObject {
     "../../img/img_pollo_locco/2_character_pepe/5_dead/D-56.png",
     "../../img/img_pollo_locco/2_character_pepe/5_dead/D-57.png",
   ];
+
+  imgsHurt = [
+    "../../img/img_pollo_locco/2_character_pepe/4_hurt/H-41.png",
+    "../../img/img_pollo_locco/2_character_pepe/4_hurt/H-42.png",
+    "../../img/img_pollo_locco/2_character_pepe/4_hurt/H-43.png",
+  ];
   world;
 
   constructor() {
@@ -52,6 +58,7 @@ class Character extends MovableObject {
     this.loadImages(this.imgsWalking);
     this.loadImages(this.imgsJumping);
     this.loadImages(this.imgsDead);
+    this.loadImages(this.imgsHurt);
     this.applyGravity();
     this.animate();
   }
@@ -83,6 +90,8 @@ class Character extends MovableObject {
         this.playAnimation(this.imgsJumping);
       } else if (this.isDead()) {
         this.playAnimation(this.imgsDead);
+      } else if (this.isHurt) {
+        this.playAnimation(this.imgsHurt);
       } else {
         if (this.world.keyboard.right || this.world.keyboard.left) {
           this.playAnimation(this.imgsWalking);
