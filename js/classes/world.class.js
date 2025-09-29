@@ -5,11 +5,7 @@ class World {
   ctx;
   keyboard;
   cameraX = 0;
-  statusbars = [
-    new Statusbar(
-      "../../img/img_pollo_locco/7_statusbars/1_statusbar/1_statusbar_coin/blue/0.png"
-    ),
-  ];
+  statusbars = [new Statusbar(100, 100, 100)];
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -28,8 +24,8 @@ class World {
     this.addObjectsToWorld(this.level.backgroundLayers);
     this.addObjectsToWorld(this.level.clouds);
     this.addObjectsToWorld(this.level.enemies);
+    this.addObjectsToWorld(this.statusbars);
     this.addToWorld(this.character);
-    //this.addObjectsToWorld(this.statusbars);
 
     this.ctx.translate(-this.cameraX, 0);
 

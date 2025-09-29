@@ -17,16 +17,6 @@ class MovableObject extends DrawableObject {
     super();
   }
 
-  drawFrame(ctx) {
-    if (this instanceof Character || this instanceof Chicken) {
-      ctx.lineWidth = "5";
-      ctx.beginPath();
-      ctx.strokeStyle = "blue";
-      ctx.rect(this.x, this.y, this.width, this.height);
-      ctx.stroke();
-    }
-  }
-
   applyGravity() {
     setInterval(() => {
       if (this.isAboveGround() || this.speedY < 0) {
