@@ -5,7 +5,7 @@ class World {
   ctx;
   keyboard;
   cameraX = 0;
-  statusbars = [new Statusbar(100, 100, 100)];
+  statusbars = [new Statusbar(100, 20, 40)];
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
