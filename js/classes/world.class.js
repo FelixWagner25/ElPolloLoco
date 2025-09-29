@@ -29,7 +29,7 @@ class World {
     this.addObjectsToWorld(this.level.clouds);
     this.addObjectsToWorld(this.level.enemies);
     this.addToWorld(this.character);
-    this.addObjectsToWorld(this.statusbars);
+    //this.addObjectsToWorld(this.statusbars);
 
     this.ctx.translate(-this.cameraX, 0);
 

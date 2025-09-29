@@ -1,14 +1,7 @@
 class MovableObject extends DrawableObject {
-  height = 150;
-  width = 100;
-  x = 40;
-  y = canvasHeightPx - this.height;
-  img;
-  imgsCache = {};
   v;
   dt = 17; // time step for image change in MilliSeconds
   otherDirection = false;
-  currentImgIndx = 0;
   speedY = 0;
   gravityAcceleration = 2.5;
   energy = 100;
@@ -22,6 +15,16 @@ class MovableObject extends DrawableObject {
 
   constructor() {
     super();
+  }
+
+  drawFrame(ctx) {
+    if (this instanceof Character || this instanceof Chicken) {
+      ctx.lineWidth = "5";
+      ctx.beginPath();
+      ctx.strokeStyle = "blue";
+      ctx.rect(this.x, this.y, this.width, this.height);
+      ctx.stroke();
+    }
   }
 
   applyGravity() {

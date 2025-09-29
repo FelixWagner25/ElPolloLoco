@@ -1,4 +1,13 @@
 class DrawableObject {
+  height = 150;
+  width = 100;
+  x = 40;
+  y = canvasHeightPx - this.height;
+
+  img;
+  imgsCache = {};
+  currentImgIndx = 0;
+
   loadImage(path) {
     this.img = new Image();
     this.img.src = path;
@@ -6,16 +15,6 @@ class DrawableObject {
 
   draw(ctx) {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-  }
-
-  drawFrame(ctx) {
-    if (this instanceof Character || this instanceof Chicken) {
-      ctx.lineWidth = "5";
-      ctx.beginPath();
-      ctx.strokeStyle = "blue";
-      ctx.rect(this.x, this.y, this.width, this.height);
-      ctx.stroke();
-    }
   }
 
   loadImages(array) {
