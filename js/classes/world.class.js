@@ -5,7 +5,7 @@ class World {
   ctx;
   keyboard;
   cameraX = 0;
-  statusbars = [new Statusbar(100, 20, 40)];
+  statusbars = [new Statusbar(20, 40)];
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -24,11 +24,11 @@ class World {
     this.addObjectsToWorld(this.level.backgroundLayers);
     this.addObjectsToWorld(this.level.clouds);
     this.addObjectsToWorld(this.level.enemies);
-    this.addObjectsToWorld(this.statusbars);
     this.addToWorld(this.character);
 
     this.ctx.translate(-this.cameraX, 0);
 
+    this.addObjectsToWorld(this.statusbars);
     let self = this;
     requestAnimationFrame(function () {
       self.draw();

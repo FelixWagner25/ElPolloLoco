@@ -64,10 +64,15 @@ class MovableObject extends DrawableObject {
 
   hit() {
     this.energy -= 5;
+    this.world.statusbars[0].percentage -= 5;
+    this.world.statusbars[0].setImgByPercentage();
     if (this.energy < 0) {
       this.energy = 0;
+      this.world.statusbars[0].percentage = 0;
     } else {
       this.latestHit = new Date().getTime();
+
+      console.log("percentage", this.world.statusbars[0].percentage);
     }
   }
 
