@@ -7,8 +7,8 @@ class World {
   cameraX = 0;
   statusbars = [
     new Statusbar("health", 20, 40),
-    new Statusbar("coins", 20, 80),
-    new Statusbar("bottles", 20, 120),
+    new Statusbar("bottles", 20, 80),
+    new Statusbar("coins", 20, 120),
   ];
 
   constructor(canvas, keyboard) {

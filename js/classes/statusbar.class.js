@@ -46,7 +46,7 @@ class Statusbar extends DrawableObject {
     // this.loadImages(this.imgsBottles);
     this.loadImagesByKind(this.kind);
     let statusValue = this.getStatusValueByKind();
-    this.setImgByPercentage(this.kind, statusValue);
+    this.setImgByStatusValue(this.kind, statusValue);
     //this.setImgByPercentage("health", this.percentageHealth);
     // this.setImgByPercentage("coins", this.coins);
     // this.setImgByPercentage("bottles", this.bottles);
@@ -77,7 +77,7 @@ class Statusbar extends DrawableObject {
     }
   }
 
-  setImgByPercentage(statusbarKind, percentage) {
+  setImgByStatusValue(statusbarKind, percentage) {
     let imgPercentage = percentage - (percentage % 20);
     let path = "";
     switch (statusbarKind) {
@@ -89,6 +89,9 @@ class Statusbar extends DrawableObject {
         break;
       case "bottles":
         path = `../../img/img_pollo_locco/7_statusbars/1_statusbar/3_statusbar_bottle/blue/${imgPercentage}.png`;
+        break;
+      case "endboss":
+        break;
     }
     this.img = this.imgsCache[path];
   }
