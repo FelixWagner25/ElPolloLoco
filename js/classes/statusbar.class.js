@@ -41,12 +41,40 @@ class Statusbar extends DrawableObject {
     this.kind = kind;
     this.x = x;
     this.y = y;
-    this.loadImages(this.imgsHealth);
-    this.loadImages(this.imgsCoins);
-    this.loadImages(this.imgsBottles);
-    this.setImgByPercentage("health", this.percentageHealth);
-    this.setImgByPercentage("coins", this.coins);
-    this.setImgByPercentage("bottles", this.bottles);
+    // this.loadImages(this.imgsHealth);
+    // this.loadImages(this.imgsCoins);
+    // this.loadImages(this.imgsBottles);
+    this.loadImagesByKind(this.kind);
+    let statusValue = this.getStatusValueByKind();
+    this.setImgByPercentage(this.kind, statusValue);
+    //this.setImgByPercentage("health", this.percentageHealth);
+    // this.setImgByPercentage("coins", this.coins);
+    // this.setImgByPercentage("bottles", this.bottles);
+  }
+
+  getStatusValueByKind() {
+    switch (this.kind) {
+      case "health":
+        return this.percentageHealth;
+      case "coins":
+        return this.coins;
+      case "bottles":
+        return this.bottles;
+    }
+  }
+
+  loadImagesByKind(kind) {
+    switch (kind) {
+      case "health":
+        this.loadImages(this.imgsHealth);
+        break;
+      case "coins":
+        this.loadImages(this.imgsCoins);
+        break;
+      case "bottles":
+        this.loadImages(this.imgsBottles);
+        break;
+    }
   }
 
   setImgByPercentage(statusbarKind, percentage) {
