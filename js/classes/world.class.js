@@ -5,7 +5,11 @@ class World {
   ctx;
   keyboard;
   cameraX = 0;
-  statusbars = [new Statusbar(20, 40)];
+  statusbars = [
+    new Statusbar("health", 20, 40),
+    new Statusbar("coins", 20, 80),
+    new Statusbar("bottles", 20, 120),
+  ];
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
