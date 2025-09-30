@@ -27,8 +27,8 @@ window.addEventListener("keydown", (event) => {
     case " ":
       keyboard.space = true;
       break;
-    case "KeyD":
-      keyboard.keyD = true;
+    case "d":
+      keyboard.d = true;
       break;
   }
 });
@@ -50,8 +50,8 @@ window.addEventListener("keyup", (event) => {
     case " ":
       keyboard.space = false;
       break;
-    case "KeyD":
-      keyboard.keyD = false;
+    case "d":
+      keyboard.d = false;
       break;
   }
 });
