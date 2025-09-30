@@ -10,6 +10,7 @@ class World {
     new Statusbar("bottles", 20, 80),
     new Statusbar("coins", 20, 120),
   ];
+  bottles = [new Bottle(), new Bottle(), new Bottle()];
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
