@@ -1,4 +1,7 @@
 class Bottle extends ThrowableObject {
+  width = 50;
+  height = 80;
+
   constructor() {
     super();
     this.x = 100 + Math.random() * 360;

@@ -5,5 +5,12 @@ class ThrowableObject extends MovableObject {
   constructor() {
     super();
   }
-  throw() {}
+  throw(x, y) {
+    this.x = x + this.speedX;
+    this.y = y;
+    this.applyGravity();
+    this.img = this.loadImage(
+      "../../img/img_pollo_locco/6_salsa_bottle/salsa_bottle.png"
+    );
+  }
 }

@@ -29,12 +29,12 @@ class World {
     this.addObjectsToWorld(this.level.backgroundLayers);
     this.addObjectsToWorld(this.level.clouds);
     this.addObjectsToWorld(this.level.enemies);
+    this.addObjectsToWorld(this.bottles);
     this.addToWorld(this.character);
 
     this.ctx.translate(-this.cameraX, 0);
 
     this.addObjectsToWorld(this.statusbars);
-    this.addObjectsToWorld(this.bottles);
     let self = this;
     requestAnimationFrame(function () {
       self.draw();
