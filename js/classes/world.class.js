@@ -34,6 +34,7 @@ class World {
     this.ctx.translate(-this.cameraX, 0);
 
     this.addObjectsToWorld(this.statusbars);
+    this.addObjectsToWorld(this.bottles);
     let self = this;
     requestAnimationFrame(function () {
       self.draw();
