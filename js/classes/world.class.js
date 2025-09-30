@@ -76,17 +76,30 @@ class World {
     this.character.world = this;
   }
 
-  checkCollisions() {
+  runGameDynamics() {
     setInterval(() => {
-      this.level.enemies.forEach((enemy) => {
-        if (this.character.isColliding(enemy)) {
-          console.log(
-            "Collision with character, energy = ",
-            this.character.energy
-          );
-          this.character.hit();
-        }
-      });
+      this.checkCollisions();
+      this.checkThrowObjects();
     }, 200);
+  }
+
+  checkThrowObjects() {
+    if (this.keyboard.d) {
+      let bottle = new Bottle();
+      this.bottles.push(bottle);
+      bottle.throw(this.character.x, this.character.y);
+    }
+  }
+
+  checkCollisions() {
+    this.level.enemies.forEach((enemy) => {
+      if (this.character.isColliding(enemy)) {
+        console.log(
+          "Collision with character, energy = ",
+          this.character.energy
+        );
+        this.character.hit();
+      }
+    });
   }
 }

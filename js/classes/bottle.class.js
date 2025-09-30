@@ -1,8 +1,8 @@
 class Bottle extends CollectableObject {
   width = 50;
-  height = 80;
-  speedX = 20;
-  speedY = 30;
+  height = 60;
+  speedX = 60;
+  speedY = 20;
 
   constructor() {
     super();
@@ -16,8 +16,11 @@ class Bottle extends CollectableObject {
 
   throw(x, y) {
     this.loadImage("../../img/img_pollo_locco/6_salsa_bottle/salsa_bottle.png");
-    this.x = x + this.speedX;
+    this.x = x;
     this.y = y;
     this.applyGravity();
+    setInterval(() => {
+      this.x += this.speedX;
+    }, 30);
   }
 }

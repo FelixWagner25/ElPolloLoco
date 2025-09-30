@@ -88,8 +88,7 @@ class Character extends MovableObject {
       if (this.world.keyboard.d) {
         let bottle = new Bottle();
         this.world.bottles.push(bottle);
-        bottle.throw(100, 100);
-        console.log("keyD pressed", bottle.x, bottle.y);
+        bottle.throw(this.x, this.y);
       }
 
       this.world.cameraX = -this.x + 100;
