@@ -9,8 +9,6 @@ class ThrowableObject extends MovableObject {
     this.x = x + this.speedX;
     this.y = y;
     this.applyGravity();
-    this.img = this.loadImage(
-      "../../img/img_pollo_locco/6_salsa_bottle/salsa_bottle.png"
-    );
+    this.loadImage("../../img/img_pollo_locco/6_salsa_bottle/salsa_bottle.png");
   }
 }
