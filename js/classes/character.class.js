@@ -85,12 +85,6 @@ class Character extends MovableObject {
         this.jump();
       }
 
-      if (this.world.keyboard.d) {
-        let bottle = new Bottle();
-        this.world.bottles.push(bottle);
-        bottle.throw(this.x, this.y);
-      }
-
       this.world.cameraX = -this.x + 100;
     }, 50);
 
