@@ -3,6 +3,11 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: "zabras", Arial, Helvetica, sans-serif;
+  background-image: url("./img/bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #b45b11;
 }
 
 canvas {
