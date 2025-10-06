@@ -10,8 +10,6 @@ class World {
     new Statusbar("bottles", 20, 80),
     new Statusbar("coins", 20, 120),
   ];
-  bottles = [new Bottle(), new Bottle(), new Bottle()];
-  coins = [new Coin()];
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -30,8 +28,8 @@ class World {
     this.addObjectsToWorld(this.level.backgroundLayers);
     this.addObjectsToWorld(this.level.clouds);
     this.addObjectsToWorld(this.level.enemies);
-    this.addObjectsToWorld(this.bottles);
-    this.addObjectsToWorld(this.coins);
+    this.addObjectsToWorld(this.level.bottles);
+    this.addObjectsToWorld(this.level.coins);
     this.addToWorld(this.character);
 
     this.ctx.translate(-this.cameraX, 0);
@@ -101,22 +99,22 @@ class World {
         this.character.hit();
       }
     });
-    this.coins.forEach((coin) => {
+    this.level.coins.forEach((coin) => {
       if (this.character.isColliding(coin)) {
         this.character.coinsCollected += 1;
         console.log("coins collected", this.character.coinsCollected);
-        const index = this.coins.indexOf(coin);
-        this.coins.splice(index, 1);
-        console.log("coin[],", this.coins);
+        const index = this.level.coins.indexOf(coin);
+        this.level.coins.splice(index, 1);
+        console.log("coin[],", this.level.coins);
       }
     });
-    this.bottles.forEach((bottle) => {
+    this.level.bottles.forEach((bottle) => {
       if (this.character.isColliding(bottle)) {
         this.character.bottlesCollected += 1;
         console.log("bottles collected", this.character.bottlesCollected);
-        const index = this.bottles.indexOf(bottle);
-        this.bottles.splice(index, 1);
-        console.log("bottles[],", this.bottles);
+        const index = this.level.bottles.indexOf(bottle);
+        this.level.bottles.splice(index, 1);
+        console.log("bottles[],", this.level.bottles);
       }
     });
   }
