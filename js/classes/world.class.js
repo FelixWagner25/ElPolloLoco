@@ -87,7 +87,7 @@ class World {
   checkThrowObjects() {
     if (this.keyboard.d) {
       let bottle = new Bottle();
-      this.bottles.push(bottle);
+      this.level.bottles.push(bottle);
       bottle.throw(this.character.x, this.character.y);
       console.log("Key d presses");
     }

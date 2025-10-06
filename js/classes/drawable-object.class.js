@@ -22,6 +22,7 @@ class DrawableObject {
       this instanceof Character ||
       this instanceof Chicken ||
       this instanceof Endboss
+      //|| this instanceof CollectableObject
     ) {
       ctx.lineWidth = "5";
       ctx.beginPath();
@@ -36,6 +37,7 @@ class DrawableObject {
       this instanceof Character ||
       this instanceof Chicken ||
       this instanceof Endboss
+      //|| this instanceof CollectableObject
     ) {
       ctx.lineWidth = "5";
       ctx.beginPath();
