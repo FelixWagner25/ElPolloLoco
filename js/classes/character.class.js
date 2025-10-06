@@ -65,6 +65,10 @@ class Character extends MovableObject {
     this.animate();
   }
 
+  hasBottle() {
+    return this.bottlesCollected > 0;
+  }
+
   animate() {
     setInterval(() => {
       if (
