@@ -11,6 +11,7 @@ class World {
     new Statusbar("coins", 20, 120),
   ];
   bottles = [new Bottle(), new Bottle(), new Bottle()];
+  coins = [new Coin()];
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -30,6 +31,7 @@ class World {
     this.addObjectsToWorld(this.level.clouds);
     this.addObjectsToWorld(this.level.enemies);
     this.addObjectsToWorld(this.bottles);
+    this.addObjectsToWorld(this.coins);
     this.addToWorld(this.character);
 
     this.ctx.translate(-this.cameraX, 0);
