@@ -11,6 +11,8 @@ class Character extends MovableObject {
     left: 20,
     right: 40,
   };
+  bottlesCollected = 0;
+  coinsCollected = 0;
 
   imgsWalking = [
     "../../img/img_pollo_locco/2_character_pepe/2_walk/W-21.png",

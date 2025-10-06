@@ -98,11 +98,25 @@ class World {
   checkCollisions() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
-        console.log(
-          "Collision with character, energy = ",
-          this.character.energy
-        );
         this.character.hit();
+      }
+    });
+    this.coins.forEach((coin) => {
+      if (this.character.isColliding(coin)) {
+        this.character.coinsCollected += 1;
+        console.log("coins collected", this.character.coinsCollected);
+        const index = this.coins.indexOf(coin);
+        this.coins.splice(index, 1);
+        console.log("coin[],", this.coins);
+      }
+    });
+    this.bottles.forEach((bottle) => {
+      if (this.character.isColliding(bottle)) {
+        this.character.bottlesCollected += 1;
+        console.log("bottles collected", this.character.bottlesCollected);
+        const index = this.bottles.indexOf(bottle);
+        this.bottles.splice(index, 1);
+        console.log("bottles[],", this.bottles);
       }
     });
   }
