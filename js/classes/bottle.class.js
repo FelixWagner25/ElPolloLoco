@@ -3,6 +3,7 @@ class Bottle extends CollectableObject {
   height = 60;
   speedX = 30;
   speedY = 20;
+  world;
 
   imgsRotating = [
     "../../img/img_pollo_locco/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png",
@@ -28,17 +29,26 @@ class Bottle extends CollectableObject {
         randomInt + 1
       }_salsa_bottle_on_ground.png`
     );
+    this.loadImages(this.imgsRotating);
+    this.loadImages(this.imgsSplashing);
   }
 
   throw(x, y) {
-    this.loadImages(this.imgsRotating);
-
     this.x = x;
     this.y = y;
+    console.log(this.y, "y", this.isAboveGround());
     this.applyGravity();
     setInterval(() => {
       this.x += this.speedX;
       this.playAnimation(this.imgsRotating);
+      this.world.level.enemies.forEach((enemy) => {
+        if (this.isColliding(enemy)) {
+          this.playAnimation(this.imgsSplashing);
+        }
+      });
+      if (!this.isAboveGround()) {
+        this.playAnimation(this.imgsSplashing);
+      }
     }, 17);
   }
 }

@@ -75,6 +75,7 @@ class World {
 
   setWorld() {
     this.character.world = this;
+    this.level.bottles.forEach((bottle) => (bottle.world = this));
   }
 
   runGameDynamics() {
@@ -87,6 +88,7 @@ class World {
   checkThrowObjects() {
     if (this.keyboard.d && this.character.hasBottle()) {
       let bottle = new Bottle();
+      bottle.world = this;
       this.level.bottles.push(bottle);
       bottle.throw(this.character.x, this.character.y);
       this.character.bottlesCollected -= 1;
