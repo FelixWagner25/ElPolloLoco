@@ -103,19 +103,15 @@ class World {
     this.level.coins.forEach((coin) => {
       if (this.character.isColliding(coin)) {
         this.character.coinsCollected += 1;
-        console.log("coins collected", this.character.coinsCollected);
         const index = this.level.coins.indexOf(coin);
         this.level.coins.splice(index, 1);
-        console.log("coin[],", this.level.coins);
       }
     });
     this.level.bottles.forEach((bottle) => {
       if (this.character.isColliding(bottle)) {
         this.character.bottlesCollected += 1;
-        console.log("bottles collected", this.character.bottlesCollected);
         const index = this.level.bottles.indexOf(bottle);
         this.level.bottles.splice(index, 1);
-        console.log("bottles[],", this.level.bottles);
       }
     });
   }
