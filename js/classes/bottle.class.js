@@ -1,7 +1,7 @@
 class Bottle extends CollectableObject {
   width = 50;
   height = 60;
-  speedX = 30;
+  speedX = 60;
   speedY = 20;
   world;
 

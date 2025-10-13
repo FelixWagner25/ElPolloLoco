@@ -90,7 +90,10 @@ class World {
       let bottle = new Bottle();
       bottle.world = this;
       this.level.bottles.push(bottle);
-      bottle.throw(this.character.x, this.character.y);
+      bottle.throw(
+        this.character.x,
+        this.character.y + this.character.offset.top
+      );
       this.character.bottlesCollected -= 1;
       console.log("Key d presses");
     }
