@@ -129,6 +129,7 @@ class Character extends MovableObject {
 
     let animationInterval = setInterval(() => {
       if (this.isAboveGround()) {
+        // may insert separate intervals for different character moves. For jumping e.g. 50ms and for idle 200 ms
         this.playAnimation(this.imgsJumping);
       } else if (this.isDead()) {
         this.playAnimation(this.imgsDead);
@@ -147,7 +148,7 @@ class Character extends MovableObject {
       } else {
         this.playAnimation(this.imgsIdle);
       }
-    }, 50);
+    }, 200);
   }
 
   updateLatestActivityMs() {

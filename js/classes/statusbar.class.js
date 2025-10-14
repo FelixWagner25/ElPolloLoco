@@ -36,25 +36,29 @@ class Statusbar extends DrawableObject {
     "../../img/img_pollo_locco/7_statusbars/1_statusbar/3_statusbar_bottle/blue/100.png",
   ];
 
+  imgsEndboss = [
+    "../../img/img_pollo_locco/7_statusbars/2_statusbar_endboss/orange/orange0.png",
+    "../../img/img_pollo_locco/7_statusbars/2_statusbar_endboss/orange/orange20.png",
+    "../../img/img_pollo_locco/7_statusbars/2_statusbar_endboss/orange/orange40.png",
+    "../../img/img_pollo_locco/7_statusbars/2_statusbar_endboss/orange/orange60.png",
+    "../../img/img_pollo_locco/7_statusbars/2_statusbar_endboss/orange/orange80.png",
+    "../../img/img_pollo_locco/7_statusbars/2_statusbar_endboss/orange/orange100.png",
+  ];
+
   constructor(kind, x, y) {
     super();
     this.kind = kind;
     this.x = x;
     this.y = y;
-    // this.loadImages(this.imgsHealth);
-    // this.loadImages(this.imgsCoins);
-    // this.loadImages(this.imgsBottles);
     this.loadImagesByKind(this.kind);
     let statusValue = this.getStatusValueByKind();
     this.setImgByStatusValue(this.kind, statusValue);
-    //this.setImgByPercentage("health", this.percentageHealth);
-    // this.setImgByPercentage("coins", this.coins);
-    // this.setImgByPercentage("bottles", this.bottles);
   }
 
   getStatusValueByKind() {
     switch (this.kind) {
       case "health":
+      case "endboss":
         return this.percentageHealth;
       case "coins":
         return this.coins;
@@ -74,6 +78,9 @@ class Statusbar extends DrawableObject {
       case "bottles":
         this.loadImages(this.imgsBottles);
         break;
+      case "endboss":
+        this.loadImages(this.imgsEndboss);
+        break;
     }
   }
 
@@ -91,6 +98,7 @@ class Statusbar extends DrawableObject {
         path = `../../img/img_pollo_locco/7_statusbars/1_statusbar/3_statusbar_bottle/blue/${imgPercentage}.png`;
         break;
       case "endboss":
+        path = `../../img/img_pollo_locco/7_statusbars/2_statusbar_endboss/orange/orange${imgPercentage}.png`;
         break;
     }
     this.img = this.imgsCache[path];
