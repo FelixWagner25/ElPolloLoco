@@ -94,11 +94,17 @@ class Character extends MovableObject {
       this.world.cameraX = -this.x + 100;
     }, 50);
 
-    setInterval(() => {
+    let animationInterval = setInterval(() => {
       if (this.isAboveGround()) {
         this.playAnimation(this.imgsJumping);
       } else if (this.isDead()) {
         this.playAnimation(this.imgsDead);
+        setTimeout(() => {
+          clearInterval(animationInterval);
+          this.loadImage(
+            "../../img/img_pollo_locco/2_character_pepe/5_dead/D-57.png"
+          );
+        }, 2000);
       } else if (this.isHurt()) {
         this.playAnimation(this.imgsHurt);
       } else {
