@@ -13,6 +13,33 @@ class Character extends MovableObject {
   };
   bottlesCollected = 0;
   coinsCollected = 0;
+  latestActivityMs = 0;
+
+  imgsIdle = [
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/idle/I-1.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/idle/I-2.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/idle/I-3.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/idle/I-4.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/idle/I-5.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/idle/I-6.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/idle/I-7.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/idle/I-8.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/idle/I-9.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/idle/I-10.png",
+  ];
+
+  imgsLongIdle = [
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/long_idle/I-11.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/long_idle/I-12.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/long_idle/I-13.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/long_idle/I-14.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/long_idle/I-15.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/long_idle/I-16.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/long_idle/I-17.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/long_idle/I-18.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/long_idle/I-19.png",
+    "../../img/img_pollo_locco/2_character_pepe/1_idle/long_idle/I-20.png",
+  ];
 
   imgsWalking = [
     "../../img/img_pollo_locco/2_character_pepe/2_walk/W-21.png",
@@ -57,12 +84,15 @@ class Character extends MovableObject {
     this.loadImage(
       "../../img/img_pollo_locco/2_character_pepe/2_walk/W-21.png"
     );
+    this.loadImages(this.imgsIdle);
+    this.loadImages(this.imgsLongIdle);
     this.loadImages(this.imgsWalking);
     this.loadImages(this.imgsJumping);
     this.loadImages(this.imgsDead);
     this.loadImages(this.imgsHurt);
     this.applyGravity();
     this.animate();
+    this.updateLatestActivityMs();
   }
 
   hasBottle() {
@@ -76,11 +106,13 @@ class Character extends MovableObject {
         this.x < this.world.level.levelEndX
       ) {
         this.moveRight();
+        this.updateLatestActivityMs();
         this.otherDirection = false;
       }
 
       if (this.world.keyboard.left == true && this.x > -100) {
         this.moveLeft();
+        this.updateLatestActivityMs();
         this.otherDirection = true;
       }
 
@@ -89,6 +121,7 @@ class Character extends MovableObject {
         !this.isAboveGround()
       ) {
         this.jump();
+        this.updateLatestActivityMs();
       }
 
       this.world.cameraX = -this.x + 100;
@@ -107,11 +140,22 @@ class Character extends MovableObject {
         }, 2000);
       } else if (this.isHurt()) {
         this.playAnimation(this.imgsHurt);
+      } else if (this.world.keyboard.right || this.world.keyboard.left) {
+        this.playAnimation(this.imgsWalking);
+      } else if (this.isIdleForMs(6000)) {
+        this.playAnimation(this.imgsLongIdle);
       } else {
-        if (this.world.keyboard.right || this.world.keyboard.left) {
-          this.playAnimation(this.imgsWalking);
-        }
+        this.playAnimation(this.imgsIdle);
       }
     }, 50);
+  }
+
+  updateLatestActivityMs() {
+    this.latestActivityMs = new Date().getTime();
+  }
+
+  isIdleForMs(milliSeconds) {
+    let currentTimeMs = new Date().getTime();
+    return currentTimeMs - this.latestActivityMs > milliSeconds;
   }
 }
