@@ -4,6 +4,12 @@ class Endboss extends MovableObject {
   y = canvasHeightPx - this.height - 20;
   x = 2500;
   v = 0;
+  offset = {
+    top: 70,
+    bottom: 20,
+    left: 10,
+    right: 40,
+  };
 
   imgsWalking = [
     "../../img/img_pollo_locco/4_enemie_boss_chicken/2_alert/G5.png",
