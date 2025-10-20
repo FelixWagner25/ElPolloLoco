@@ -45,6 +45,9 @@ class Bottle extends CollectableObject {
           if (enemy instanceof Endboss) {
             this.world.endboss.hit();
           }
+          if (enemy instanceof Chicken || enemy instanceof SmallChicken) {
+            enemy.energy -= 100;
+          }
         }
       });
       if (!this.isAboveGround()) {
