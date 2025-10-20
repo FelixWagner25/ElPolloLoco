@@ -12,7 +12,7 @@ class Endboss extends MovableObject {
   };
   world;
 
-  imgsWalking = [
+  imgsIdle = [
     "../../img/img_pollo_locco/4_enemie_boss_chicken/2_alert/G5.png",
     "../../img/img_pollo_locco/4_enemie_boss_chicken/2_alert/G6.png",
     "../../img/img_pollo_locco/4_enemie_boss_chicken/2_alert/G7.png",
@@ -23,20 +23,31 @@ class Endboss extends MovableObject {
     "../../img/img_pollo_locco/4_enemie_boss_chicken/2_alert/G12.png",
   ];
 
+  imgsHurt = [
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/4_hurt/G21.png",
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/4_hurt/G22.png",
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/4_hurt/G23.png",
+  ];
+
   constructor() {
     super();
     this.loadImage(
       "../../img/img_pollo_locco/4_enemie_boss_chicken/2_alert/G5.png"
     );
-    this.loadImages(this.imgsWalking);
+    this.loadImages(this.imgsIdle);
+    this.loadImages(this.imgsHurt);
     this.animate();
   }
 
   animate() {
     this.moveLeft();
 
-    setInterval(() => {
-      this.playAnimation(this.imgsWalking);
-    }, 1000);
+    let animationInterval = setInterval(() => {
+      if (this.isHurt()) {
+        this.playAnimation(this.imgsHurt);
+      } else {
+        this.playAnimation(this.imgsIdle);
+      }
+    }, 200);
   }
 }
