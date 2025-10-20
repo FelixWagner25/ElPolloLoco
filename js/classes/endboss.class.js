@@ -29,6 +29,12 @@ class Endboss extends MovableObject {
     "../../img/img_pollo_locco/4_enemie_boss_chicken/4_hurt/G23.png",
   ];
 
+  imgsDead = [
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/5_dead/G24.png",
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/5_dead/G25.png",
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/5_dead/G26.png",
+  ];
+
   constructor() {
     super();
     this.loadImage(
@@ -36,15 +42,20 @@ class Endboss extends MovableObject {
     );
     this.loadImages(this.imgsIdle);
     this.loadImages(this.imgsHurt);
+    this.loadImages(this.imgsDead);
     this.animate();
   }
 
   animate() {
-    this.moveLeft();
-
     let animationInterval = setInterval(() => {
       if (this.isHurt()) {
         this.playAnimation(this.imgsHurt);
+      } else if (this.isDead()) {
+        this.playAnimation(this.imgsDead);
+        setTimeout(() => {
+          clearInterval(animationInterval);
+          this.loadImage("");
+        }, 2000);
       } else {
         this.playAnimation(this.imgsIdle);
       }
