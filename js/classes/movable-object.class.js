@@ -83,7 +83,6 @@ class MovableObject extends DrawableObject {
 
     if (this.energy < 0) {
       this.energy = 0;
-      this.world.statusBar.percentageHealth = 0;
     } else {
       this.latestHit = new Date().getTime();
     }
