@@ -121,10 +121,5 @@ class World {
         this.level.bottles.splice(index, 1);
       }
     });
-    // this.level.bottles.forEach((bottle) => {
-    //   if (this.endboss.isColliding(bottle)) {
-    //     this.endboss.hit();
-    //   }
-    // });
   }
 }
