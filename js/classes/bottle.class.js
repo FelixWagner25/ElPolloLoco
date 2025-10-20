@@ -36,19 +36,21 @@ class Bottle extends CollectableObject {
   throw(x, y) {
     this.x = x;
     this.y = y;
-    console.log(this.y, "y", this.isAboveGround());
-    this.applyGravity();
     setInterval(() => {
       this.x += this.speedX;
       this.playAnimation(this.imgsRotating);
       this.world.level.enemies.forEach((enemy) => {
         if (this.isColliding(enemy)) {
           this.playAnimation(this.imgsSplashing);
+          if (enemy instanceof Endboss) {
+            this.world.endboss.hit();
+          }
         }
       });
       if (!this.isAboveGround()) {
         this.playAnimation(this.imgsSplashing);
       }
-    }, 17);
+    }, 50);
+    this.applyGravity();
   }
 }

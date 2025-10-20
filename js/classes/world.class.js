@@ -85,7 +85,7 @@ class World {
     setInterval(() => {
       this.checkCollisions();
       this.checkThrowObjects();
-    }, 100);
+    }, 200);
   }
 
   checkThrowObjects() {
@@ -121,10 +121,10 @@ class World {
         this.level.bottles.splice(index, 1);
       }
     });
-    this.level.bottles.forEach((bottle) => {
-      if (this.endboss.isColliding(bottle)) {
-        this.endboss.hit();
-      }
-    });
+    // this.level.bottles.forEach((bottle) => {
+    //   if (this.endboss.isColliding(bottle)) {
+    //     this.endboss.hit();
+    //   }
+    // });
   }
 }
