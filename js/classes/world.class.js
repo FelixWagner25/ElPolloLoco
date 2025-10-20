@@ -1,6 +1,7 @@
 class World {
   character = new Character();
   level = level1;
+  endboss = this.level.enemies[this.level.enemies.length - 1];
   canvas;
   ctx;
   keyboard;
@@ -77,13 +78,14 @@ class World {
   setWorld() {
     this.character.world = this;
     this.level.bottles.forEach((bottle) => (bottle.world = this));
+    this.endboss.world = this;
   }
 
   runGameDynamics() {
     setInterval(() => {
       this.checkCollisions();
       this.checkThrowObjects();
-    }, 200);
+    }, 100);
   }
 
   checkThrowObjects() {
@@ -96,7 +98,6 @@ class World {
         this.character.y + this.character.offset.top
       );
       this.character.bottlesCollected -= 1;
-      console.log("Key d presses");
     }
   }
 
@@ -118,6 +119,11 @@ class World {
         this.character.bottlesCollected += 1;
         const index = this.level.bottles.indexOf(bottle);
         this.level.bottles.splice(index, 1);
+      }
+    });
+    this.level.bottles.forEach((bottle) => {
+      if (this.endboss.isColliding(bottle)) {
+        this.endboss.hit();
       }
     });
   }

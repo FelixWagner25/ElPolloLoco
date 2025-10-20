@@ -67,16 +67,25 @@ class MovableObject extends DrawableObject {
   }
 
   hit() {
-    this.energy -= 5;
-    this.world.statusbars[0].percentageHealth = this.energy;
-    this.world.statusbars[0].setImgByStatusValue("health", this.energy);
+    let statusBar;
+    if (this instanceof Character) {
+      this.energy -= 5;
+      statusBar = this.world.statusbars[0];
+      statusBar.percentageHealth = this.energy;
+      statusBar.setImgByStatusValue("health", this.energy);
+    }
+    if (this instanceof Endboss) {
+      this.energy -= 10;
+      statusBar = this.world.statusbars[3];
+      statusBar.percentageHealth = this.energy;
+      statusBar.setImgByStatusValue("endboss", this.energy);
+    }
+
     if (this.energy < 0) {
       this.energy = 0;
-      this.world.statusbars[0].percentage = 0;
+      this.world.statusBar.percentageHealth = 0;
     } else {
       this.latestHit = new Date().getTime();
-
-      console.log("percentage", this.world.statusbars[0].percentage);
     }
   }
 
