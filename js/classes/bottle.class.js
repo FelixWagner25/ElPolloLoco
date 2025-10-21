@@ -3,6 +3,12 @@ class Bottle extends CollectableObject {
   height = 60;
   speedX = 60;
   speedY = 20;
+  offset = {
+    top: 7,
+    bottom: 6,
+    left: 20,
+    right: 40,
+  };
   world;
 
   imgsRotating = [

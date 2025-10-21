@@ -21,7 +21,9 @@ class DrawableObject {
     if (
       this instanceof Character ||
       this instanceof Chicken ||
-      this instanceof Endboss
+      this instanceof Endboss ||
+      this instanceof SmallChicken ||
+      this instanceof Bottle
       //|| this instanceof CollectableObject
     ) {
       ctx.lineWidth = "5";
@@ -36,7 +38,9 @@ class DrawableObject {
     if (
       this instanceof Character ||
       this instanceof Chicken ||
-      this instanceof Endboss
+      this instanceof Endboss ||
+      this instanceof SmallChicken ||
+      this instanceof Bottle
       //|| this instanceof CollectableObject
     ) {
       ctx.lineWidth = "5";
