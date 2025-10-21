@@ -105,7 +105,11 @@ class World {
   checkCollisions() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
-        this.character.hit();
+        if (this.character.isAboveGround()) {
+          enemy.energy -= 100;
+        } else {
+          this.character.hit();
+        }
       }
     });
     this.level.coins.forEach((coin) => {
