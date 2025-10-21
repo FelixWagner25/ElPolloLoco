@@ -86,7 +86,7 @@ class World {
     setInterval(() => {
       this.checkCollisions();
       this.checkThrowObjects();
-    }, 200);
+    }, 100);
   }
 
   checkThrowObjects() {
@@ -105,8 +105,13 @@ class World {
   checkCollisions() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
-        if (this.character.isAboveGround()) {
+        if (this.character.isAboveGround() && !(enemy instanceof Endboss)) {
           enemy.energy -= 100;
+          // Ganze Timeout-Geschichte muss überarbeitet werden. Führt zu eigenartigen Effekten. Anderes System erforderlich. Vielleicht isDead() flag?
+          setTimeout(() => {
+            const index = this.level.enemies.indexOf(enemy);
+            this.level.enemies.splice(index, 1);
+          }, 1000);
         } else {
           this.character.hit();
         }
