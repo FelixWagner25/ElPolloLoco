@@ -22,8 +22,7 @@ class DrawableObject {
       this instanceof Character ||
       this instanceof Chicken ||
       this instanceof Endboss ||
-      this instanceof SmallChicken ||
-      this instanceof Bottle
+      this instanceof SmallChicken
       //|| this instanceof CollectableObject
     ) {
       ctx.lineWidth = "5";
@@ -39,8 +38,7 @@ class DrawableObject {
       this instanceof Character ||
       this instanceof Chicken ||
       this instanceof Endboss ||
-      this instanceof SmallChicken ||
-      this instanceof Bottle
+      this instanceof SmallChicken
       //|| this instanceof CollectableObject
     ) {
       ctx.lineWidth = "5";

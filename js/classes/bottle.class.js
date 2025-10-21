@@ -48,14 +48,18 @@ class Bottle extends CollectableObject {
       this.world.level.enemies.forEach((enemy) => {
         if (this.isColliding(enemy)) {
           this.playAnimation(this.imgsSplashing);
+          setTimeout(() => {
+            let i = this.world.level.bottles.indexOf(this);
+            this.world.level.bottles.splice(i, 1);
+          }, 500);
           if (enemy instanceof Endboss) {
             this.world.endboss.hit();
           }
           if (enemy instanceof Chicken || enemy instanceof SmallChicken) {
             enemy.energy -= 100;
-            let index = this.world.level.enemies.indexOf(enemy);
             setTimeout(() => {
-              this.world.level.enemies.splice(index, 1);
+              let i = this.world.level.enemies.indexOf(enemy);
+              this.world.level.enemies.splice(i, 1);
             }, 1000);
           }
         }
