@@ -37,6 +37,7 @@ class World {
     this.ctx.translate(-this.cameraX, 0);
 
     this.addObjectsToWorld(this.statusbars);
+
     let self = this;
     requestAnimationFrame(function () {
       self.draw();
