@@ -30,10 +30,6 @@ class Chicken extends MovableObject {
         this.loadImage(
           "img/img_pollo_locco/3_enemies_chicken/chicken_normal/2_dead/dead.png"
         );
-        setTimeout(() => {
-          this.loadImage("");
-        }, 2000);
-        // Feinde sollten noch aus der Welt entfert werden!
       } else {
         this.playAnimation(this.imgsWalking);
       }

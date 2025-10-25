@@ -12,6 +12,7 @@ class MovableObject extends DrawableObject {
     left: 0,
     right: 0,
   };
+  latestAlive;
 
   constructor() {
     super();
@@ -73,12 +74,14 @@ class MovableObject extends DrawableObject {
       statusBar = this.world.statusbars[0];
       statusBar.percentageHealth = this.energy;
       statusBar.setImgByStatusValue("health", this.energy);
-    }
-    if (this instanceof Endboss) {
+    } else if (this instanceof Endboss) {
       this.energy -= 10;
       statusBar = this.world.statusbars[3];
       statusBar.percentageHealth = this.energy;
       statusBar.setImgByStatusValue("endboss", this.energy);
+    } else {
+      this.energy -= 100;
+      this.latestAlive = new Date().getTime();
     }
 
     if (this.energy < 0) {

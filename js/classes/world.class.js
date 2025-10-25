@@ -27,6 +27,8 @@ class World {
 
     this.ctx.translate(this.cameraX, 0);
 
+    this.removeDeadEnemiesFromWorld();
+
     this.addObjectsToWorld(this.level.backgroundLayers);
     this.addObjectsToWorld(this.level.clouds);
     this.addObjectsToWorld(this.level.enemies);
@@ -62,6 +64,17 @@ class World {
     if (obj.otherDirection == true) {
       this.flipImageBack(obj);
     }
+  }
+
+  removeDeadEnemiesFromWorld() {
+    this.level.enemies = this.level.enemies.filter((enemy) => {
+      let timeDead = new Date().getTime() - enemy.latestAlive;
+      if (timeDead > 1000) {
+        return false;
+      } else {
+        return true;
+      }
+    });
   }
 
   flipImage(obj) {
@@ -106,12 +119,7 @@ class World {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
         if (this.character.isAboveGround() && !(enemy instanceof Endboss)) {
-          enemy.energy -= 100;
-          // Ganze Timeout-Geschichte muss überarbeitet werden. Führt zu eigenartigen Effekten. Anderes System erforderlich. Vielleicht isDead() flag?
-          setTimeout(() => {
-            const index = this.level.enemies.indexOf(enemy);
-            this.level.enemies.splice(index, 1);
-          }, 1000);
+          enemy.hit();
         } else {
           this.character.hit();
         }
