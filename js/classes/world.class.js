@@ -116,7 +116,7 @@ class World {
 
   checkCollisions() {
     this.level.enemies.forEach((enemy) => {
-      if (this.character.isColliding(enemy)) {
+      if (this.character.isColliding(enemy) && !enemy.isDead()) {
         if (this.character.isAboveGround() && !(enemy instanceof Endboss)) {
           enemy.hit();
         } else {
