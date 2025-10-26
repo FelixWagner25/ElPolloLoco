@@ -57,10 +57,7 @@ class Bottle extends CollectableObject {
           }
           if (enemy instanceof Chicken || enemy instanceof SmallChicken) {
             enemy.energy -= 100;
-            setTimeout(() => {
-              let i = this.world.level.enemies.indexOf(enemy);
-              this.world.level.enemies.splice(i, 1);
-            }, 1000);
+            enemy.latestAlive = new Date().getTime();
           }
         }
       });
