@@ -57,8 +57,8 @@ class Bottle extends CollectableObject {
           }
           if (enemy instanceof Chicken || enemy instanceof SmallChicken) {
             enemy.energy -= 100;
-            enemy.latestAlive = new Date().getTime();
           }
+          enemy.latestAlive = new Date().getTime();
         }
       });
       if (!this.isAboveGround()) {
