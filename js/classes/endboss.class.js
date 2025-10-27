@@ -35,6 +35,17 @@ class Endboss extends MovableObject {
     "../../img/img_pollo_locco/4_enemie_boss_chicken/5_dead/G26.png",
   ];
 
+  imgsAttack = [
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/3_attack/G13.png",
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/3_attack/G14.png",
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/3_attack/G15.png",
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/3_attack/G16.png",
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/3_attack/G17.png",
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/3_attack/G18.png",
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/3_attack/G19.png",
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/3_attack/G20.png",
+  ];
+
   constructor() {
     super();
     this.loadImage(
@@ -43,22 +54,30 @@ class Endboss extends MovableObject {
     this.loadImages(this.imgsIdle);
     this.loadImages(this.imgsHurt);
     this.loadImages(this.imgsDead);
+    this.loadImages(this.imgsAttack);
     this.animate();
   }
 
   animate() {
-    let animationInterval = setInterval(() => {
+    setInterval(() => {
       if (this.isHurt()) {
         this.playAnimation(this.imgsHurt);
       } else if (this.isDead()) {
         this.playAnimation(this.imgsDead);
-        setTimeout(() => {
-          clearInterval(animationInterval);
-          this.loadImage("");
-        }, 2000);
+      } else if (this.touchesCharacter()) {
+        this.playAnimation(this.imgsAttack);
       } else {
         this.playAnimation(this.imgsIdle);
       }
     }, 200);
+  }
+
+  touchesCharacter() {
+    return (
+      this.x + this.offset.left <=
+      this.world.character.x +
+        this.world.character.width -
+        this.world.character.offset.right
+    );
   }
 }
