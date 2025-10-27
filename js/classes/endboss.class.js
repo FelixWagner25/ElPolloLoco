@@ -3,7 +3,7 @@ class Endboss extends MovableObject {
   width = 200;
   y = canvasHeightPx - this.height - 20;
   x = 2500;
-  v = 0;
+  v = 15;
   offset = {
     top: 70,
     bottom: 20,
@@ -46,6 +46,13 @@ class Endboss extends MovableObject {
     "../../img/img_pollo_locco/4_enemie_boss_chicken/3_attack/G20.png",
   ];
 
+  imgsWalking = [
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/1_walk/G1.png",
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/1_walk/G2.png",
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/1_walk/G3.png",
+    "../../img/img_pollo_locco/4_enemie_boss_chicken/1_walk/G4.png",
+  ];
+
   constructor() {
     super();
     this.loadImage(
@@ -55,6 +62,7 @@ class Endboss extends MovableObject {
     this.loadImages(this.imgsHurt);
     this.loadImages(this.imgsDead);
     this.loadImages(this.imgsAttack);
+    this.loadImages(this.imgsWalking);
     this.animate();
   }
 
@@ -66,6 +74,9 @@ class Endboss extends MovableObject {
         this.playAnimation(this.imgsDead);
       } else if (this.touchesCharacter()) {
         this.playAnimation(this.imgsAttack);
+      } else if (this.world.endgameStarted) {
+        this.playAnimation(this.imgsWalking);
+        this.moveLeft();
       } else {
         this.playAnimation(this.imgsIdle);
       }
