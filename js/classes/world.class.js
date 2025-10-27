@@ -12,6 +12,7 @@ class World {
     new Statusbar("coins", 20, 120),
     new Statusbar("endboss", 500, 50),
   ];
+  endgameStarted = false;
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -96,6 +97,7 @@ class World {
 
   runGameDynamics() {
     setInterval(() => {
+      if (this.endgameStarted == false) this.checkEndGameStarted();
       this.checkCollisions();
       this.checkThrowObjects();
     }, 100);
@@ -138,5 +140,9 @@ class World {
         this.level.bottles.splice(index, 1);
       }
     });
+  }
+
+  checkEndGameStarted() {
+    if (this.character.x >= endgameTrigger) this.endgameStarted = true;
   }
 }
