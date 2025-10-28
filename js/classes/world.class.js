@@ -99,8 +99,10 @@ class World {
     setInterval(() => {
       if (this.endgameStarted == false) this.checkEndGameStarted();
       this.checkCollisions();
+    }, dtGameDynamic);
+    setInterval(() => {
       this.checkThrowObjects();
-    }, 100);
+    }, dtUserAction);
   }
 
   checkThrowObjects() {
