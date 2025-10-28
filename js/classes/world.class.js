@@ -29,7 +29,7 @@ class World {
     this.ctx.translate(this.cameraX, 0);
 
     this.removeDeadEnemiesFromWorld();
-    this.removeBorkenBottlesFromWorld();
+    this.removeBrokenBottlesFromWorld();
 
     this.addObjectsToWorld(this.level.backgroundLayers);
     this.addObjectsToWorld(this.level.clouds);
@@ -78,7 +78,7 @@ class World {
     });
   }
 
-  removeBorkenBottlesFromWorld() {
+  removeBrokenBottlesFromWorld() {
     this.level.bottles = this.level.bottles.filter((bottle) => {
       if (bottle.isBroken) {
         return new Date().getTime() - bottle.latestIntact < 500;

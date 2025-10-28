@@ -11,7 +11,7 @@ class Bottle extends CollectableObject {
   };
   world;
   isBroken = false;
-  latestIntact = 0;
+  latestIntact;
 
   imgsRotating = [
     "../../img/img_pollo_locco/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png",
@@ -44,30 +44,37 @@ class Bottle extends CollectableObject {
   throw(x, y) {
     this.x = x;
     this.y = y;
-    setInterval(() => {
-      this.x += this.speedX;
-      this.playAnimation(this.imgsRotating);
-      this.world.level.enemies.forEach((enemy) => {
-        if (this.isColliding(enemy)) {
-          this.playAnimation(this.imgsSplashing);
-          if (!this.isBroken) {
-            if (enemy instanceof Endboss) {
-              this.world.endboss.hit();
+    if (!this.isBroken) {
+      let thorwInterval = setInterval(() => {
+        this.x += this.speedX;
+        this.playAnimation(this.imgsRotating);
+        this.world.level.enemies.forEach((enemy) => {
+          if (this.isColliding(enemy)) {
+            this.playAnimation(this.imgsSplashing);
+            if (!this.isBroken) {
+              if (enemy instanceof Endboss) {
+                this.world.endboss.hit();
+              }
+              if (enemy instanceof Chicken || enemy instanceof SmallChicken) {
+                enemy.energy -= 100;
+              }
+              enemy.latestAlive = new Date().getTime();
             }
-            if (enemy instanceof Chicken || enemy instanceof SmallChicken) {
-              enemy.energy -= 100;
-            }
-            enemy.latestAlive = new Date().getTime();
+            this.speedX = 0;
+            this.isBroken = true;
+            this.latestIntact = new Date().getTime();
+            clearInterval(thorwInterval);
           }
+        });
+        if (!this.isAboveGround()) {
+          this.playAnimation(this.imgsSplashing);
           this.speedX = 0;
           this.isBroken = true;
           this.latestIntact = new Date().getTime();
+          clearInterval(thorwInterval);
         }
-      });
-      if (!this.isAboveGround()) {
-        this.playAnimation(this.imgsSplashing);
-      }
-    }, 50);
-    this.applyGravity();
+      }, 50);
+      this.applyGravity();
+    }
   }
 }
