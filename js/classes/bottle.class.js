@@ -59,6 +59,7 @@ class Bottle extends CollectableObject {
             }
             enemy.latestAlive = new Date().getTime();
           }
+          this.speedX = 0;
           this.isBroken = true;
           this.latestIntact = new Date().getTime();
         }
