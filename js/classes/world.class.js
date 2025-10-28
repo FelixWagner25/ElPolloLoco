@@ -111,7 +111,7 @@ class World {
       bottle.world = this;
       this.level.bottles.push(bottle);
       bottle.throw(
-        this.character.x,
+        this.character.x + this.character.width - this.character.offset.right,
         this.character.y + this.character.offset.top
       );
       this.character.bottlesCollected -= 1;
