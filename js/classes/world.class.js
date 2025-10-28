@@ -29,6 +29,7 @@ class World {
     this.ctx.translate(this.cameraX, 0);
 
     this.removeDeadEnemiesFromWorld();
+    this.removeBorkenBottlesFromWorld();
 
     this.addObjectsToWorld(this.level.backgroundLayers);
     this.addObjectsToWorld(this.level.clouds);
