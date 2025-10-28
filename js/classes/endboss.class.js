@@ -1,14 +1,14 @@
 class Endboss extends MovableObject {
-  height = 350;
-  width = 200;
+  height = 400;
+  width = 250;
   y = canvasHeightPx - this.height - 20;
   x = 2500;
   v = 15;
   offset = {
     top: 70,
     bottom: 20,
-    left: 10,
-    right: 40,
+    left: 30,
+    right: 60,
   };
   world;
 

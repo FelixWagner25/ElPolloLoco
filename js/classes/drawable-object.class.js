@@ -2,7 +2,7 @@ class DrawableObject {
   height = 150;
   width = 100;
   x = 40;
-  y = canvasHeightPx - this.height;
+  //y = canvasHeightPx - this.height;
 
   img;
   imgsCache = {};

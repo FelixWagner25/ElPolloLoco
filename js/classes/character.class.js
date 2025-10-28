@@ -1,15 +1,14 @@
 class Character extends MovableObject {
-  height = 240;
-  width = 100;
+  height = 260;
+  width = 120;
   x = 100;
-  //y = canvasHeightPx - this.height - 40;
-  y = 100;
+  y = canvasHeightPx - this.height - 30;
   v = 10;
   offset = {
-    top: 120,
+    top: 130,
     bottom: 10,
-    left: 20,
-    right: 40,
+    left: 25,
+    right: 60,
   };
   bottlesCollected = 0;
   coinsCollected = 0;
