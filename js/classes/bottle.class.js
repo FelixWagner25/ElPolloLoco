@@ -10,6 +10,8 @@ class Bottle extends CollectableObject {
     right: 40,
   };
   world;
+  isBroken = false;
+  latestIntact = 0;
 
   imgsRotating = [
     "../../img/img_pollo_locco/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png",
@@ -48,17 +50,17 @@ class Bottle extends CollectableObject {
       this.world.level.enemies.forEach((enemy) => {
         if (this.isColliding(enemy)) {
           this.playAnimation(this.imgsSplashing);
-          setTimeout(() => {
-            let i = this.world.level.bottles.indexOf(this);
-            this.world.level.bottles.splice(i, 1);
-          }, 500);
-          if (enemy instanceof Endboss) {
-            this.world.endboss.hit();
+          if (!this.isBroken) {
+            if (enemy instanceof Endboss) {
+              this.world.endboss.hit();
+            }
+            if (enemy instanceof Chicken || enemy instanceof SmallChicken) {
+              enemy.energy -= 100;
+            }
+            enemy.latestAlive = new Date().getTime();
           }
-          if (enemy instanceof Chicken || enemy instanceof SmallChicken) {
-            enemy.energy -= 100;
-          }
-          enemy.latestAlive = new Date().getTime();
+          this.isBroken = true;
+          this.latestIntact = new Date().getTime();
         }
       });
       if (!this.isAboveGround()) {

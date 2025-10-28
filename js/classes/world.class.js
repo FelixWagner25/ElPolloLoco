@@ -77,6 +77,16 @@ class World {
     });
   }
 
+  removeBorkenBottlesFromWorld() {
+    this.level.bottles = this.level.bottles.filter((bottle) => {
+      if (bottle.isBroken) {
+        return new Date().getTime() - bottle.latestIntact < 500;
+      } else {
+        return true;
+      }
+    });
+  }
+
   flipImage(obj) {
     this.ctx.save();
     this.ctx.translate(obj.width, 0);
