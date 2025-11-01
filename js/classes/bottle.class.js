@@ -2,7 +2,7 @@ class Bottle extends CollectableObject {
   y = 380;
   width = 50;
   height = 60;
-  speedX = 60;
+  speedX = 40;
   speedY = -15;
   offset = {
     top: 7,
