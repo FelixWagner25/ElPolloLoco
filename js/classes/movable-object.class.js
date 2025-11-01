@@ -28,11 +28,7 @@ class MovableObject extends DrawableObject {
   }
 
   isAboveGround() {
-    //    if (this instanceof Bottle) {
-    //      return true;
-    //    } else {
-    return this.y + this.height < 435;
-    //    }
+    return this.y + this.height < groundLevel;
   }
 
   moveRight() {
