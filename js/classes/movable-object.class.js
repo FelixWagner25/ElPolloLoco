@@ -28,7 +28,7 @@ class MovableObject extends DrawableObject {
   }
 
   isAboveGround() {
-    return this.y + this.height < groundLevel;
+    return this.y + this.height - this.offset.bottom < groundLevel;
   }
 
   moveRight() {

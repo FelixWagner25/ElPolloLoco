@@ -6,7 +6,7 @@ class Bottle extends CollectableObject {
   speedY = -15;
   offset = {
     top: 7,
-    bottom: 6,
+    bottom: 10,
     left: 20,
     right: 40,
   };
