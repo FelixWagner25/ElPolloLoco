@@ -1,4 +1,5 @@
 class Coin extends CollectableObject {
+  y = 200 + Math.random() * 100;
   width = 80;
   height = 80;
 
