@@ -126,6 +126,8 @@ class World {
         this.character.y + this.character.offset.top
       );
       this.character.bottlesCollected -= 1;
+      let statusBar = this.statusbars[1];
+      statusBar.setImgByStatusValue("bottles", this.character.bottlesCollected);
     }
   }
 
