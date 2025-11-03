@@ -2,7 +2,7 @@ class SmallChicken extends MovableObject {
   height = 50;
   width = 50;
   y = canvasHeightPx - this.height - 40;
-  x = 200 + Math.random() * 500;
+
   v = 0.15 + Math.random() * 0.25;
   offset = {
     top: 5,
@@ -17,8 +17,10 @@ class SmallChicken extends MovableObject {
     "../../img/img_pollo_locco/3_enemies_chicken/chicken_small/1_walk/3_w.png",
   ];
 
-  constructor() {
+  constructor(sectionNumber) {
     super();
+    this.x =
+      200 + Math.random() * sectionLengthPx + sectionNumber * sectionLengthPx;
     this.loadImage(
       "../../img/img_pollo_locco/3_enemies_chicken/chicken_small/1_walk/1_w.png"
     );
