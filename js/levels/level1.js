@@ -27,7 +27,16 @@ const level1 = new Level(
     new SmallChicken(5),
     new Endboss(),
   ],
-  [new Cloud(1), new Cloud(2)],
+  [
+    new Cloud(0),
+    new Cloud(1),
+    new Cloud(2),
+    new Cloud(3),
+    new Cloud(4),
+    new Cloud(5),
+    new Cloud(6),
+    new Cloud(7),
+  ],
   [
     new Bottle(0),
     new Bottle(0),
