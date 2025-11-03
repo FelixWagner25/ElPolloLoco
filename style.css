@@ -38,6 +38,11 @@ canvas {
   src: url("./fonts/zabars/ZABARS/Zabars.ttf");
 }
 
+@font-face {
+  font-family: "indieFlower";
+  src: url("./fonts/Indie_Flower/IndieFlower-Regular.ttf");
+}
+
 h1 {
   font-size: 60px;
   letter-spacing: 3px;
@@ -55,6 +60,7 @@ button {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+  font-family: "indieFlower";
 }
 
 .instruction-item {
@@ -67,6 +73,7 @@ button {
 .instruction-img {
   width: 48px;
   height: 48px;
+  margin: 0 -8px;
 }
 
 .d-key-instruction-wrap {
@@ -75,4 +82,8 @@ button {
   align-items: center;
   font-size: 28px;
   gap: 8px;
+}
+
+.d-key {
+  font-family: Arial, Helvetica, sans-serif;
 }
