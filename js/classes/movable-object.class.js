@@ -66,7 +66,7 @@ class MovableObject extends DrawableObject {
   hit() {
     let statusBar;
     if (this instanceof Character) {
-      this.energy -= 5;
+      this.energy -= 10;
       statusBar = this.world.statusbars[0];
       statusBar.percentageHealth = this.energy;
       statusBar.setImgByStatusValue("health", this.energy);
