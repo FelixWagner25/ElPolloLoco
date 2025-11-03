@@ -42,8 +42,37 @@ h1 {
   font-size: 60px;
   letter-spacing: 3px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  padding: 40px 40px 0px 40px;
 }
 
 button {
   cursor: pointer;
+}
+
+.instruction-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.instruction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28px;
+}
+
+.instruction-img {
+  width: 48px;
+  height: 48px;
+}
+
+.d-key-instruction-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28px;
+  gap: 8px;
 }
