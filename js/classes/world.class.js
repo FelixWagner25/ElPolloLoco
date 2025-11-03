@@ -33,9 +33,9 @@ class World {
 
     this.addObjectsToWorld(this.level.backgroundLayers);
     this.addObjectsToWorld(this.level.clouds);
-    this.addObjectsToWorld(this.level.enemies);
     this.addObjectsToWorld(this.level.bottles);
     this.addObjectsToWorld(this.level.coins);
+    this.addObjectsToWorld(this.level.enemies);
     this.addToWorld(this.character);
 
     this.ctx.translate(-this.cameraX, 0);
