@@ -95,7 +95,7 @@ class Character extends MovableObject {
   }
 
   hasBottle() {
-    return true; //this.bottlesCollected > 0;
+    return this.bottlesCollected > 0;
   }
 
   animate() {

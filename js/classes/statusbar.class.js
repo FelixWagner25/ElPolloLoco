@@ -85,7 +85,28 @@ class Statusbar extends DrawableObject {
   }
 
   setImgByStatusValue(statusbarKind, percentage) {
-    let imgPercentage = percentage - (percentage % 20);
+    let imgPercentage;
+    switch (statusbarKind) {
+      case "health":
+      case "endboss":
+        imgPercentage = percentage - (percentage % 20);
+        break;
+      case "coins":
+        if (percentage < 20) {
+          imgPercentage = (percentage - (percentage % 4)) * 5;
+        } else {
+          imgPercentage = 100;
+        }
+        break;
+      case "bottles":
+        if (percentage < 6) {
+          imgPercentage = percentage * 20;
+        } else {
+          imgPercentage = 100;
+        }
+        break;
+    }
+
     let path = "";
     switch (statusbarKind) {
       case "health":

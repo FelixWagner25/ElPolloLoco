@@ -144,6 +144,8 @@ class World {
         this.character.coinsCollected += 1;
         const index = this.level.coins.indexOf(coin);
         this.level.coins.splice(index, 1);
+        let statusBar = this.statusbars[2];
+        statusBar.setImgByStatusValue("coins", this.character.coinsCollected);
       }
     });
     this.level.bottles.forEach((bottle) => {
@@ -151,6 +153,11 @@ class World {
         this.character.bottlesCollected += 1;
         const index = this.level.bottles.indexOf(bottle);
         this.level.bottles.splice(index, 1);
+        let statusBar = this.statusbars[1];
+        statusBar.setImgByStatusValue(
+          "bottles",
+          this.character.bottlesCollected
+        );
       }
     });
   }
