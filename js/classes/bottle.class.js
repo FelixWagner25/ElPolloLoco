@@ -6,7 +6,7 @@ class Bottle extends CollectableObject {
   speedY = -15;
   offset = {
     top: 7,
-    bottom: 10,
+    bottom: 6,
     left: 20,
     right: 40,
   };
@@ -30,8 +30,9 @@ class Bottle extends CollectableObject {
     "../../img/img_pollo_locco/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png",
   ];
 
-  constructor() {
+  constructor(sectionNumber) {
     super();
+    this.x = 100 + Math.random() * 360 + sectionNumber * 360;
     let randomInt = Math.round(Math.random());
     this.loadImage(
       `../../img/img_pollo_locco/6_salsa_bottle/${
