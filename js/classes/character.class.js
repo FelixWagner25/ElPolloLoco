@@ -137,6 +137,7 @@ class Character extends MovableObject {
           this.loadImage(
             "../../img/img_pollo_locco/2_character_pepe/5_dead/D-57.png"
           );
+          gameStatus = "lost";
         }, 2000);
       } else if (this.isHurt()) {
         this.playAnimation(this.imgsHurt);

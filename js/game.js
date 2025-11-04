@@ -3,6 +3,7 @@ let ctx;
 let world;
 let canvasHeightPx = 480;
 let keyboard = new Keyboard();
+let gameStatus = "open";
 
 function init() {
   canvas = document.getElementById("canvas");

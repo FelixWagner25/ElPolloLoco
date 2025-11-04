@@ -13,6 +13,7 @@ class World {
     new Statusbar("endboss", 500, 50),
   ];
   endgameStarted = false;
+  endScreenBgImg = new Image();
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -21,31 +22,54 @@ class World {
     this.draw();
     this.setWorld();
     this.runGameDynamics();
+    this.endScreenBgImg.src =
+      "../../img/img_pollo_locco/5_background/first_half_background.png";
   }
 
   draw() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    if (gameStatus == "open") {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    this.ctx.translate(this.cameraX, 0);
+      this.ctx.translate(this.cameraX, 0);
 
-    this.removeDeadEnemiesFromWorld();
-    this.removeBrokenBottlesFromWorld();
+      this.removeDeadEnemiesFromWorld();
+      this.removeBrokenBottlesFromWorld();
 
-    this.addObjectsToWorld(this.level.backgroundLayers);
-    this.addObjectsToWorld(this.level.clouds);
-    this.addObjectsToWorld(this.level.bottles);
-    this.addObjectsToWorld(this.level.coins);
-    this.addObjectsToWorld(this.level.enemies);
-    this.addToWorld(this.character);
+      this.addObjectsToWorld(this.level.backgroundLayers);
+      this.addObjectsToWorld(this.level.clouds);
+      this.addObjectsToWorld(this.level.bottles);
+      this.addObjectsToWorld(this.level.coins);
+      this.addObjectsToWorld(this.level.enemies);
+      this.addToWorld(this.character);
 
-    this.ctx.translate(-this.cameraX, 0);
+      this.ctx.translate(-this.cameraX, 0);
 
-    this.addObjectsToWorld(this.statusbars);
+      this.addObjectsToWorld(this.statusbars);
 
-    let self = this;
-    requestAnimationFrame(function () {
-      self.draw();
-    });
+      let self = this;
+      requestAnimationFrame(function () {
+        self.draw();
+      });
+    } else if (gameStatus == "lost") {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      this.ctx.drawImage(
+        this.endScreenBgImg,
+        0,
+        0,
+        this.canvas.width,
+        this.canvas.height
+      );
+    } else if (gameStatus == "won") {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.drawImage(
+        this.endScreenBgImg,
+        0,
+        0,
+        this.canvas.width,
+        this.canvas.height
+      );
+    }
   }
 
   addObjectsToWorld(objects) {
