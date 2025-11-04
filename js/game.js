@@ -6,6 +6,9 @@ let keyboard = new Keyboard();
 
 function init() {
   canvas = document.getElementById("canvas");
+  canvas.style.backgroundImage =
+    "url('./img/img_pollo_locco/5_background/layers/air.png')";
+  canvas.style.cursor = "default";
   world = new World(canvas, keyboard);
 }
 

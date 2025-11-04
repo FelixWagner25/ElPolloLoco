@@ -12,10 +12,11 @@ body {
 }
 
 canvas {
-  background-image: url("./img/img_pollo_locco/5_background/layers/air.png");
+  background-image: url("./img/img_pollo_locco/9_intro_outro_screens/start/startscreen_1.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 720px) {
@@ -48,7 +49,7 @@ h1 {
   letter-spacing: 3px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
   margin: 0;
-  padding: 40px 40px 0px 40px;
+  padding: 40px 40px 16px 40px;
 }
 
 button {
@@ -81,7 +82,7 @@ button {
   justify-content: space-between;
   align-items: center;
   font-size: 28px;
-  gap: 8px;
+  gap: 6px;
 }
 
 .d-key {
