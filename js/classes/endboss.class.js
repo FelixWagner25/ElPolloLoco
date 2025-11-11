@@ -67,7 +67,7 @@ class Endboss extends MovableObject {
   }
 
   animate() {
-    setInterval(() => {
+    let animationIntervall = setInterval(() => {
       if (this.isHurt()) {
         this.playAnimation(this.imgsHurt);
       } else if (this.isDead()) {
@@ -75,6 +75,7 @@ class Endboss extends MovableObject {
         let currentTime = new Date().getTime();
         if (currentTime - this.latestAlive > 2000) {
           gameStatus = "won";
+          clearInterval(animationIntervall);
         }
       } else if (this.touchesCharacter()) {
         this.playAnimation(this.imgsAttack);
