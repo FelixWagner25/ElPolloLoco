@@ -3,15 +3,18 @@ let ctx;
 let world;
 let canvasHeightPx = 480;
 let keyboard = new Keyboard();
-let gameStatus = "open";
+let gameStatus = "notStarted";
 
 function init() {
   canvas = document.getElementById("canvas");
-  canvas.style.backgroundImage =
-    "url('./img/img_pollo_locco/5_background/layers/air.png')";
-  canvas.style.cursor = "default";
-  initLevel();
-  world = new World(canvas, keyboard);
+  if (gameStatus !== "open") {
+    gameStatus = "open";
+    canvas.style.backgroundImage =
+      "url('./img/img_pollo_locco/5_background/layers/air.png')";
+    canvas.style.cursor = "default";
+    initLevel();
+    world = new World(canvas, keyboard);
+  }
 }
 
 window.addEventListener("keydown", (event) => {
