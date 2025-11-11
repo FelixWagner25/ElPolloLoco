@@ -7,10 +7,10 @@ class World {
   keyboard;
   cameraX = 0;
   statusbars = [
-    new Statusbar("health", 20, 40),
-    new Statusbar("bottles", 20, 80),
-    new Statusbar("coins", 20, 120),
-    new Statusbar("endboss", 500, 50),
+    new Statusbar("health", 20, 0),
+    new Statusbar("bottles", 20, 40),
+    new Statusbar("coins", 20, 80),
+    new Statusbar("endboss", 500, 10),
   ];
   endgameStarted = false;
   endScreenBgImg = new Image();
