@@ -14,6 +14,7 @@ class World {
   ];
   endgameStarted = false;
   endScreenBgImg = new Image();
+  endScreenImgs = { won: new Image(), lost: new Image() };
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -24,6 +25,10 @@ class World {
     this.runGameDynamics();
     this.endScreenBgImg.src =
       "../../img/img_pollo_locco/5_background/first_half_background.png";
+    this.endScreenImgs.won.src =
+      "../../img/img_pollo_locco/You won, you lost/You won A.png";
+    this.endScreenImgs.lost.src =
+      "../../img/img_pollo_locco/You won, you lost/Game over A.png";
   }
 
   draw() {
@@ -60,10 +65,24 @@ class World {
         this.canvas.width,
         this.canvas.height
       );
+      this.ctx.drawImage(
+        this.endScreenImgs.lost,
+        0,
+        0,
+        this.canvas.width,
+        this.canvas.height
+      );
     } else if (gameStatus == "won") {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.ctx.drawImage(
         this.endScreenBgImg,
+        0,
+        0,
+        this.canvas.width,
+        this.canvas.height
+      );
+      this.ctx.drawImage(
+        this.endScreenImgs.won,
         0,
         0,
         this.canvas.width,
