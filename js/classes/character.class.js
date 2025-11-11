@@ -13,6 +13,7 @@ class Character extends MovableObject {
   bottlesCollected = 0;
   coinsCollected = 0;
   latestActivityMs = 0;
+  timeOfDeath = null;
 
   imgsIdle = [
     "../../img/img_pollo_locco/2_character_pepe/1_idle/idle/I-1.png",
@@ -132,13 +133,16 @@ class Character extends MovableObject {
         this.playAnimation(this.imgsJumping);
       } else if (this.isDead()) {
         this.playAnimation(this.imgsDead);
-        setTimeout(() => {
-          clearInterval(animationInterval);
+        if (this.timeOfDeath === null) {
+          this.timeOfDeath = new Date().getTime();
+        }
+        let currentTime = new Date().getTime();
+        if (currentTime - this.timeOfDeath > 2000) {
+          gameStatus = "lost";
           this.loadImage(
             "../../img/img_pollo_locco/2_character_pepe/5_dead/D-57.png"
           );
-          gameStatus = "lost";
-        }, 2000);
+        }
       } else if (this.isHurt()) {
         this.playAnimation(this.imgsHurt);
       } else if (this.world.keyboard.right || this.world.keyboard.left) {
@@ -149,6 +153,7 @@ class Character extends MovableObject {
         this.playAnimation(this.imgsIdle);
       }
     }, 200);
+    animationIntervals.push(animationInterval);
   }
 
   updateLatestActivityMs() {

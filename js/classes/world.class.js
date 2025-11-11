@@ -54,9 +54,11 @@ class World {
         self.draw();
       });
     } else if (gameStatus == "lost") {
+      this.clearAllAnimationIntervals();
       this.drawEndcreen("lost");
     } else if (gameStatus == "won") {
       this.drawEndcreen("won");
+      this.clearAllAnimationIntervals();
     }
   }
 
@@ -205,5 +207,11 @@ class World {
       this.canvas.width,
       this.canvas.height
     );
+  }
+
+  clearAllAnimationIntervals() {
+    for (let i = 0; i < animationIntervals.length; i++) {
+      clearInterval(animationIntervals[i]);
+    }
   }
 }
