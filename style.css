@@ -89,12 +89,6 @@ button {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-footer {
-  width: 720px;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .lnk {
   color: black;
   font-family: Arial, Helvetica, sans-serif;
