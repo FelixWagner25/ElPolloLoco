@@ -29,7 +29,7 @@ class SmallChicken extends MovableObject {
   }
 
   animate() {
-    setInterval(() => {
+    let animationInterval = setInterval(() => {
       this.moveLeft();
     }, this.dt);
 
@@ -43,5 +43,6 @@ class SmallChicken extends MovableObject {
         this.playAnimation(this.imgsWalking);
       }
     }, 1000);
+    animationIntervals.push(animationInterval);
   }
 }
