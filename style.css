@@ -96,9 +96,47 @@ button {
   font-size: 32px;
 }
 
+.mobile-steering {
+  display: none;
+  justify-content: space-between;
+  min-width: 200px;
+}
+
+.mobile-btn-wrap {
+  display: flex;
+  gap: 16px;
+}
+
+.mobile-btn {
+  height: 32px;
+  width: 32px;
+  border-radius: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.mobile-btn-up {
+  background-image: url("./icons/arrow_up.svg");
+}
+
+.mobile-btn-left {
+  background-image: url("./icons/arrow_left.svg");
+}
+
+.mobile-btn-right {
+  background-image: url("./icons/arrow_right.svg");
+}
+
+.mobile-btn-throw {
+  background-image: url("./icons/handball.svg");
+}
+
 @media (max-width: 1024px) {
   .instruction-wrap {
     display: none;
+  }
+  .mobile-steering {
+    display: flex;
   }
 }
 
