@@ -64,3 +64,11 @@ window.addEventListener("keyup", (event) => {
       break;
   }
 });
+
+document.getElementById("btn-left").addEventListener("touchstart", (event) => {
+  keyboard.left = true;
+});
+
+document.getElementById("btn-left").addEventListener("touchend", (event) => {
+  keyboard.left = false;
+});
