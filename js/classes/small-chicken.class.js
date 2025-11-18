@@ -12,9 +12,9 @@ class SmallChicken extends MovableObject {
   };
 
   imgsWalking = [
-    "../../img/img_pollo_locco/3_enemies_chicken/chicken_small/1_walk/1_w.png",
-    "../../img/img_pollo_locco/3_enemies_chicken/chicken_small/1_walk/2_w.png",
-    "../../img/img_pollo_locco/3_enemies_chicken/chicken_small/1_walk/3_w.png",
+    "img/img_pollo_locco/3_enemies_chicken/chicken_small/1_walk/1_w.png",
+    "img/img_pollo_locco/3_enemies_chicken/chicken_small/1_walk/2_w.png",
+    "img/img_pollo_locco/3_enemies_chicken/chicken_small/1_walk/3_w.png",
   ];
 
   constructor(sectionNumber) {
@@ -22,7 +22,7 @@ class SmallChicken extends MovableObject {
     this.x =
       200 + Math.random() * sectionLengthPx + sectionNumber * sectionLengthPx;
     this.loadImage(
-      "../../img/img_pollo_locco/3_enemies_chicken/chicken_small/1_walk/1_w.png"
+      "img/img_pollo_locco/3_enemies_chicken/chicken_small/1_walk/1_w.png"
     );
     this.loadImages(this.imgsWalking);
     this.animate();
@@ -37,7 +37,7 @@ class SmallChicken extends MovableObject {
       if (this.isDead()) {
         this.v = 0;
         this.loadImage(
-          "../../img/img_pollo_locco/3_enemies_chicken/chicken_small/2_dead/dead.png"
+          "img/img_pollo_locco/3_enemies_chicken/chicken_small/2_dead/dead.png"
         );
       } else {
         this.playAnimation(this.imgsWalking);

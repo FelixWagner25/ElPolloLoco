@@ -184,11 +184,11 @@ class World {
 
   loadEndscreenSources() {
     this.endScreenImgs.background.src =
-      "../../img/img_pollo_locco/5_background/first_half_background.png";
+      "img/img_pollo_locco/5_background/first_half_background.png";
     this.endScreenImgs.won.src =
-      "../../img/img_pollo_locco/You won, you lost/You won A.png";
+      "img/img_pollo_locco/You won, you lost/You won A.png";
     this.endScreenImgs.lost.src =
-      "../../img/img_pollo_locco/You won, you lost/Game over A.png";
+      "img/img_pollo_locco/You won, you lost/Game over A.png";
   }
 
   drawEndcreen(gameStatus) {
