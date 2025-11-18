@@ -7,7 +7,7 @@ class Cloud extends MovableObject {
   constructor(sectionNumber) {
     let index = (sectionNumber % 2) + 1;
     super().loadImage(
-      `../../img/img_pollo_locco/5_background/layers/4_clouds/${index}.png`
+      `img/img_pollo_locco/5_background/layers/4_clouds/${index}.png`
     );
     this.x =
       Math.random() * sectionLengthPx +

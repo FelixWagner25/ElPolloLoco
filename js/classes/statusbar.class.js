@@ -110,16 +110,16 @@ class Statusbar extends DrawableObject {
     let path = "";
     switch (statusbarKind) {
       case "health":
-        path = `../../img/img_pollo_locco/7_statusbars/1_statusbar/2_statusbar_health/blue/${imgPercentage}.png`;
+        path = `img/img_pollo_locco/7_statusbars/1_statusbar/2_statusbar_health/blue/${imgPercentage}.png`;
         break;
       case "coins":
-        path = `../../img/img_pollo_locco/7_statusbars/1_statusbar/1_statusbar_coin/blue/${imgPercentage}.png`;
+        path = `img/img_pollo_locco/7_statusbars/1_statusbar/1_statusbar_coin/blue/${imgPercentage}.png`;
         break;
       case "bottles":
-        path = `../../img/img_pollo_locco/7_statusbars/1_statusbar/3_statusbar_bottle/blue/${imgPercentage}.png`;
+        path = `img/img_pollo_locco/7_statusbars/1_statusbar/3_statusbar_bottle/blue/${imgPercentage}.png`;
         break;
       case "endboss":
-        path = `../../img/img_pollo_locco/7_statusbars/2_statusbar_endboss/orange/orange${imgPercentage}.png`;
+        path = `img/img_pollo_locco/7_statusbars/2_statusbar_endboss/orange/orange${imgPercentage}.png`;
         break;
     }
     this.img = this.imgsCache[path];

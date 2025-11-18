@@ -36,7 +36,7 @@ class Bottle extends CollectableObject {
       100 + Math.random() * sectionLengthPx + sectionNumber * sectionLengthPx;
     let randomInt = Math.round(Math.random());
     this.loadImage(
-      `../../img/img_pollo_locco/6_salsa_bottle/${
+      `img/img_pollo_locco/6_salsa_bottle/${
         randomInt + 1
       }_salsa_bottle_on_ground.png`
     );

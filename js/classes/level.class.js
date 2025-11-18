@@ -28,19 +28,19 @@ class Level {
       }
       this.backgroundLayers.push(
         new BackgroundLayer(
-          `../../img/img_pollo_locco/5_background/layers/3_third_layer/${j}.png`,
+          `img/img_pollo_locco/5_background/layers/3_third_layer/${j}.png`,
           719 * i
         )
       );
       this.backgroundLayers.push(
         new BackgroundLayer(
-          `../../img/img_pollo_locco/5_background/layers/2_second_layer/${j}.png`,
+          `img/img_pollo_locco/5_background/layers/2_second_layer/${j}.png`,
           719 * i
         )
       );
       this.backgroundLayers.push(
         new BackgroundLayer(
-          `../../img/img_pollo_locco/5_background/layers/1_first_layer/${j}.png`,
+          `img/img_pollo_locco/5_background/layers/1_first_layer/${j}.png`,
           719 * i
         )
       );
