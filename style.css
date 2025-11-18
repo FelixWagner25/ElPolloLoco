@@ -44,7 +44,6 @@ button {
 
 .instruction-wrap {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 20px;
   font-family: "indieFlower";
@@ -99,7 +98,7 @@ button {
 .mobile-steering {
   display: none;
   justify-content: space-between;
-  gap: 240px;
+  gap: 160px;
 }
 
 .mobile-btn-wrap {
@@ -113,6 +112,7 @@ button {
   border-radius: 20px;
   background-repeat: no-repeat;
   background-position: center;
+  background-color: #d1792b;
 }
 
 .mobile-btn:hover {
@@ -133,6 +133,27 @@ button {
 
 .mobile-btn-throw {
   background-image: url("./icons/handball.svg");
+}
+
+.canvas-subline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 72px;
+}
+
+.btn-mute {
+  background-image: url("./icons/volume_off.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 32px;
+  width: 32px;
+  background-color: #d1792b;
+  border: none;
+}
+
+.btn-mute:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 1024px) {
@@ -171,5 +192,9 @@ button {
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .canvas-subline {
+    display: none;
   }
 }

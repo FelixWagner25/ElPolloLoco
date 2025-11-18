@@ -4,6 +4,7 @@ let world;
 let canvasHeightPx = 480;
 let keyboard = new Keyboard();
 let gameStatus = "notStarted";
+let gameMuted = true;
 let animationIntervals = [];
 
 function init() {
