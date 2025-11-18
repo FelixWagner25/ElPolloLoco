@@ -19,6 +19,19 @@ function init() {
   }
 }
 
+function toggleMute() {
+  if (gameMuted) {
+    gameMuted = false;
+    document.getElementById("btn-mute").style.backgroundImage =
+      "url('./icons/volume_up.svg')";
+  } else {
+    gameMuted = true;
+    document.getElementById("btn-mute").style.backgroundImage =
+      "url('./icons/volume_off.svg')";
+  }
+  console.log("gameMuted", gameMuted);
+}
+
 window.addEventListener("keydown", (event) => {
   //Object.keys(keyboard).forEach((key) => (keyboard[key] = false));
   switch (event.key) {
@@ -66,33 +79,37 @@ window.addEventListener("keyup", (event) => {
   }
 });
 
-document.getElementById("btn-left").addEventListener("touchstart", (event) => {
+document.getElementById("btn-left").addEventListener("touchstart", () => {
   keyboard.left = true;
 });
 
-document.getElementById("btn-right").addEventListener("touchstart", (event) => {
+document.getElementById("btn-right").addEventListener("touchstart", () => {
   keyboard.right = true;
 });
 
-document.getElementById("btn-up").addEventListener("touchstart", (event) => {
+document.getElementById("btn-up").addEventListener("touchstart", () => {
   keyboard.up = true;
 });
-document.getElementById("btn-throw").addEventListener("touchstart", (event) => {
+document.getElementById("btn-throw").addEventListener("touchstart", () => {
   keyboard.d = true;
 });
 
-document.getElementById("btn-left").addEventListener("touchend", (event) => {
+document.getElementById("btn-left").addEventListener("touchend", () => {
   keyboard.left = false;
 });
 
-document.getElementById("btn-right").addEventListener("touchend", (event) => {
+document.getElementById("btn-right").addEventListener("touchend", () => {
   keyboard.right = false;
 });
 
-document.getElementById("btn-up").addEventListener("touchend", (event) => {
+document.getElementById("btn-up").addEventListener("touchend", () => {
   keyboard.up = false;
 });
 
-document.getElementById("btn-throw").addEventListener("touchend", (event) => {
+document.getElementById("btn-throw").addEventListener("touchend", () => {
   keyboard.d = false;
+});
+
+document.getElementById("btn-mute").addEventListener("click", () => {
+  toggleMute();
 });
