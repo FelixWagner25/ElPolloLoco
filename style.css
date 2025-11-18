@@ -99,12 +99,12 @@ button {
 .mobile-steering {
   display: none;
   justify-content: space-between;
-  min-width: 200px;
+  gap: 240px;
 }
 
 .mobile-btn-wrap {
   display: flex;
-  gap: 16px;
+  gap: 32px;
 }
 
 .mobile-btn {
@@ -113,6 +113,10 @@ button {
   border-radius: 20px;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.mobile-btn:hover {
+  cursor: pointer;
 }
 
 .mobile-btn-up {
