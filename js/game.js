@@ -29,7 +29,6 @@ function toggleMute() {
     document.getElementById("btn-mute").style.backgroundImage =
       "url('./icons/volume_off.svg')";
   }
-  console.log("gameMuted", gameMuted);
 }
 
 window.addEventListener("keydown", (event) => {
