@@ -39,6 +39,7 @@ class Chicken extends MovableObject {
         this.loadImage(
           "img/img_pollo_locco/3_enemies_chicken/chicken_normal/2_dead/dead.png"
         );
+        if (!gameMuted) enemyHitSound.play();
       } else {
         this.playAnimation(this.imgsWalking);
       }

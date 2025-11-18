@@ -75,6 +75,7 @@ class Endboss extends MovableObject {
           gameStatus = "won";
           clearInterval(animationIntervall);
         }
+        if (!gameMuted) enemyDeadSound.play();
       } else if (this.touchesCharacter()) {
         this.playAnimation(this.imgsAttack);
       } else if (this.world.endgameStarted) {
