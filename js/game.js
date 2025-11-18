@@ -69,6 +69,29 @@ document.getElementById("btn-left").addEventListener("touchstart", (event) => {
   keyboard.left = true;
 });
 
+document.getElementById("btn-right").addEventListener("touchstart", (event) => {
+  keyboard.right = true;
+});
+
+document.getElementById("btn-up").addEventListener("touchstart", (event) => {
+  keyboard.up = true;
+});
+document.getElementById("btn-throw").addEventListener("touchstart", (event) => {
+  keyboard.d = true;
+});
+
 document.getElementById("btn-left").addEventListener("touchend", (event) => {
   keyboard.left = false;
+});
+
+document.getElementById("btn-right").addEventListener("touchend", (event) => {
+  keyboard.right = false;
+});
+
+document.getElementById("btn-up").addEventListener("touchend", (event) => {
+  keyboard.up = false;
+});
+
+document.getElementById("btn-throw").addEventListener("touchend", (event) => {
+  keyboard.d = false;
 });
