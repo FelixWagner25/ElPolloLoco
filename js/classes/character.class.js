@@ -141,10 +141,8 @@ class Character extends MovableObject {
             "img/img_pollo_locco/2_character_pepe/5_dead/D-57.png"
           );
         }
-        if (!gameMuted) playAudioForMs(characterDeadSound, 500);
       } else if (this.isHurt()) {
         this.playAnimation(this.imgsHurt);
-        if (!gameMuted) playAudioForMs(characterHitSound, 500);
       } else if (this.world.keyboard.right || this.world.keyboard.left) {
         this.playAnimation(this.imgsWalking);
       } else if (this.isIdleForMs(6000)) {
@@ -154,6 +152,13 @@ class Character extends MovableObject {
       }
     }, 200);
     animationIntervals.push(animationInterval);
+    let soundInterval = setInterval(() => {
+      if (!gameMuted) {
+        if (this.isDead()) playAudioForMs(characterDeadSound, 500);
+        if (this.isHurt()) playAudioForMs(characterHitSound, 500);
+      }
+    }, 1000);
+    soundIntervals.push(soundInterval);
   }
 
   updateLatestActivityMs() {

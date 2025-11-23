@@ -73,9 +73,7 @@ class Endboss extends MovableObject {
         let currentTime = new Date().getTime();
         if (currentTime - this.latestAlive > 2000) {
           gameStatus = "won";
-          clearInterval(animationIntervall);
         }
-        if (!gameMuted) enemyDeadSound.play();
       } else if (this.touchesCharacter()) {
         this.playAnimation(this.imgsAttack);
       } else if (this.world.endgameStarted) {
@@ -85,6 +83,14 @@ class Endboss extends MovableObject {
         this.playAnimation(this.imgsIdle);
       }
     }, 200);
+    animationIntervals.push(animationIntervall);
+    let soundInterval = setInterval(() => {
+      if (!gameMuted) {
+        if (this.isHurt()) playAudioForMs(enemyHitSound, 500);
+        if (this.isDead()) playAudioForMs(enemyDeadSound, 1000);
+      }
+    }, 1000);
+    soundIntervals.push(soundInterval);
   }
 
   touchesCharacter() {
