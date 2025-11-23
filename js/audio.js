@@ -20,11 +20,11 @@ const collectedCoinSound = new Audio(
   "https://cdn.freesound.org/previews/446/446134_758593-lq.mp3"
 );
 
-function playFirstHalfSecond(audio) {
+function playAudioForMs(audio, timeMs) {
   audio.currentTime = 0;
   audio.play();
   setTimeout(() => {
     audio.pause();
     audio.currentTime = 0;
-  }, 500);
+  }, timeMs);
 }
