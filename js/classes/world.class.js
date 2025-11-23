@@ -162,6 +162,7 @@ class World {
         this.level.coins.splice(index, 1);
         let statusBar = this.statusbars[2];
         statusBar.setImgByStatusValue("coins", this.character.coinsCollected);
+        playAudioForMs(collectedCoinSound, 250);
       }
     });
     this.level.bottles.forEach((bottle) => {
@@ -174,6 +175,7 @@ class World {
           "bottles",
           this.character.bottlesCollected
         );
+        playAudioForMs(collectedBottleSound, 250);
       }
     });
   }
