@@ -39,11 +39,16 @@ class SmallChicken extends MovableObject {
         this.loadImage(
           "img/img_pollo_locco/3_enemies_chicken/chicken_small/2_dead/dead.png"
         );
-        if (!gameMuted) enemyHitSound.play();
       } else {
         this.playAnimation(this.imgsWalking);
       }
     }, 1000);
     animationIntervals.push(animationInterval);
+    let soundInterval = setInterval(() => {
+      if (!gameMuted) {
+        if (this.isHurt()) playAudioForMs(enemyHitSound, 500);
+      }
+    }, 1000);
+    soundIntervals.push(soundInterval);
   }
 }
