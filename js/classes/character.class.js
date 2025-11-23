@@ -141,11 +141,10 @@ class Character extends MovableObject {
             "img/img_pollo_locco/2_character_pepe/5_dead/D-57.png"
           );
         }
-        if (!gameMuted) characterDeadSound.play();
+        if (!gameMuted) playFirstHalfSecond(characterDeadSound);
       } else if (this.isHurt()) {
         this.playAnimation(this.imgsHurt);
-        if (!gameMuted) enemyHitSound.play();
-        if (!gameMuted) characterHitSound.play();
+        if (!gameMuted) playFirstHalfSecond(characterHitSound);
       } else if (this.world.keyboard.right || this.world.keyboard.left) {
         this.playAnimation(this.imgsWalking);
       } else if (this.isIdleForMs(6000)) {
