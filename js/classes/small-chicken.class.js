@@ -44,11 +44,11 @@ class SmallChicken extends MovableObject {
       }
     }, 1000);
     animationIntervals.push(animationInterval);
-    let soundInterval = setInterval(() => {
-      if (!gameMuted) {
-        if (this.isHurt()) playAudioForMs(enemyHitSound, 250);
-      }
-    }, 500);
-    soundIntervals.push(soundInterval);
+    // let soundInterval = setInterval(() => {
+    //   if (!gameMuted) {
+    //     if (this.isHurt()) playAudioForMs(enemyHitSound, 250);
+    //   }
+    // }, 500);
+    // soundIntervals.push(soundInterval);
   }
 }

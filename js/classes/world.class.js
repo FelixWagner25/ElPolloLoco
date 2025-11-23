@@ -150,8 +150,10 @@ class World {
       if (this.character.isColliding(enemy) && !enemy.isDead()) {
         if (this.character.isAboveGround() && !(enemy instanceof Endboss)) {
           enemy.hit();
+          if (!gameMuted) playAudioForMs(enemyHitSound, 250);
         } else {
           this.character.hit();
+          if (!gameMuted) playAudioForMs(characterHitSound, 250);
         }
       }
     });
@@ -162,7 +164,7 @@ class World {
         this.level.coins.splice(index, 1);
         let statusBar = this.statusbars[2];
         statusBar.setImgByStatusValue("coins", this.character.coinsCollected);
-        playAudioForMs(collectedCoinSound, 250);
+        if (!gameMuted) playAudioForMs(collectedCoinSound, 250);
       }
     });
     this.level.bottles.forEach((bottle) => {
@@ -175,7 +177,7 @@ class World {
           "bottles",
           this.character.bottlesCollected
         );
-        playAudioForMs(collectedBottleSound, 250);
+        if (!gameMuted) playAudioForMs(collectedBottleSound, 250);
       }
     });
   }

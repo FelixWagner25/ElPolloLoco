@@ -155,7 +155,7 @@ class Character extends MovableObject {
     let soundInterval = setInterval(() => {
       if (!gameMuted) {
         if (this.isDead()) playAudioForMs(characterDeadSound, 500);
-        if (this.isHurt()) playAudioForMs(characterHitSound, 500);
+        // if (this.isHurt()) playAudioForMs(characterHitSound, 500);
       }
     }, 1000);
     soundIntervals.push(soundInterval);
