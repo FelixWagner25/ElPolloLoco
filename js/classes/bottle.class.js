@@ -57,9 +57,11 @@ class Bottle extends CollectableObject {
             if (!this.isBroken) {
               if (enemy instanceof Endboss) {
                 this.world.endboss.hit();
+                playAudioForMs(bottleBreakSound, 500);
               }
               if (enemy instanceof Chicken || enemy instanceof SmallChicken) {
                 enemy.energy -= 100;
+                playAudioForMs(bottleBreakSound, 500);
               }
               enemy.latestAlive = new Date().getTime();
             }
@@ -71,6 +73,7 @@ class Bottle extends CollectableObject {
         });
         if (!this.isAboveGround()) {
           this.playAnimation(this.imgsSplashing);
+          playAudioForMs(bottleBreakSound, 500);
           this.speedX = 0;
           this.isBroken = true;
           this.latestIntact = new Date().getTime();
