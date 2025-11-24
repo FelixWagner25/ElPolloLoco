@@ -148,12 +148,18 @@ class World {
   checkCollisions() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy) && !enemy.isDead()) {
-        if (this.character.isAboveGround() && !(enemy instanceof Endboss)) {
+        if (this.character.isAboveGround()) {
           enemy.hit();
           if (!gameMuted) playAudioForMs(enemyHitSound, 250);
         } else {
           this.character.hit();
-          if (!gameMuted) playAudioForMs(characterHitSound, 250);
+          if (!gameMuted) {
+            if (this.character.isDead())
+              playAudioForMs(characterDeadSound, 500);
+            else {
+              playAudioForMs(characterHitSound, 250);
+            }
+          }
         }
       }
     });

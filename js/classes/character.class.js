@@ -152,13 +152,13 @@ class Character extends MovableObject {
       }
     }, 200);
     animationIntervals.push(animationInterval);
-    let soundInterval = setInterval(() => {
-      if (!gameMuted) {
-        if (this.isDead()) playAudioForMs(characterDeadSound, 500);
-        // if (this.isHurt()) playAudioForMs(characterHitSound, 500);
-      }
-    }, 1000);
-    soundIntervals.push(soundInterval);
+    // let soundInterval = setInterval(() => {
+    //   if (!gameMuted) {
+    //     if (this.isDead()) playAudioForMs(characterDeadSound, 500);
+    //     // if (this.isHurt()) playAudioForMs(characterHitSound, 500);
+    //   }
+    // }, 1000);
+    // soundIntervals.push(soundInterval);
   }
 
   updateLatestActivityMs() {
