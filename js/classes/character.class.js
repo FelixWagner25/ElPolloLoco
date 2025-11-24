@@ -129,17 +129,14 @@ class Character extends MovableObject {
       if (this.isAboveGround()) {
         // may insert separate intervals for different character moves. For jumping e.g. 50ms and for idle 200 ms
         this.playAnimation(this.imgsJumping);
-      } else if (this.isDead()) {
-        this.playAnimation(this.imgsDead);
-        if (this.timeOfDeath === null) {
-          this.timeOfDeath = new Date().getTime();
-        }
+      } else if (this.isDead() && this.timeOfDeath !== null) {
         let currentTime = new Date().getTime();
         if (currentTime - this.timeOfDeath > 2000) {
-          gameStatus = "lost";
-          this.loadImage(
+          this.character.loadImage(
             "img/img_pollo_locco/2_character_pepe/5_dead/D-57.png"
           );
+        } else {
+          this.playAnimation(this.imgsDead);
         }
       } else if (this.isHurt()) {
         this.playAnimation(this.imgsHurt);
@@ -154,8 +151,8 @@ class Character extends MovableObject {
     animationIntervals.push(animationInterval);
     // let soundInterval = setInterval(() => {
     //   if (!gameMuted) {
-    //     if (this.isDead()) playAudioForMs(characterDeadSound, 500);
-    //     // if (this.isHurt()) playAudioForMs(characterHitSound, 500);
+    //     if (this.isDead()) await playAudioForMs(characterDeadSound, 500);
+    //     // if (this.isHurt()) await playAudioForMs(characterHitSound, 500);
     //   }
     // }, 1000);
     // soundIntervals.push(soundInterval);

@@ -35,6 +35,7 @@ class World {
 
       this.ctx.translate(this.cameraX, 0);
 
+      this.setGameStatus();
       this.removeDeadEnemiesFromWorld();
       this.removeBrokenBottlesFromWorld();
 
@@ -153,6 +154,11 @@ class World {
           if (!gameMuted) playAudioForMs(enemyHitSound, 250);
         } else {
           this.character.hit();
+          if (this.character.isDead()) {
+            if (this.character.timeOfDeath === null) {
+              this.character.timeOfDeath = new Date().getTime();
+            }
+          }
           if (!gameMuted) {
             if (this.character.isDead())
               playAudioForMs(characterDeadSound, 500);
@@ -229,5 +235,14 @@ class World {
     animationIntervals = [];
     soundIntervals = [];
     stopAllSounds();
+  }
+
+  setGameStatus() {
+    if (this.character.isDead() && this.character.timeOfDeath !== null) {
+      let currentTime = new Date().getTime();
+      if (currentTime - this.character.timeOfDeath > 2000) {
+        gameStatus = "lost";
+      }
+    }
   }
 }
