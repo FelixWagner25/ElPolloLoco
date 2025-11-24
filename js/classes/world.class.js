@@ -238,11 +238,19 @@ class World {
   }
 
   setGameStatus() {
+    let currentTime = new Date().getTime();
     if (this.character.isDead() && this.character.timeOfDeath !== null) {
-      let currentTime = new Date().getTime();
       if (currentTime - this.character.timeOfDeath > 2000) {
         gameStatus = "lost";
+        this.clearAllAnimationsAndSounds();
       }
+    }
+    if (
+      this.endboss.isDead() &&
+      currentTime - this.endboss.latestAlive > 2000
+    ) {
+      gameStatus = "won";
+      this.clearAllAnimationsAndSounds();
     }
   }
 }
