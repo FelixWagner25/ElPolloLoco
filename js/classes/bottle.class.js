@@ -59,16 +59,12 @@ class Bottle extends CollectableObject {
       this.playAnimation(this.imgsRotating);
       this.world.level.enemies.forEach((enemy) => {
         if (this.isColliding(enemy)) {
-          this.playAnimation(this.imgsSplashing);
-          if (!this.isBroken) this.modelEnemyDamage(enemy);
-          this.breakBottle();
+          this.bottleHitsEnemy(enemy);
           clearInterval(thorwInterval);
         }
       });
       if (!this.isAboveGround()) {
-        this.playAnimation(this.imgsSplashing);
-        if (!gameMuted) playAudioForMs(bottleBreakSound, 500);
-        this.breakBottle();
+        this.bottleHitsGround();
         clearInterval(thorwInterval);
       }
     }, 50);
@@ -90,5 +86,17 @@ class Bottle extends CollectableObject {
     this.speedX = 0;
     this.isBroken = true;
     this.latestIntact = new Date().getTime();
+  }
+
+  bottleHitsEnemy(enemy) {
+    this.playAnimation(this.imgsSplashing);
+    if (!this.isBroken) this.modelEnemyDamage(enemy);
+    this.breakBottle();
+  }
+
+  bottleHitsGround() {
+    this.playAnimation(this.imgsSplashing);
+    if (!gameMuted) playAudioForMs(bottleBreakSound, 500);
+    this.breakBottle();
   }
 }
