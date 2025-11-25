@@ -1,6 +1,6 @@
 class MovableObject extends DrawableObject {
   v;
-  dt = 17; // time step for image change in MilliSeconds
+  dt = 17;
   otherDirection = false;
   speedY = 0;
   gravityAcceleration = 2.5;

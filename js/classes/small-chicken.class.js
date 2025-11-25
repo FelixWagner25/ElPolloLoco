@@ -2,7 +2,6 @@ class SmallChicken extends MovableObject {
   height = 50;
   width = 50;
   y = canvasHeightPx - this.height - 40;
-
   v = 0.15 + Math.random() * 0.25;
   offset = {
     top: 5,
@@ -29,11 +28,12 @@ class SmallChicken extends MovableObject {
   }
 
   animate() {
-    let animationInterval = setInterval(() => {
+    let movementInterval = setInterval(() => {
       this.moveLeft();
     }, this.dt);
+    animationIntervals.push(movementInterval);
 
-    setInterval(() => {
+    let animationInterval = setInterval(() => {
       if (this.isDead()) {
         this.v = 0;
         this.loadImage(
