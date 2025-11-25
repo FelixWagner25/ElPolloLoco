@@ -42,7 +42,7 @@ class SmallChicken extends MovableObject {
       } else {
         this.playAnimation(this.imgsWalking);
       }
-    }, 1000);
+    }, 250);
     animationIntervals.push(animationInterval);
   }
 }
