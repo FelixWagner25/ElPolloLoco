@@ -10,7 +10,7 @@ class Coin extends CollectableObject {
     super();
     this.x =
       100 + Math.random() * sectionLengthPx + sectionNumber * sectionLengthPx;
-    this.y = 200 + Math.random() * 100;
+    this.y = 200 + Math.random() * 50;
     this.loadImage("img/img_pollo_locco/8_coin/coin_1.png");
     this.loadImages(this.imgs);
     this.animate();
