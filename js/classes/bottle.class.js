@@ -48,39 +48,47 @@ class Bottle extends CollectableObject {
     this.x = x;
     this.y = y;
     if (!this.isBroken) {
-      let thorwInterval = setInterval(() => {
-        this.x += this.speedX;
-        this.playAnimation(this.imgsRotating);
-        this.world.level.enemies.forEach((enemy) => {
-          if (this.isColliding(enemy)) {
-            this.playAnimation(this.imgsSplashing);
-            if (!this.isBroken) {
-              if (enemy instanceof Endboss) {
-                this.world.endboss.hit();
-                if (!gameMuted) playAudioForMs(bottleBreakSound, 500);
-              }
-              if (enemy instanceof Chicken || enemy instanceof SmallChicken) {
-                enemy.energy -= 100;
-                if (!gameMuted) playAudioForMs(bottleBreakSound, 500);
-              }
-              enemy.latestAlive = new Date().getTime();
-            }
-            this.speedX = 0;
-            this.isBroken = true;
-            this.latestIntact = new Date().getTime();
-            clearInterval(thorwInterval);
-          }
-        });
-        if (!this.isAboveGround()) {
-          this.playAnimation(this.imgsSplashing);
-          if (!gameMuted) playAudioForMs(bottleBreakSound, 500);
-          this.speedX = 0;
-          this.isBroken = true;
-          this.latestIntact = new Date().getTime();
-          clearInterval(thorwInterval);
-        }
-      }, 50);
+      this.modelBottleTrajectory();
       this.applyGravity();
     }
+  }
+
+  modelBottleTrajectory() {
+    let thorwInterval = setInterval(() => {
+      this.x += this.speedX;
+      this.playAnimation(this.imgsRotating);
+      this.world.level.enemies.forEach((enemy) => {
+        if (this.isColliding(enemy)) {
+          this.playAnimation(this.imgsSplashing);
+          if (!this.isBroken) this.modelEnemyDamage(enemy);
+          this.breakBottle();
+          clearInterval(thorwInterval);
+        }
+      });
+      if (!this.isAboveGround()) {
+        this.playAnimation(this.imgsSplashing);
+        if (!gameMuted) playAudioForMs(bottleBreakSound, 500);
+        this.breakBottle();
+        clearInterval(thorwInterval);
+      }
+    }, 50);
+  }
+
+  modelEnemyDamage(enemy) {
+    if (enemy instanceof Endboss) {
+      this.world.endboss.hit();
+      if (!gameMuted) playAudioForMs(bottleBreakSound, 500);
+    }
+    if (enemy instanceof Chicken || enemy instanceof SmallChicken) {
+      enemy.energy -= 100;
+      if (!gameMuted) playAudioForMs(bottleBreakSound, 500);
+    }
+    enemy.latestAlive = new Date().getTime();
+  }
+
+  breakBottle() {
+    this.speedX = 0;
+    this.isBroken = true;
+    this.latestIntact = new Date().getTime();
   }
 }
