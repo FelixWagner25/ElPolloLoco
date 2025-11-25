@@ -140,15 +140,23 @@ class Character extends MovableObject {
         }
       } else if (this.isHurt()) {
         this.playAnimation(this.imgsHurt);
-      } else if (this.world.keyboard.right || this.world.keyboard.left) {
-        this.playAnimation(this.imgsWalking);
-      } else if (this.isIdleForMs(6000)) {
+      }
+      // else if (this.world.keyboard.right || this.world.keyboard.left) {
+      //   this.playAnimation(this.imgsWalking);
+      // }
+      else if (this.isIdleForMs(6000)) {
         this.playAnimation(this.imgsLongIdle);
       } else {
         this.playAnimation(this.imgsIdle);
       }
     }, 200);
     animationIntervals.push(animationInterval);
+    let walkingInterval = setInterval(() => {
+      if (this.world.keyboard.right || this.world.keyboard.left) {
+        this.playAnimation(this.imgsWalking);
+      }
+    }, 100);
+    animationIntervals.push(walkingInterval);
     // let soundInterval = setInterval(() => {
     //   if (!gameMuted) {
     //     if (this.isDead()) await playAudioForMs(characterDeadSound, 500);
