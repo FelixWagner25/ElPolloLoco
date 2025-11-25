@@ -127,7 +127,6 @@ class Character extends MovableObject {
 
     let animationInterval = setInterval(() => {
       if (this.isAboveGround()) {
-        // may insert separate intervals for different character moves. For jumping e.g. 50ms and for idle 200 ms
         this.playAnimation(this.imgsJumping);
       } else if (this.isDead() && this.timeOfDeath !== null) {
         let currentTime = new Date().getTime();
@@ -140,11 +139,7 @@ class Character extends MovableObject {
         }
       } else if (this.isHurt()) {
         this.playAnimation(this.imgsHurt);
-      }
-      // else if (this.world.keyboard.right || this.world.keyboard.left) {
-      //   this.playAnimation(this.imgsWalking);
-      // }
-      else if (this.isIdleForMs(6000)) {
+      } else if (this.isIdleForMs(6000)) {
         this.playAnimation(this.imgsLongIdle);
       } else {
         this.playAnimation(this.imgsIdle);
@@ -157,13 +152,6 @@ class Character extends MovableObject {
       }
     }, 100);
     animationIntervals.push(walkingInterval);
-    // let soundInterval = setInterval(() => {
-    //   if (!gameMuted) {
-    //     if (this.isDead()) await playAudioForMs(characterDeadSound, 500);
-    //     // if (this.isHurt()) await playAudioForMs(characterHitSound, 500);
-    //   }
-    // }, 1000);
-    // soundIntervals.push(soundInterval);
   }
 
   updateLatestActivityMs() {
