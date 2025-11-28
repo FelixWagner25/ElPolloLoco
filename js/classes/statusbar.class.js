@@ -85,6 +85,12 @@ class Statusbar extends DrawableObject {
   }
 
   setImgByStatusValue(statusbarKind, percentage) {
+    let imgPercentage = this.getStatusbarImgPercentageValue(percentage);
+    let path = this.getStatusbarImgPath(statusbarKind, imgPercentage);
+    this.img = this.imgsCache[path];
+  }
+
+  getStatusbarImgPercentageValue(percentage) {
     let imgPercentage;
     switch (statusbarKind) {
       case "health":
@@ -92,21 +98,35 @@ class Statusbar extends DrawableObject {
         imgPercentage = percentage - (percentage % 20);
         break;
       case "coins":
-        if (percentage < 20) {
-          imgPercentage = (percentage - (percentage % 4)) * 5;
-        } else {
-          imgPercentage = 100;
-        }
+        imgPercentage = this.getCoinStatusValue(percentage);
         break;
       case "bottles":
-        if (percentage < 6) {
-          imgPercentage = percentage * 20;
-        } else {
-          imgPercentage = 100;
-        }
+        imgPercentage = this.getBottleStatusValue(percentage);
         break;
     }
+  }
 
+  getCoinStatusValue(percentage) {
+    let imgPercentage;
+    if (percentage < 20) {
+      imgPercentage = (percentage - (percentage % 4)) * 5;
+    } else {
+      imgPercentage = 100;
+    }
+    return imgPercentage;
+  }
+
+  getBottleStatusValue(percentage) {
+    let imgPercentage;
+    if (percentage < 6) {
+      imgPercentage = percentage * 20;
+    } else {
+      imgPercentage = 100;
+    }
+    return imgPercentage;
+  }
+
+  getStatusbarImgPath(statusbarKind, imgPercentage) {
     let path = "";
     switch (statusbarKind) {
       case "health":
@@ -122,6 +142,5 @@ class Statusbar extends DrawableObject {
         path = `img/img_pollo_locco/7_statusbars/2_statusbar_endboss/orange/orange${imgPercentage}.png`;
         break;
     }
-    this.img = this.imgsCache[path];
   }
 }
