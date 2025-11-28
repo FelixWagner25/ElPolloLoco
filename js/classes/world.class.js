@@ -132,7 +132,11 @@ class World {
   }
 
   checkThrowObjects() {
-    if (this.keyboard.d && this.character.hasBottle()) {
+    if (
+      this.keyboard.d &&
+      this.character.hasBottle() &&
+      this.character.otherDirection == false
+    ) {
       let bottle = new Bottle();
       bottle.world = this;
       this.level.bottles.push(bottle);

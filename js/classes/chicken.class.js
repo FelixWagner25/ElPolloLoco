@@ -2,7 +2,6 @@ class Chicken extends MovableObject {
   height = 70;
   width = 70;
   y = canvasHeightPx - this.height - 40;
-
   v = 0.15 + Math.random() * 0.25;
   offset = {
     top: 5,
