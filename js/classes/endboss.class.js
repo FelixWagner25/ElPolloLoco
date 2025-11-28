@@ -80,13 +80,6 @@ class Endboss extends MovableObject {
       }
     }, 200);
     animationIntervals.push(animationIntervall);
-    let soundInterval = setInterval(() => {
-      if (!gameMuted) {
-        if (this.isHurt()) playAudioForMs(enemyHitSound, 500);
-        if (this.isDead()) playAudioForMs(enemyDeadSound, 1000);
-      }
-    }, 1000);
-    soundIntervals.push(soundInterval);
   }
 
   touchesCharacter() {

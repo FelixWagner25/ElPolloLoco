@@ -255,11 +255,7 @@ class World {
     for (let i = 0; i < animationIntervals.length; i++) {
       clearInterval(animationIntervals[i]);
     }
-    for (let i = 0; i < soundIntervals.length; i++) {
-      clearInterval(soundIntervals[i]);
-    }
     animationIntervals = [];
-    soundIntervals = [];
     stopAllSounds();
   }
 
