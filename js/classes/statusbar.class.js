@@ -85,12 +85,15 @@ class Statusbar extends DrawableObject {
   }
 
   setImgByStatusValue(statusbarKind, percentage) {
-    let imgPercentage = this.getStatusbarImgPercentageValue(percentage);
+    let imgPercentage = this.getStatusbarImgPercentageValue(
+      statusbarKind,
+      percentage
+    );
     let path = this.getStatusbarImgPath(statusbarKind, imgPercentage);
     this.img = this.imgsCache[path];
   }
 
-  getStatusbarImgPercentageValue(percentage) {
+  getStatusbarImgPercentageValue(statusbarKind, percentage) {
     let imgPercentage;
     switch (statusbarKind) {
       case "health":
