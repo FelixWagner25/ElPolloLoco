@@ -31,29 +31,7 @@ class World {
 
   draw() {
     if (gameStatus == "open") {
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-      this.ctx.translate(this.cameraX, 0);
-
-      this.setGameStatus();
-      this.removeDeadEnemiesFromWorld();
-      this.removeBrokenBottlesFromWorld();
-
-      this.addObjectsToWorld(this.level.backgroundLayers);
-      this.addObjectsToWorld(this.level.clouds);
-      this.addObjectsToWorld(this.level.bottles);
-      this.addObjectsToWorld(this.level.coins);
-      this.addObjectsToWorld(this.level.enemies);
-      this.addToWorld(this.character);
-
-      this.ctx.translate(-this.cameraX, 0);
-
-      this.addObjectsToWorld(this.statusbars);
-
-      let self = this;
-      requestAnimationFrame(function () {
-        self.draw();
-      });
+      this.drawOpenGameWorld();
     } else if (gameStatus == "lost") {
       this.clearAllAnimationsAndSounds();
       this.drawEndcreen("lost");
@@ -61,6 +39,37 @@ class World {
       this.clearAllAnimationsAndSounds();
       this.drawEndcreen("won");
     }
+  }
+
+  drawOpenGameWorld() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.setGameStatus();
+    this.removeRedundantObjectsFromWorld();
+    this.addAllObjectsToWorld();
+    let self = this;
+    requestAnimationFrame(function () {
+      self.draw();
+    });
+  }
+
+  addAllObjectsToWorld() {
+    this.ctx.translate(this.cameraX, 0);
+
+    this.addObjectsToWorld(this.level.backgroundLayers);
+    this.addObjectsToWorld(this.level.clouds);
+    this.addObjectsToWorld(this.level.bottles);
+    this.addObjectsToWorld(this.level.coins);
+    this.addObjectsToWorld(this.level.enemies);
+    this.addToWorld(this.character);
+
+    this.ctx.translate(-this.cameraX, 0);
+
+    this.addObjectsToWorld(this.statusbars);
+  }
+
+  removeRedundantObjectsFromWorld() {
+    this.removeDeadEnemiesFromWorld();
+    this.removeBrokenBottlesFromWorld();
   }
 
   addObjectsToWorld(objects) {
@@ -73,11 +82,9 @@ class World {
     if (obj.otherDirection == true) {
       this.flipImage(obj);
     }
-
     obj.draw(this.ctx);
     obj.drawFrame(this.ctx);
     obj.drawFrameOffset(this.ctx);
-
     if (obj.otherDirection == true) {
       this.flipImageBack(obj);
     }
@@ -137,20 +144,30 @@ class World {
       this.character.hasBottle() &&
       this.character.otherDirection == false
     ) {
-      let bottle = new Bottle();
-      bottle.world = this;
-      this.level.bottles.push(bottle);
-      bottle.throw(
-        this.character.x + this.character.width - this.character.offset.right,
-        this.character.y + this.character.offset.top
-      );
+      this.modelBottleThrow();
       this.character.bottlesCollected -= 1;
       let statusBar = this.statusbars[1];
       statusBar.setImgByStatusValue("bottles", this.character.bottlesCollected);
     }
   }
 
+  modelBottleThrow() {
+    let bottle = new Bottle();
+    bottle.world = this;
+    this.level.bottles.push(bottle);
+    bottle.throw(
+      this.character.x + this.character.width - this.character.offset.right,
+      this.character.y + this.character.offset.top
+    );
+  }
+
   checkCollisions() {
+    this.checkEnemyCollision();
+    this.checkCoinsCollision();
+    this.checkBottleCollision();
+  }
+
+  checkEnemyCollision() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy) && !enemy.isDead()) {
         if (this.character.isAboveGround()) {
@@ -158,21 +175,23 @@ class World {
           if (!gameMuted) playAudioForMs(enemyHitSound, 250);
         } else {
           this.character.hit();
-          if (this.character.isDead()) {
-            if (this.character.timeOfDeath === null) {
-              this.character.timeOfDeath = new Date().getTime();
-            }
+          if (this.character.isDead() && this.character.timeOfDeath === null) {
+            this.character.timeOfDeath = new Date().getTime();
           }
-          if (!gameMuted) {
-            if (this.character.isDead())
-              playAudioForMs(characterDeadSound, 500);
-            else {
-              playAudioForMs(characterHitSound, 250);
-            }
-          }
+          if (!gameMuted) this.processCharacterHitSounds();
         }
       }
     });
+  }
+
+  processCharacterHitSounds() {
+    if (this.character.isDead()) playAudioForMs(characterDeadSound, 500);
+    else {
+      playAudioForMs(characterHitSound, 250);
+    }
+  }
+
+  checkCoinsCollision() {
     this.level.coins.forEach((coin) => {
       if (this.character.isColliding(coin)) {
         this.character.coinsCollected += 1;
@@ -183,6 +202,9 @@ class World {
         if (!gameMuted) playAudioForMs(collectedCoinSound, 250);
       }
     });
+  }
+
+  checkBottleCollision() {
     this.level.bottles.forEach((bottle) => {
       if (this.character.isColliding(bottle)) {
         this.character.bottlesCollected += 1;
