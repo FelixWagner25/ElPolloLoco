@@ -107,6 +107,7 @@ class Statusbar extends DrawableObject {
         imgPercentage = this.getBottleStatusValue(percentage);
         break;
     }
+    return imgPercentage;
   }
 
   getCoinStatusValue(percentage) {
@@ -145,5 +146,6 @@ class Statusbar extends DrawableObject {
         path = `img/img_pollo_locco/7_statusbars/2_statusbar_endboss/orange/orange${imgPercentage}.png`;
         break;
     }
+    return path;
   }
 }
