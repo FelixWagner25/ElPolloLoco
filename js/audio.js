@@ -39,10 +39,9 @@ function playAudioForMs(audio, timeMs) {
   if (gameStatus === "open") {
     audio.currentTime = 0;
     let audioStartTime = new Date().getTime();
-    let currentTime = 0;
     audio.play();
     let samplingInterval50mS = setInterval(() => {
-      currentTime = new Date().getTime();
+      let currentTime = new Date().getTime();
       if (currentTime - audioStartTime >= timeMs) {
         audio.pause();
         audio.currentTime = 0;

@@ -6,7 +6,6 @@ let keyboard = new Keyboard();
 let gameStatus = "notStarted";
 let gameMuted = true;
 let animationIntervals = [];
-let soundIntervals = [];
 
 function init() {
   canvas = document.getElementById("canvas");
@@ -33,7 +32,6 @@ function toggleMute() {
 }
 
 window.addEventListener("keydown", (event) => {
-  //Object.keys(keyboard).forEach((key) => (keyboard[key] = false));
   switch (event.key) {
     case "ArrowUp":
       keyboard.up = true;
