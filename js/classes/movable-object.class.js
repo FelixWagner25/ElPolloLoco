@@ -64,22 +64,13 @@ class MovableObject extends DrawableObject {
   }
 
   hit() {
-    let statusBar;
     if (this instanceof Character) {
-      this.energy -= 10;
-      statusBar = this.world.statusbars[0];
-      statusBar.percentageHealth = this.energy;
-      statusBar.setImgByStatusValue("health", this.energy);
+      this.processCharacterHit();
     } else if (this instanceof Endboss) {
-      this.energy -= 10;
-      statusBar = this.world.statusbars[3];
-      statusBar.percentageHealth = this.energy;
-      statusBar.setImgByStatusValue("endboss", this.energy);
+      this.processEndbossHit();
     } else {
-      this.energy -= 100;
-      this.latestAlive = new Date().getTime();
+      this.processChickenHit();
     }
-
     if (this.energy < 0) {
       this.energy = 0;
     } else {
@@ -91,5 +82,26 @@ class MovableObject extends DrawableObject {
     let passedTimeMs = new Date().getTime() - this.latestHit;
     let passedTimeS = passedTimeMs / 1000;
     return passedTimeS < 1;
+  }
+
+  processCharacterHit() {
+    let statusBar;
+    this.energy -= 10;
+    statusBar = this.world.statusbars[0];
+    statusBar.percentageHealth = this.energy;
+    statusBar.setImgByStatusValue("health", this.energy);
+  }
+
+  processEndbossHit() {
+    let statusBar;
+    this.energy -= 10;
+    statusBar = this.world.statusbars[3];
+    statusBar.percentageHealth = this.energy;
+    statusBar.setImgByStatusValue("endboss", this.energy);
+  }
+
+  processChickenHit() {
+    this.energy -= 100;
+    this.latestAlive = new Date().getTime();
   }
 }
