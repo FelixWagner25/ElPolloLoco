@@ -98,45 +98,40 @@ class Character extends MovableObject {
   }
 
   animate() {
+    this.animateMovement();
+    this.animateImages();
+  }
+
+  animateMovement() {
     setInterval(() => {
       if (
         this.world.keyboard.right == true &&
         this.x < this.world.level.levelEndX
       ) {
         this.moveRight();
-        this.updateLatestActivityMs();
         this.otherDirection = false;
       }
-
       if (this.world.keyboard.left == true && this.x > -100) {
         this.moveLeft();
-        this.updateLatestActivityMs();
         this.otherDirection = true;
       }
-
       if (
         (this.world.keyboard.space || this.world.keyboard.up) &&
         !this.isAboveGround()
       ) {
         this.jump();
-        this.updateLatestActivityMs();
       }
-
       this.world.cameraX = -this.x + 100;
+      this.updateLatestActivityMs();
     }, 50);
+  }
 
+  animateImages() {
     let animationInterval = setInterval(() => {
       if (this.isAboveGround()) {
         this.playAnimation(this.imgsJumping);
       } else if (this.isDead() && this.timeOfDeath !== null) {
-        let currentTime = new Date().getTime();
-        if (currentTime - this.timeOfDeath > 2000) {
-          this.character.loadImage(
-            "img/img_pollo_locco/2_character_pepe/5_dead/D-57.png"
-          );
-        } else {
-          this.playAnimation(this.imgsDead);
-        }
+        this.organizeDeathAnimation();
       } else if (this.isHurt()) {
         this.playAnimation(this.imgsHurt);
       } else if (this.isIdleForMs(6000)) {
@@ -146,6 +141,21 @@ class Character extends MovableObject {
       }
     }, 200);
     animationIntervals.push(animationInterval);
+    this.animateWalkingImages();
+  }
+
+  organizeDeathAnimation() {
+    let currentTime = new Date().getTime();
+    if (currentTime - this.timeOfDeath > 2000) {
+      this.character.loadImage(
+        "img/img_pollo_locco/2_character_pepe/5_dead/D-57.png"
+      );
+    } else {
+      this.playAnimation(this.imgsDead);
+    }
+  }
+
+  animateWalkingImages() {
     let walkingInterval = setInterval(() => {
       if (this.world.keyboard.right || this.world.keyboard.left) {
         this.playAnimation(this.imgsWalking);
