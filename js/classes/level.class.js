@@ -21,11 +21,7 @@ class Level {
   initBackgroundLayers(numberBgLayers) {
     let j;
     for (let i = -1; i < numberBgLayers; i++) {
-      if (i < 0) {
-        j = -(i % 2) + 1;
-      } else {
-        j = (i % 2) + 1;
-      }
+      j = this.moduloMapper(i);
       this.backgroundLayers.push(
         new BackgroundLayer(
           `img/img_pollo_locco/5_background/layers/3_third_layer/${j}.png`,
@@ -45,5 +41,15 @@ class Level {
         )
       );
     }
+  }
+
+  moduloMapper(i) {
+    let j;
+    if (i < 0) {
+      j = -(i % 2) + 1;
+    } else {
+      j = (i % 2) + 1;
+    }
+    return j;
   }
 }

@@ -2,7 +2,6 @@ class DrawableObject {
   height = 150;
   width = 100;
   x = 40;
-  //y = canvasHeightPx - this.height;
 
   img;
   imgsCache = {};
@@ -28,7 +27,6 @@ class DrawableObject {
       this instanceof Chicken ||
       this instanceof Endboss ||
       this instanceof SmallChicken
-      //|| this instanceof CollectableObject
     ) {
       ctx.lineWidth = "5";
       ctx.beginPath();
@@ -44,7 +42,6 @@ class DrawableObject {
       this instanceof Chicken ||
       this instanceof Endboss ||
       this instanceof SmallChicken
-      //|| this instanceof CollectableObject
     ) {
       ctx.lineWidth = "5";
       ctx.beginPath();
