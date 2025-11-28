@@ -28,11 +28,18 @@ class SmallChicken extends MovableObject {
   }
 
   animate() {
+    this.animateMovement();
+    this.animateImages();
+  }
+
+  animateMovement() {
     let movementInterval = setInterval(() => {
       this.moveLeft();
     }, this.dt);
     animationIntervals.push(movementInterval);
+  }
 
+  animateImages() {
     let animationInterval = setInterval(() => {
       if (this.isDead()) {
         this.v = 0;
