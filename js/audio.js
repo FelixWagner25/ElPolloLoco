@@ -35,6 +35,11 @@ const collectedCoinSound = new Audio(
 );
 allSounds.push(collectedCoinSound);
 
+/**
+ * Plays audio object for selected time in ms.
+ * @param {Audio} audio -- audio object
+ * @param {Integer} timeMs -- duration time of audio
+ */
 function playAudioForMs(audio, timeMs) {
   if (gameStatus === "open") {
     audio.currentTime = 0;
@@ -52,6 +57,9 @@ function playAudioForMs(audio, timeMs) {
   }
 }
 
+/**
+ * Stops all audios.
+ */
 function stopAllSounds() {
   allSounds.forEach((audio) => {
     audio.pause();
