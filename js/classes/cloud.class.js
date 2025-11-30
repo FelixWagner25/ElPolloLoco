@@ -4,6 +4,10 @@ class Cloud extends MovableObject {
   height = 250;
   v = 0.15;
 
+  /**
+   * @constructor
+   * @param {Integer} sectionNumber - background section where cloud will be initialized
+   */
   constructor(sectionNumber) {
     let index = (sectionNumber % 2) + 1;
     super().loadImage(
@@ -16,6 +20,9 @@ class Cloud extends MovableObject {
     this.animateMovement();
   }
 
+  /**
+   * Animates Cloud movement.
+   */
   animateMovement() {
     this.moveLeft();
   }

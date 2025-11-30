@@ -6,6 +6,10 @@ class Coin extends CollectableObject {
     "img/img_pollo_locco/8_coin/coin_2.png",
   ];
 
+  /**
+   * @constructor
+   * @param {Integer} sectionNumber - background section where coin will be initialized
+   */
   constructor(sectionNumber) {
     super();
     this.x =
@@ -16,6 +20,9 @@ class Coin extends CollectableObject {
     this.animate();
   }
 
+  /**
+   * Animates blinking of coin.
+   */
   animate() {
     setInterval(() => {
       this.playAnimation(this.imgs);

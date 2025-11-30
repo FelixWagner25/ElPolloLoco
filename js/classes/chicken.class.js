@@ -16,6 +16,10 @@ class Chicken extends MovableObject {
     "img/img_pollo_locco/3_enemies_chicken/chicken_normal/1_walk/3_w.png",
   ];
 
+  /**
+   * @constructor
+   * @param {Integer} sectionNumber - background section where chicken is initialized in
+   */
   constructor(sectionNumber) {
     super();
     this.x =
@@ -27,6 +31,9 @@ class Chicken extends MovableObject {
     this.animate();
   }
 
+  /**
+   * Animates Chicken.
+   */
   animate() {
     let movementInterval = setInterval(() => {
       this.moveLeft();
