@@ -79,6 +79,9 @@ class Character extends MovableObject {
   ];
   world;
 
+  /**
+   * @constructor
+   */
   constructor() {
     super();
     this.loadImage("img/img_pollo_locco/2_character_pepe/2_walk/W-21.png");
@@ -93,15 +96,25 @@ class Character extends MovableObject {
     this.updateLatestActivityMs();
   }
 
+  /**
+   * Checks whether character has collected a bottle.
+   * @returns boolean
+   */
   hasBottle() {
     return this.bottlesCollected > 0;
   }
 
+  /**
+   * Animates Character Actions
+   */
   animate() {
     this.animateMovement();
     this.animateImages();
   }
 
+  /**
+   * Animates character movement
+   */
   animateMovement() {
     setInterval(() => {
       if (
@@ -126,6 +139,9 @@ class Character extends MovableObject {
     }, 50);
   }
 
+  /**
+   * Animates character images of actions.
+   */
   animateImages() {
     let animationInterval = setInterval(() => {
       if (this.isAboveGround()) {
@@ -144,6 +160,9 @@ class Character extends MovableObject {
     this.animateWalkingImages();
   }
 
+  /**
+   * Processes character death animation
+   */
   organizeDeathAnimation() {
     let currentTime = new Date().getTime();
     if (currentTime - this.timeOfDeath > 2000) {
@@ -155,6 +174,9 @@ class Character extends MovableObject {
     }
   }
 
+  /**
+   * Animates character walking images
+   */
   animateWalkingImages() {
     let walkingInterval = setInterval(() => {
       if (this.world.keyboard.right || this.world.keyboard.left) {
@@ -164,10 +186,18 @@ class Character extends MovableObject {
     animationIntervals.push(walkingInterval);
   }
 
+  /**
+   * Updates charactes latest acitvity timestemp
+   */
   updateLatestActivityMs() {
     this.latestActivityMs = new Date().getTime();
   }
 
+  /**
+   * Checks whether character is idle for defined time in ms.
+   * @param {Integer} milliSeconds
+   * @returns boolean
+   */
   isIdleForMs(milliSeconds) {
     let currentTimeMs = new Date().getTime();
     return currentTimeMs - this.latestActivityMs > milliSeconds;

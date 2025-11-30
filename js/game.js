@@ -7,6 +7,9 @@ let gameStatus = "notStarted";
 let gameMuted = true;
 let animationIntervals = [];
 
+/**
+ * Initializes Pollo Loco Game. Creates World.
+ */
 function init() {
   canvas = document.getElementById("canvas");
   if (gameStatus !== "open") {
@@ -19,6 +22,9 @@ function init() {
   }
 }
 
+/**
+ * Toggles sounds of the game.
+ */
 function toggleMute() {
   if (gameMuted) {
     gameMuted = false;

@@ -30,6 +30,10 @@ class Bottle extends CollectableObject {
     "img/img_pollo_locco/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png",
   ];
 
+  /**
+   * @constructor
+   * @param {Integer} sectionNumber - background section where bottle is placed initially.
+   */
   constructor(sectionNumber) {
     super();
     this.x =
@@ -44,6 +48,11 @@ class Bottle extends CollectableObject {
     this.loadImages(this.imgsSplashing);
   }
 
+  /**
+   * Throws bottle
+   * @param {Integer} x - starting x-coordinate of bottle trajectory
+   * @param {Integer} y - starting y-coordinate of bottle trajectory
+   */
   throw(x, y) {
     this.x = x;
     this.y = y;
@@ -53,6 +62,9 @@ class Bottle extends CollectableObject {
     }
   }
 
+  /**
+   * Models bottle trajectory during bottle throw
+   */
   modelBottleTrajectory() {
     let thorwInterval = setInterval(() => {
       this.x += this.speedX;
@@ -70,6 +82,10 @@ class Bottle extends CollectableObject {
     }, 50);
   }
 
+  /**
+   * Models enemy damage if bottle hits enemy
+   * @param {Object} enemy
+   */
   modelEnemyDamage(enemy) {
     if (enemy instanceof Endboss) {
       this.world.endboss.hit();
@@ -89,18 +105,28 @@ class Bottle extends CollectableObject {
     enemy.latestAlive = new Date().getTime();
   }
 
+  /**
+   * Breaks bottle
+   */
   breakBottle() {
     this.speedX = 0;
     this.isBroken = true;
     this.latestIntact = new Date().getTime();
   }
 
+  /**
+   * Models damage and bottle break of enemy is hit by bottle
+   * @param {Object} enemy
+   */
   bottleHitsEnemy(enemy) {
     this.playAnimation(this.imgsSplashing);
     if (!this.isBroken) this.modelEnemyDamage(enemy);
     this.breakBottle();
   }
 
+  /**
+   * Models bottle behaviour if bottle hits the ground
+   */
   bottleHitsGround() {
     this.playAnimation(this.imgsSplashing);
     if (!gameMuted) playAudioForMs(bottleBreakSound, 500);
