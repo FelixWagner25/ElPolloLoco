@@ -19,6 +19,11 @@ class World {
     lost: new Image(),
   };
 
+  /**
+   * @constructor
+   * @param {object} canvas - canvas object
+   * @param {object} keyboard - keyboard object
+   */
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
@@ -29,6 +34,9 @@ class World {
     this.loadEndscreenSources();
   }
 
+  /**
+   * Draws canvas depending on game status.
+   */
   draw() {
     if (gameStatus == "open") {
       this.drawOpenGameWorld();
@@ -41,6 +49,9 @@ class World {
     }
   }
 
+  /**
+   * Draws canvas for open game status.
+   */
   drawOpenGameWorld() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.setGameStatus();
@@ -52,6 +63,9 @@ class World {
     });
   }
 
+  /**
+   * Adds all objects to world.
+   */
   addAllObjectsToWorld() {
     this.ctx.translate(this.cameraX, 0);
 
@@ -67,29 +81,43 @@ class World {
     this.addObjectsToWorld(this.statusbars);
   }
 
+  /**
+   * Removes broken bottles and killed enemies from world.
+   */
   removeRedundantObjectsFromWorld() {
     this.removeDeadEnemiesFromWorld();
     this.removeBrokenBottlesFromWorld();
   }
 
+  /**
+   * Adds objects to world.
+   * @param {array} objects
+   */
   addObjectsToWorld(objects) {
     for (let i = 0; i < objects.length; i++) {
       this.addToWorld(objects[i]);
     }
   }
 
+  /**
+   * Adds object to world.
+   * @param {object} obj
+   */
   addToWorld(obj) {
     if (obj.otherDirection == true) {
       this.flipImage(obj);
     }
     obj.draw(this.ctx);
-    obj.drawFrame(this.ctx);
-    obj.drawFrameOffset(this.ctx);
+    //obj.drawFrame(this.ctx);
+    //obj.drawFrameOffset(this.ctx);
     if (obj.otherDirection == true) {
       this.flipImageBack(obj);
     }
   }
 
+  /**
+   * Removes dead enemies from world.
+   */
   removeDeadEnemiesFromWorld() {
     this.level.enemies = this.level.enemies.filter((enemy) => {
       if (enemy.isDead()) {
@@ -100,6 +128,9 @@ class World {
     });
   }
 
+  /**
+   * Removes broken bottles from world
+   */
   removeBrokenBottlesFromWorld() {
     this.level.bottles = this.level.bottles.filter((bottle) => {
       if (bottle.isBroken) {
@@ -110,6 +141,10 @@ class World {
     });
   }
 
+  /**
+   * Mirrors image of an object on the y axis.
+   * @param {object} obj
+   */
   flipImage(obj) {
     this.ctx.save();
     this.ctx.translate(obj.width, 0);
@@ -117,17 +152,27 @@ class World {
     obj.x = -1 * obj.x;
   }
 
+  /**
+   * Restores former mirrored object's orientation back.
+   * @param {object} obj
+   */
   flipImageBack(obj) {
     obj.x = -1 * obj.x;
     this.ctx.restore();
   }
 
+  /**
+   * Sets world to character bottle and endboss object.
+   */
   setWorld() {
     this.character.world = this;
     this.level.bottles.forEach((bottle) => (bottle.world = this));
     this.endboss.world = this;
   }
 
+  /**
+   * Runs game dynamics.
+   */
   runGameDynamics() {
     setInterval(() => {
       if (this.endgameStarted == false) this.checkEndGameStarted();
@@ -138,6 +183,9 @@ class World {
     }, dtUserAction);
   }
 
+  /**
+   * Checks whether character throws object. If object is thrown, then throw process is conducted.
+   */
   checkThrowObjects() {
     if (
       this.keyboard.d &&
@@ -151,6 +199,9 @@ class World {
     }
   }
 
+  /**
+   * Models bottle throw.
+   */
   modelBottleThrow() {
     let bottle = new Bottle();
     bottle.world = this;
@@ -161,12 +212,18 @@ class World {
     );
   }
 
+  /**
+   * Checks collision of character with enemys, coins or bottels.
+   */
   checkCollisions() {
     this.checkEnemyCollision();
     this.checkCoinsCollision();
     this.checkBottleCollision();
   }
 
+  /**
+   * Checks collsion of character with enemy and processes collison.
+   */
   checkEnemyCollision() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy) && !enemy.isDead()) {
@@ -184,6 +241,9 @@ class World {
     });
   }
 
+  /**
+   * Processes sound if character is hit.
+   */
   processCharacterHitSounds() {
     if (this.character.isDead()) playAudioForMs(characterDeadSound, 500);
     else {
@@ -191,6 +251,9 @@ class World {
     }
   }
 
+  /**
+   * Checks if character collides with coins and processes the coin collection.
+   */
   checkCoinsCollision() {
     this.level.coins.forEach((coin) => {
       if (this.character.isColliding(coin)) {
@@ -204,6 +267,9 @@ class World {
     });
   }
 
+  /**
+   * Checks whether character collides with bottle and processes bottle collection.
+   */
   checkBottleCollision() {
     this.level.bottles.forEach((bottle) => {
       if (this.character.isColliding(bottle)) {
@@ -220,10 +286,16 @@ class World {
     });
   }
 
+  /**
+   * Checks whether character reached endgame distance.
+   */
   checkEndGameStarted() {
     if (this.character.x >= endgameTrigger) this.endgameStarted = true;
   }
 
+  /**
+   * Loads game endscreen images.
+   */
   loadEndscreenSources() {
     this.endScreenImgs.background.src =
       "img/img_pollo_locco/5_background/first_half_background.png";
@@ -233,6 +305,10 @@ class World {
       "img/img_pollo_locco/You won, you lost/Game over A.png";
   }
 
+  /**
+   * Draws endscreen on canvas.
+   * @param {string} gameStatus - game status
+   */
   drawEndcreen(gameStatus) {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.drawImage(
@@ -251,6 +327,9 @@ class World {
     );
   }
 
+  /**
+   * Clears all animation intervals and stops all audios.
+   */
   clearAllAnimationsAndSounds() {
     for (let i = 0; i < animationIntervals.length; i++) {
       clearInterval(animationIntervals[i]);
@@ -259,6 +338,9 @@ class World {
     stopAllSounds();
   }
 
+  /**
+   * Sets game status.
+   */
   setGameStatus() {
     let currentTime = new Date().getTime();
     if (this.character.isDead() && this.character.timeOfDeath !== null) {

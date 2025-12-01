@@ -45,6 +45,12 @@ class Statusbar extends DrawableObject {
     "img/img_pollo_locco/7_statusbars/2_statusbar_endboss/orange/orange100.png",
   ];
 
+  /**
+   * @constructor
+   * @param {string} kind - statusbar kind
+   * @param {integer} x - x-coordinate on canvas
+   * @param {integer} y - y-coordinate on canvas
+   */
   constructor(kind, x, y) {
     super();
     this.kind = kind;
@@ -55,6 +61,10 @@ class Statusbar extends DrawableObject {
     this.setImgByStatusValue(this.kind, statusValue);
   }
 
+  /**
+   * Returns statusbar status value.
+   * @returns integer
+   */
   getStatusValueByKind() {
     switch (this.kind) {
       case "health":
@@ -67,6 +77,10 @@ class Statusbar extends DrawableObject {
     }
   }
 
+  /**
+   * Loads statubar images depending on statusbar kind into image cache.
+   * @param {string} kind - statusbar kind
+   */
   loadImagesByKind(kind) {
     switch (kind) {
       case "health":
@@ -84,6 +98,11 @@ class Statusbar extends DrawableObject {
     }
   }
 
+  /**
+   * Sets correct image from image cache matching curren status value to statusbar.
+   * @param {string} statusbarKind - statusbar kind
+   * @param {integer} percentage - statusbar value
+   */
   setImgByStatusValue(statusbarKind, percentage) {
     let imgPercentage = this.getStatusbarImgPercentageValue(
       statusbarKind,
@@ -93,6 +112,12 @@ class Statusbar extends DrawableObject {
     this.img = this.imgsCache[path];
   }
 
+  /**
+   * Returns statusbar value matching to current value in game.
+   * @param {string} statusbarKind - statubar kind
+   * @param {integer} percentage - statusbar value
+   * @returns integer
+   */
   getStatusbarImgPercentageValue(statusbarKind, percentage) {
     let imgPercentage;
     switch (statusbarKind) {
@@ -110,6 +135,11 @@ class Statusbar extends DrawableObject {
     return imgPercentage;
   }
 
+  /**
+   * Returns coin statubar value from coin value in game.
+   * @param {integer} percentage - coin status value
+   * @returns integer
+   */
   getCoinStatusValue(percentage) {
     let imgPercentage;
     if (percentage < 20) {
@@ -120,6 +150,11 @@ class Statusbar extends DrawableObject {
     return imgPercentage;
   }
 
+  /**
+   * Returns bottle statusbar value from bottle value in game.
+   * @param {integer} percentage - bottle status value
+   * @returns integer
+   */
   getBottleStatusValue(percentage) {
     let imgPercentage;
     if (percentage < 6) {
@@ -130,6 +165,12 @@ class Statusbar extends DrawableObject {
     return imgPercentage;
   }
 
+  /**
+   * Returns matching image source path to statusbar kind and statusbar value.
+   * @param {string} statusbarKind - statusbar kind
+   * @param {integer} imgPercentage - integer
+   * @returns string
+   */
   getStatusbarImgPath(statusbarKind, imgPercentage) {
     let path = "";
     switch (statusbarKind) {
