@@ -18,6 +18,10 @@ class Level {
     this.initBackgroundLayers(numberBackgroundLayers);
   }
 
+  /**
+   * Initializes background layers
+   * @param {integer} numberBgLayers - number of initialized background layers
+   */
   initBackgroundLayers(numberBgLayers) {
     let j;
     for (let i = -1; i < numberBgLayers; i++) {
@@ -43,6 +47,11 @@ class Level {
     }
   }
 
+  /**
+   * Maps modulo to positive values also for negative input and adds 1 because of path names of source images.
+   * @param {integer} i
+   * @returns integer
+   */
   moduloMapper(i) {
     let j;
     if (i < 0) {

@@ -18,6 +18,9 @@ class MovableObject extends DrawableObject {
     super();
   }
 
+  /**
+   * Models gravity acceleration on objects.
+   */
   applyGravity() {
     setInterval(() => {
       if (this.isAboveGround() || this.speedY < 0) {
@@ -27,22 +30,39 @@ class MovableObject extends DrawableObject {
     }, 1000 / 25);
   }
 
+  /**
+   * Checks whether an object is above ground.
+   * @returns boolean
+   */
   isAboveGround() {
     return this.y + this.height - this.offset.bottom < groundLevel;
   }
 
+  /**
+   * Models right movement of an object.
+   */
   moveRight() {
     this.x += this.v;
   }
 
+  /**
+   * Models left movement of an object.
+   */
   moveLeft() {
     this.x -= this.v;
   }
 
+  /**
+   * Models Jumping of character.
+   */
   jump() {
     this.speedY = -25;
   }
 
+  /**
+   * Loads next image of selecte image array into image chache.
+   * @param {array} imgsArray
+   */
   playAnimation(imgsArray) {
     this.currentImgIndx = this.currentImgIndx % imgsArray.length;
     let path = imgsArray[this.currentImgIndx];
@@ -50,6 +70,11 @@ class MovableObject extends DrawableObject {
     this.currentImgIndx++;
   }
 
+  /**
+   * Checks whether movable object is colliding with a second object.
+   * @param {object} obj
+   * @returns boolean
+   */
   isColliding(obj) {
     return (
       this.x + this.width - this.offset.right > obj.x + obj.offset.left &&
@@ -59,10 +84,17 @@ class MovableObject extends DrawableObject {
     );
   }
 
+  /**
+   * Checks whether object is dead.
+   * @returns boolean
+   */
   isDead() {
     return this.energy <= 0;
   }
 
+  /**
+   * Models hit process of objects.
+   */
   hit() {
     if (this instanceof Character) {
       this.processCharacterHit();
@@ -78,12 +110,19 @@ class MovableObject extends DrawableObject {
     }
   }
 
+  /**
+   * Models hurt of object if latest hit is 1 second ago or longer.
+   * @returns booelan
+   */
   isHurt() {
     let passedTimeMs = new Date().getTime() - this.latestHit;
     let passedTimeS = passedTimeMs / 1000;
     return passedTimeS < 1;
   }
 
+  /**
+   * Processes character hit.
+   */
   processCharacterHit() {
     let statusBar;
     this.energy -= 10;
@@ -92,6 +131,9 @@ class MovableObject extends DrawableObject {
     statusBar.setImgByStatusValue("health", this.energy);
   }
 
+  /**
+   * Processes endboss hit.
+   */
   processEndbossHit() {
     let statusBar;
     this.energy -= 10;
@@ -100,6 +142,9 @@ class MovableObject extends DrawableObject {
     statusBar.setImgByStatusValue("endboss", this.energy);
   }
 
+  /**
+   * Processes chicken hit.
+   */
   processChickenHit() {
     this.energy -= 100;
     this.latestAlive = new Date().getTime();

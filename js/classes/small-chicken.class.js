@@ -16,6 +16,10 @@ class SmallChicken extends MovableObject {
     "img/img_pollo_locco/3_enemies_chicken/chicken_small/1_walk/3_w.png",
   ];
 
+  /**
+   * @constructor
+   * @param {integer} sectionNumber number of background section where small chicken is initialized
+   */
   constructor(sectionNumber) {
     super();
     this.x =
@@ -27,11 +31,17 @@ class SmallChicken extends MovableObject {
     this.animate();
   }
 
+  /**
+   * Animates small chicken movement and images
+   */
   animate() {
     this.animateMovement();
     this.animateImages();
   }
 
+  /**
+   * Animates small chicken movement.
+   */
   animateMovement() {
     let movementInterval = setInterval(() => {
       this.moveLeft();
@@ -39,6 +49,9 @@ class SmallChicken extends MovableObject {
     animationIntervals.push(movementInterval);
   }
 
+  /**
+   * Animates small chicken images.
+   */
   animateImages() {
     let animationInterval = setInterval(() => {
       if (this.isDead()) {

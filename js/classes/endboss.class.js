@@ -53,6 +53,9 @@ class Endboss extends MovableObject {
     "img/img_pollo_locco/4_enemie_boss_chicken/1_walk/G4.png",
   ];
 
+  /**
+   * @constructor
+   */
   constructor() {
     super();
     this.loadImage("img/img_pollo_locco/4_enemie_boss_chicken/2_alert/G5.png");
@@ -64,6 +67,9 @@ class Endboss extends MovableObject {
     this.animate();
   }
 
+  /**
+   * Animates Endboss movement and images.
+   */
   animate() {
     let animationIntervall = setInterval(() => {
       if (this.isHurt()) {
@@ -82,6 +88,10 @@ class Endboss extends MovableObject {
     animationIntervals.push(animationIntervall);
   }
 
+  /**
+   * Checks whether endboss touches the character or not.
+   * @returns boolean
+   */
   touchesCharacter() {
     return (
       this.x + this.offset.left <=
