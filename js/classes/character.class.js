@@ -13,6 +13,7 @@ class Character extends MovableObject {
   bottlesCollected = 0;
   coinsCollected = 0;
   latestActivityMs = 0;
+  latestThrow = 0;
   timeOfDeath = null;
 
   imgsIdle = [
@@ -201,5 +202,10 @@ class Character extends MovableObject {
   isIdleForMs(milliSeconds) {
     let currentTimeMs = new Date().getTime();
     return currentTimeMs - this.latestActivityMs > milliSeconds;
+  }
+
+  finishedBottleCooldown() {
+    let currentTime = new Date().getTime();
+    return currentTime - this.latestThrow > dtBottleThrowCooldown;
   }
 }

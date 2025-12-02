@@ -58,6 +58,7 @@ class Bottle extends CollectableObject {
     this.y = y;
     if (!this.isBroken) {
       this.modelBottleTrajectory();
+      this.world.character.latestThrow = new Date().getTime();
       this.applyGravity();
     }
   }

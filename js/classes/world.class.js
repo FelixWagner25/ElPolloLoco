@@ -190,7 +190,8 @@ class World {
     if (
       this.keyboard.d &&
       this.character.hasBottle() &&
-      this.character.otherDirection == false
+      this.character.otherDirection == false &&
+      this.character.finishedBottleCooldown()
     ) {
       this.modelBottleThrow();
       this.character.bottlesCollected -= 1;
