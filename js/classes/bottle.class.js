@@ -58,7 +58,7 @@ class Bottle extends CollectableObject {
     this.y = y;
     if (!this.isBroken) {
       this.modelBottleTrajectory();
-      this.world.character.latestThrow = new Date().getTime();
+      this.setCharacterTimestampLatestThrow();
       this.applyGravity();
     }
   }
@@ -131,5 +131,9 @@ class Bottle extends CollectableObject {
     this.playAnimation(this.imgsSplashing);
     if (!gameMuted) playAudioForMs(bottleBreakSound, 500);
     this.breakBottle();
+  }
+
+  setCharacterTimestampLatestThrow() {
+    this.world.character.latestThrow = new Date().getTime();
   }
 }
