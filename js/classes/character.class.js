@@ -8,7 +8,7 @@ class Character extends MovableObject {
     top: 130,
     bottom: 10,
     left: 25,
-    right: 60,
+    right: 40,
   };
   bottlesCollected = 0;
   coinsCollected = 0;
@@ -204,6 +204,10 @@ class Character extends MovableObject {
     return currentTimeMs - this.latestActivityMs > milliSeconds;
   }
 
+  /**
+   * Checks whether bottle throw cooldown has finished.
+   * @returns boolean
+   */
   finishedBottleCooldown() {
     let currentTime = new Date().getTime();
     return currentTime - this.latestThrow > dtBottleThrowCooldown;

@@ -7,7 +7,7 @@ class SmallChicken extends MovableObject {
     top: 5,
     bottom: 5,
     left: 5,
-    right: 10,
+    right: 5,
   };
 
   imgsWalking = [

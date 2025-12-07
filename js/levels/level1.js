@@ -81,7 +81,6 @@ function initLevel() {
       new Coin(5),
       new Coin(5),
     ],
-
     numberBackgroundLayers
   );
 }

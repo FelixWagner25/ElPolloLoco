@@ -108,8 +108,8 @@ class World {
       this.flipImage(obj);
     }
     obj.draw(this.ctx);
-    //obj.drawFrame(this.ctx);
-    //obj.drawFrameOffset(this.ctx);
+    obj.drawFrame(this.ctx);
+    obj.drawFrameOffset(this.ctx);
     if (obj.otherDirection == true) {
       this.flipImageBack(obj);
     }
