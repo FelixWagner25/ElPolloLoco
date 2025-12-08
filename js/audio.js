@@ -1,38 +1,30 @@
 let allSounds = [];
 
-const characterHitSound = new Audio(
-  "https://cdn.freesound.org/previews/350/350923_5450487-lq.mp3"
-);
+const characterHitSound = new Audio("audio/350923__cabled_mess__hurt_c_01.wav");
 allSounds.push(characterHitSound);
 
-const enemyHitSound = new Audio(
-  "https://cdn.freesound.org/previews/193/193301_7037-lq.mp3"
-);
+const enemyHitSound = new Audio("audio/193301__timkahn__match-strike-05.wav");
 allSounds.push(enemyHitSound);
 
 const characterDeadSound = new Audio(
-  "https://cdn.freesound.org/previews/350/350981_5450487-lq.mp3"
+  "audio/350981__cabled_mess__lose_c_09.wav"
 );
 allSounds.push(characterDeadSound);
 
 const enemyDeadSound = new Audio(
-  "https://cdn.freesound.org/previews/165/165491_1617412-lq.mp3"
+  "audio/165491__chripei__victory-cry-reverb-2.wav"
 );
 allSounds.push(enemyDeadSound);
 
-const bottleBreakSound = new Audio(
-  "https://cdn.freesound.org/previews/566/566451_5409451-lq.mp3"
-);
+const bottleBreakSound = new Audio("audio/566451__johnny97__break06.wav");
 allSounds.push(bottleBreakSound);
 
 const collectedBottleSound = new Audio(
-  "https://cdn.freesound.org/previews/387/387134_7161844-lq.mp3"
+  "audio/387134__rdaly95__collecting_ammo.wav"
 );
 allSounds.push(collectedBottleSound);
 
-const collectedCoinSound = new Audio(
-  "https://cdn.freesound.org/previews/446/446134_758593-lq.mp3"
-);
+const collectedCoinSound = new Audio("audio/446134__justinvoke__collect-2.wav");
 allSounds.push(collectedCoinSound);
 
 /**
