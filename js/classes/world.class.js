@@ -10,7 +10,7 @@ class World {
     new Statusbar("health", 20, 0),
     new Statusbar("bottles", 20, 40),
     new Statusbar("coins", 20, 80),
-    new Statusbar("endboss", 500, 10),
+    new Statusbar("endboss", 500, 40),
   ];
   endgameStarted = false;
   endScreenImgs = {

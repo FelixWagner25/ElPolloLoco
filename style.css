@@ -20,6 +20,10 @@ canvas {
   cursor: pointer;
 }
 
+.canvas-btn-wrap {
+  position: relative;
+}
+
 @font-face {
   font-family: "zabras";
   src: url("./fonts/zabars/ZABARS/Zabars.ttf");
@@ -102,8 +106,7 @@ button {
 }
 
 .mobile-btn-wrap {
-  display: flex;
-  gap: 32px;
+  display: none;
 }
 
 .mobile-btn {
@@ -113,6 +116,7 @@ button {
   background-repeat: no-repeat;
   background-position: center;
   background-color: #d1792b;
+  position: absolute;
 }
 
 .mobile-btn:hover {
@@ -121,18 +125,26 @@ button {
 
 .mobile-btn-up {
   background-image: url("./icons/arrow_up.svg");
+  bottom: 88px;
+  right: 24px;
 }
 
 .mobile-btn-left {
   background-image: url("./icons/arrow_left.svg");
+  bottom: 24px;
+  left: 24px;
 }
 
 .mobile-btn-right {
   background-image: url("./icons/arrow_right.svg");
+  bottom: 88px;
+  left: 24px;
 }
 
 .mobile-btn-throw {
   background-image: url("./icons/handball.svg");
+  bottom: 24px;
+  right: 24px;
 }
 
 .canvas-subline {
@@ -150,6 +162,10 @@ button {
   width: 32px;
   background-color: #d1792b;
   border: none;
+  position: absolute;
+  right: 24px;
+  top: 16px;
+  z-index: 100;
 }
 
 .btn-mute:hover {
@@ -173,8 +189,8 @@ button {
   .instruction-wrap {
     display: none;
   }
-  .mobile-steering {
-    display: flex;
+  .mobile-btn-wrap {
+    display: block;
   }
 }
 
@@ -186,7 +202,7 @@ button {
 
 @media (max-height: 480px) {
   canvas {
-    height: calc(100vh - 32px);
+    height: 100vh;
   }
   h1 {
     display: none;
@@ -205,6 +221,7 @@ button {
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 1);
+    z-index: 100;
   }
 
   .canvas-subline {
