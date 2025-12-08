@@ -12,13 +12,20 @@ let animationIntervals = [];
  */
 function init() {
   canvas = document.getElementById("canvas");
+  hideStartEndScreens();
   if (gameStatus !== "open") {
     gameStatus = "open";
     canvas.style.backgroundImage =
       "url('./img/img_pollo_locco/5_background/layers/air.png')";
-    canvas.style.cursor = "default";
     initLevel();
     world = new World(canvas, keyboard);
+  }
+}
+
+function hideStartEndScreens() {
+  let screenRefs = document.getElementsByClassName("game-screen");
+  for (let ref = 0; ref < screenRefs.length; ref++) {
+    screenRefs[ref].style.display = "none";
   }
 }
 

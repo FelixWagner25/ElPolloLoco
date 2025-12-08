@@ -33,10 +33,18 @@
   <body>
     <h1>El Pollo Loco</h1>
 
-    <section class="canvas-btn-wrap">
-      <canvas id="canvas" width="720px" height="480px" onclick="init()">
-      </canvas>
+    <section class="canvas-btn-wrap" width="720px" height="480px">
+      <canvas id="canvas" width="720px" height="480px"> </canvas>
       <button class="btn-mute" id="btn-mute"></button>
+      <div class="game-screen start-screen">
+        <button onclick="init()">Start Game</button>
+      </div>
+      <div class="game-screen end-screen-won">
+        <button>Restart Game</button>
+      </div>
+      <div class="game-screen end-screen-lost">
+        <button>Restart Game</button>
+      </div>
     </section>
 
     <section class="canvas-subline">

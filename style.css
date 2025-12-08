@@ -13,7 +13,6 @@ body {
 }
 
 canvas {
-  background-image: url("./img/img_pollo_locco/9_intro_outro_screens/start/startscreen_1.png");
   background-repeat: no-repeat;
   background-position: right;
   background-size: cover;
@@ -44,6 +43,29 @@ h1 {
 
 button {
   cursor: pointer;
+}
+
+.game-screen {
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.start-screen {
+  background-image: url("./img/img_pollo_locco/9_intro_outro_screens/start/startscreen_1.png");
+}
+
+.end-screen-won {
+  display: none;
+}
+
+.end-screen-lost {
+  display: none;
 }
 
 .instruction-wrap {
