@@ -94,7 +94,7 @@ class Endboss extends MovableObject {
    */
   touchesCharacter() {
     return (
-      this.x + this.offset.left <=
+      this.x + this.offset.left <
       this.world.character.x +
         this.world.character.width -
         this.world.character.offset.right

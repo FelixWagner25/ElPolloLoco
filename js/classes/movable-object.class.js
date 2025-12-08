@@ -134,7 +134,7 @@ class MovableObject extends DrawableObject {
    */
   processCharacterHit() {
     let statusBar;
-    this.energy -= 10;
+    this.energy -= 5;
     statusBar = this.world.statusbars[0];
     statusBar.percentageHealth = this.energy;
     statusBar.setImgByStatusValue("health", this.energy);
