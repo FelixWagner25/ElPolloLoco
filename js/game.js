@@ -22,6 +22,9 @@ function init() {
   }
 }
 
+/**
+ * Hide all Screen Wallpapers on Canvas
+ */
 function hideStartEndScreens() {
   let screenRefs = document.getElementsByClassName("game-screen");
   for (let ref = 0; ref < screenRefs.length; ref++) {
