@@ -124,37 +124,47 @@ window.addEventListener("keyup", (event) => {
   }
 });
 
-document.getElementById("btn-left").addEventListener("touchstart", () => {
+document.getElementById("btn-left").addEventListener("touchstart", (e) => {
+  e.preventDefault();
   keyboard.left = true;
 });
 
-document.getElementById("btn-right").addEventListener("touchstart", () => {
+document.getElementById("btn-right").addEventListener("touchstart", (e) => {
+  e.preventDefault();
   keyboard.right = true;
 });
 
-document.getElementById("btn-up").addEventListener("touchstart", () => {
+document.getElementById("btn-up").addEventListener("touchstart", (e) => {
+  e.preventDefault();
   keyboard.up = true;
 });
-document.getElementById("btn-throw").addEventListener("touchstart", () => {
+
+document.getElementById("btn-throw").addEventListener("touchstart", (e) => {
+  e.preventDefault();
   keyboard.d = true;
 });
 
-document.getElementById("btn-left").addEventListener("touchend", () => {
+document.getElementById("btn-left").addEventListener("touchend", (e) => {
+  e.preventDefault();
   keyboard.left = false;
 });
 
-document.getElementById("btn-right").addEventListener("touchend", () => {
+document.getElementById("btn-right").addEventListener("touchend", (e) => {
+  e.preventDefault();
   keyboard.right = false;
 });
 
-document.getElementById("btn-up").addEventListener("touchend", () => {
+document.getElementById("btn-up").addEventListener("touchend", (e) => {
+  e.preventDefault();
   keyboard.up = false;
 });
 
-document.getElementById("btn-throw").addEventListener("touchend", () => {
+document.getElementById("btn-throw").addEventListener("touchend", (e) => {
+  e.preventDefault();
   keyboard.d = false;
 });
 
-document.getElementById("btn-mute").addEventListener("click", () => {
+document.getElementById("btn-mute").addEventListener("click", (e) => {
+  e.preventDefault();
   toggleMute();
 });
