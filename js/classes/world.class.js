@@ -13,11 +13,6 @@ class World {
     new Statusbar("endboss", 500, 60),
   ];
   endgameStarted = false;
-  endScreenImgs = {
-    background: new Image(),
-    won: new Image(),
-    lost: new Image(),
-  };
   actionIntervals = [];
 
   /**
@@ -32,7 +27,6 @@ class World {
     this.draw();
     this.setWorld();
     this.runGameDynamics();
-    this.loadEndscreenSources();
   }
 
   /**
@@ -44,11 +38,9 @@ class World {
     } else if (gameStatus == "lost") {
       this.clearAllAnimationsAndSounds();
       showEndScreen("end-screen-lost");
-      //this.drawEndcreen("lost");
     } else if (gameStatus == "won") {
       this.clearAllAnimationsAndSounds();
       showEndScreen("end-screen-won");
-      //this.drawEndcreen("won");
     }
   }
 
@@ -297,40 +289,6 @@ class World {
    */
   checkEndGameStarted() {
     if (this.character.x >= endgameTrigger) this.endgameStarted = true;
-  }
-
-  /**
-   * Loads game endscreen images.
-   */
-  loadEndscreenSources() {
-    this.endScreenImgs.background.src =
-      "img/img_pollo_locco/5_background/first_half_background.png";
-    this.endScreenImgs.won.src =
-      "img/img_pollo_locco/You won, you lost/You won A.png";
-    this.endScreenImgs.lost.src =
-      "img/img_pollo_locco/You won, you lost/Game over A.png";
-  }
-
-  /**
-   * Draws endscreen on canvas.
-   * @param {string} gameStatus - game status
-   */
-  drawEndcreen(gameStatus) {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.ctx.drawImage(
-      this.endScreenImgs.background,
-      0,
-      0,
-      this.canvas.width,
-      this.canvas.height
-    );
-    this.ctx.drawImage(
-      this.endScreenImgs[gameStatus],
-      0,
-      0,
-      this.canvas.width,
-      this.canvas.height
-    );
   }
 
   /**
