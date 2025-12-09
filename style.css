@@ -81,7 +81,6 @@ button {
 .screen-btn {
   position: absolute;
   top: 64px;
-  left: 50%;
   transform: translate(-50%, 0);
   font-family: "indieFlower";
   height: 40px;
@@ -93,6 +92,18 @@ button {
   border-radius: 12px;
   border: none;
   background-color: #eac073;
+}
+
+.start-btn {
+  left: 50%;
+}
+
+.restart-btn {
+  left: 33%;
+}
+
+.home-btn {
+  left: 67%;
 }
 
 .screen-btn:hover {
