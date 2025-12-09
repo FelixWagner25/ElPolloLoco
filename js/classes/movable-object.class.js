@@ -43,6 +43,7 @@ class MovableObject extends DrawableObject {
    */
   moveRight() {
     this.x += this.v;
+    if (this instanceof Character) this.updateLatestActivityMs();
   }
 
   /**
@@ -50,6 +51,7 @@ class MovableObject extends DrawableObject {
    */
   moveLeft() {
     this.x -= this.v;
+    if (this instanceof Character) this.updateLatestActivityMs();
   }
 
   /**
@@ -57,6 +59,7 @@ class MovableObject extends DrawableObject {
    */
   jump() {
     this.speedY = -25;
+    if (this instanceof Character) this.updateLatestActivityMs();
   }
 
   /**

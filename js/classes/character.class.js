@@ -136,7 +136,6 @@ class Character extends MovableObject {
         this.jump();
       }
       this.world.cameraX = -this.x + 100;
-      this.updateLatestActivityMs();
     }, 50);
   }
 
@@ -151,7 +150,7 @@ class Character extends MovableObject {
         this.organizeDeathAnimation();
       } else if (this.isHurt()) {
         this.playAnimation(this.imgsHurt);
-      } else if (this.isIdleForMs(6000)) {
+      } else if (this.isIdleForMs(3000)) {
         this.playAnimation(this.imgsLongIdle);
       } else {
         this.playAnimation(this.imgsIdle);
