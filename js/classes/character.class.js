@@ -8,7 +8,7 @@ class Character extends MovableObject {
     top: 130,
     bottom: 10,
     left: 25,
-    right: 40,
+    right: 30,
   };
   bottlesCollected = 0;
   coinsCollected = 0;

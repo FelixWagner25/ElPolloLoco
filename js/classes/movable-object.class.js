@@ -89,10 +89,10 @@ class MovableObject extends DrawableObject {
     const objTop = obj.y + obj.offset.top;
     const objBottom = obj.y + obj.height - obj.offset.bottom;
     return (
-      thisRight > objLeft &&
-      thisLeft < objRight &&
-      thisBottom > objTop &&
-      thisTop < objBottom
+      thisRight >= objLeft &&
+      thisLeft <= objRight &&
+      thisBottom >= objTop &&
+      thisTop <= objBottom
     );
   }
 
