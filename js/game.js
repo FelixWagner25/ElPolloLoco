@@ -4,7 +4,7 @@ let world;
 let canvasHeightPx = 480;
 let keyboard = new Keyboard();
 let gameStatus = "notStarted";
-let gameMuted = true;
+let gameMuted = getMuteSettingValue();
 let animationIntervals = [];
 
 /**
@@ -81,19 +81,66 @@ function showHomeScreen() {
   elementRef.style.display = "block";
 }
 
+function processMuteSetting() {
+  gameMuted = getMuteSettingValue();
+  showMuteButton(gameMuted);
+}
+
 /**
  * Toggles sounds of the game.
  */
 function toggleMute() {
   if (gameMuted) {
     gameMuted = false;
-    document.getElementById("btn-mute").style.backgroundImage =
-      "url('./icons/volume_up.svg')";
+    saveToLocalStorage("gameMuted", gameMuted);
+    showMuteButton(gameMuted);
   } else {
     gameMuted = true;
+    saveToLocalStorage("gameMuted", gameMuted);
+    showMuteButton(gameMuted);
+  }
+}
+
+/**
+ * Shows correct background icon of mute button
+ * @param {boolean} gameMuted
+ */
+function showMuteButton(gameMuted) {
+  if (gameMuted) {
     document.getElementById("btn-mute").style.backgroundImage =
       "url('./icons/volume_off.svg')";
+  } else {
+    document.getElementById("btn-mute").style.backgroundImage =
+      "url('./icons/volume_up.svg')";
   }
+}
+
+/**
+ * Gets local mute setting value
+ * @returns boolean
+ */
+function getMuteSettingValue() {
+  let localStorageValue = getFromLocalStorage("gameMuted");
+  if (localStorageValue == null) return true;
+  return localStorageValue;
+}
+
+/**
+ * Gets value of key from local storage
+ * @param {string} key
+ * @returns value
+ */
+function getFromLocalStorage(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
+
+/**
+ * Saves key value pair to local storage
+ * @param {string} key
+ * @param {value} value
+ */
+function saveToLocalStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
 }
 
 window.addEventListener("keydown", (event) => {
