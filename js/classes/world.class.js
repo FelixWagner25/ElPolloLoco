@@ -18,6 +18,7 @@ class World {
     won: new Image(),
     lost: new Image(),
   };
+  actionIntervals = [];
 
   /**
    * @constructor
@@ -176,13 +177,15 @@ class World {
    * Runs game dynamics.
    */
   runGameDynamics() {
-    setInterval(() => {
+    let collsionCheckInterval = setInterval(() => {
       if (this.endgameStarted == false) this.checkEndGameStarted();
       this.checkCollisions();
     }, dtGameDynamic);
-    setInterval(() => {
+    this.actionIntervals.push(collsionCheckInterval);
+    let throwCheckInterval = setInterval(() => {
       this.checkThrowObjects();
     }, dtUserAction);
+    this.actionIntervals.push(throwCheckInterval);
   }
 
   /**
@@ -359,5 +362,15 @@ class World {
       gameStatus = "won";
       this.clearAllAnimationsAndSounds();
     }
+  }
+
+  /**
+   * Stops all action intervals in this world
+   */
+  stopActions() {
+    this.actionIntervals.forEach((id) => {
+      clearInterval(id);
+    });
+    this.actionIntervals = [];
   }
 }

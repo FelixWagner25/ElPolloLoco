@@ -13,6 +13,7 @@ let animationIntervals = [];
 function init() {
   canvas = document.getElementById("canvas");
   hideStartEndScreens();
+  initializeAllSounds();
   if (gameStatus !== "open") {
     gameStatus = "open";
     canvas.style.backgroundImage =
@@ -20,6 +21,26 @@ function init() {
     initLevel();
     world = new World(canvas, keyboard);
   }
+}
+
+/**
+ * Restarts game
+ */
+function restartGame() {
+  stopGame();
+  gameStatus = "notStarted";
+  init();
+}
+
+/**
+ * Stops finished game
+ */
+function stopGame() {
+  gameStatus = "closing";
+  stopAllSounds();
+  animationIntervals.forEach((id) => clearInterval(id));
+  animationIntervals = [];
+  world.stopActions();
 }
 
 /**
