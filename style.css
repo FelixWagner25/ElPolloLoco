@@ -54,6 +54,9 @@ button {
   left: 0;
   height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .start-screen {
@@ -62,10 +65,17 @@ button {
 
 .end-screen-won {
   display: none;
+  background-image: url("img/img_pollo_locco/5_background/first_half_background.png");
 }
 
 .end-screen-lost {
   display: none;
+  background-image: url("img/img_pollo_locco/5_background/first_half_background.png");
+}
+
+.end-screen-img {
+  height: 340px;
+  padding: 16px 0;
 }
 
 .screen-btn {

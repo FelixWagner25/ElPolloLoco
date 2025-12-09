@@ -42,10 +42,12 @@ class World {
       this.drawOpenGameWorld();
     } else if (gameStatus == "lost") {
       this.clearAllAnimationsAndSounds();
-      this.drawEndcreen("lost");
+      showEndScreen("end-screen-lost");
+      //this.drawEndcreen("lost");
     } else if (gameStatus == "won") {
       this.clearAllAnimationsAndSounds();
-      this.drawEndcreen("won");
+      showEndScreen("end-screen-won");
+      //this.drawEndcreen("won");
     }
   }
 

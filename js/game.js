@@ -32,6 +32,12 @@ function hideStartEndScreens() {
   }
 }
 
+function showEndScreen(elementId) {
+  hideStartEndScreens();
+  let elementRef = document.getElementById(elementId);
+  elementRef.style.display = "flex";
+}
+
 /**
  * Toggles sounds of the game.
  */
