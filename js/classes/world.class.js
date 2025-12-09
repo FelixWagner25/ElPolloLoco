@@ -225,7 +225,7 @@ class World {
   checkEnemyCollision() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy) && !enemy.isDead()) {
-        if (this.character.isAboveGround()) {
+        if (this.character.isAboveGround() && !(enemy instanceof Endboss)) {
           enemy.hit();
           if (!gameMuted) playAudioForMs(enemyHitSound, 250);
         } else {
