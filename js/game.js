@@ -53,6 +53,10 @@ function hideStartEndScreens() {
   }
 }
 
+/**
+ * Shows endsceens on canvas
+ * @param {string} elementId - endscreen html element id
+ */
 function showEndScreen(elementId) {
   hideStartEndScreens();
   let elementRef = document.getElementById(elementId);
