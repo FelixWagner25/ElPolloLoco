@@ -33,6 +33,16 @@ function restartGame() {
 }
 
 /**
+ * Returns to home screen after game finished
+ */
+function returnToHome() {
+  stopGame();
+  gameStatus = "notStarted";
+  hideStartEndScreens();
+  showHomeScreen();
+}
+
+/**
  * Stops finished game
  */
 function stopGame() {
@@ -61,6 +71,14 @@ function showEndScreen(elementId) {
   hideStartEndScreens();
   let elementRef = document.getElementById(elementId);
   elementRef.style.display = "flex";
+}
+
+/**
+ * Shows home screen
+ */
+function showHomeScreen() {
+  let elementRef = document.getElementById("start-screen");
+  elementRef.style.display = "block";
 }
 
 /**
