@@ -59,7 +59,10 @@ class MovableObject extends DrawableObject {
    */
   jump() {
     this.speedY = -25;
-    if (this instanceof Character) this.updateLatestActivityMs();
+    if (this instanceof Character) {
+      this.updateLatestActivityMs();
+      this.updateLatestJump();
+    }
   }
 
   /**
@@ -136,7 +139,7 @@ class MovableObject extends DrawableObject {
   processCharacterHit() {
     if (this.world.endboss.touchesCharacter()) {
       this.processCharacterDamage(-30);
-    } else {
+    } else if (this.isEffectivelyOnGround()) {
       this.processCharacterDamage(-10);
     }
   }

@@ -15,6 +15,7 @@ class Character extends MovableObject {
   latestActivityMs = 0;
   latestThrow = 0;
   latestHit = 0;
+  latestJump = 0;
   timeOfDeath = null;
 
   imgsIdle = [
@@ -194,6 +195,10 @@ class Character extends MovableObject {
     this.latestActivityMs = new Date().getTime();
   }
 
+  updateLatestJump() {
+    this.latestJump = new Date().getTime();
+  }
+
   /**
    * Checks whether character is idle for defined time in ms.
    * @param {Integer} milliSeconds
@@ -220,5 +225,10 @@ class Character extends MovableObject {
   finishedHitCooldown() {
     let currentTime = new Date().getTime();
     return currentTime - this.latestHit > dtCharacterHitCooldown;
+  }
+
+  isEffectivelyOnGround() {
+    let currentTime = new Date().getTime();
+    return currentTime - this.latestJump > dtCharacterStandsOnGround;
   }
 }

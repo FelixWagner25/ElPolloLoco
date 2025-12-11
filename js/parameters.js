@@ -6,3 +6,4 @@ let sectionLengthPx = 360; // 0.5 * canvasWidth = 0.5 * 720px = 360px
 let numberBackgroundLayers = 5;
 let dtBottleThrowCooldown = 1000;
 let dtCharacterHitCooldown = 1000;
+let dtCharacterStandsOnGround = 100;
