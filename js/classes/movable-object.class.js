@@ -130,6 +130,9 @@ class MovableObject extends DrawableObject {
     return passedTimeS < 1;
   }
 
+  /**
+   * Processes character hit
+   */
   processCharacterHit() {
     if (this.world.endboss.touchesCharacter()) {
       this.processCharacterDamage(-30);
@@ -139,7 +142,7 @@ class MovableObject extends DrawableObject {
   }
 
   /**
-   * Processes character hit.
+   * Processes character damage.
    */
   processCharacterDamage(damage) {
     let statusBar;

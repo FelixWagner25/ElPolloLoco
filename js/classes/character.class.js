@@ -213,6 +213,10 @@ class Character extends MovableObject {
     return currentTime - this.latestThrow > dtBottleThrowCooldown;
   }
 
+  /**
+   * Checks whether character hit cooldown is finished.
+   * @returns boolean
+   */
   finishedHitCooldown() {
     let currentTime = new Date().getTime();
     return currentTime - this.latestHit > dtCharacterHitCooldown;
