@@ -190,12 +190,15 @@ class Character extends MovableObject {
   }
 
   /**
-   * Updates charactes latest acitvity timestemp
+   * Updates character's latest acitvity timestemp
    */
   updateLatestActivityMs() {
     this.latestActivityMs = new Date().getTime();
   }
 
+  /**
+   * Updates character's latest jump timestamp
+   */
   updateLatestJump() {
     this.latestJump = new Date().getTime();
   }
@@ -228,6 +231,10 @@ class Character extends MovableObject {
     return currentTime - this.latestHit > dtCharacterHitCooldown;
   }
 
+  /**
+   * Checks if character effectively touches ground
+   * @returns boolean
+   */
   isEffectivelyOnGround() {
     let currentTime = new Date().getTime();
     return currentTime - this.latestJump > dtCharacterStandsOnGround;
