@@ -109,7 +109,7 @@ class MovableObject extends DrawableObject {
    */
   hit() {
     if (this instanceof Character) {
-      this.processCharacterHit();
+      if (this.finishedHitCooldown()) this.processCharacterHit();
     } else if (this instanceof Endboss) {
       this.processEndbossHit();
     } else {
@@ -117,8 +117,6 @@ class MovableObject extends DrawableObject {
     }
     if (this.energy < 0) {
       this.energy = 0;
-    } else {
-      this.latestHit = new Date().getTime();
     }
   }
 
@@ -137,7 +135,8 @@ class MovableObject extends DrawableObject {
    */
   processCharacterHit() {
     let statusBar;
-    this.energy -= 5;
+    this.energy -= 10;
+    this.latestHit = new Date().getTime();
     statusBar = this.world.statusbars[0];
     statusBar.percentageHealth = this.energy;
     statusBar.setImgByStatusValue("health", this.energy);
