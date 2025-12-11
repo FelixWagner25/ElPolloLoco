@@ -112,7 +112,7 @@ class MovableObject extends DrawableObject {
    */
   hit() {
     if (this instanceof Character) {
-      if (this.finishedHitCooldown()) this.processCharacterHit();
+      this.processCharacterHit();
     } else if (this instanceof Endboss) {
       this.processEndbossHit();
     } else {
@@ -138,8 +138,8 @@ class MovableObject extends DrawableObject {
    */
   processCharacterHit() {
     if (this.world.endboss.touchesCharacter()) {
-      this.processCharacterDamage(-30);
-    } else if (this.isEffectivelyOnGround()) {
+      this.processCharacterDamage(-50);
+    } else if (this.isEffectivelyOnGround() && this.finishedHitCooldown()) {
       this.processCharacterDamage(-10);
     }
   }
