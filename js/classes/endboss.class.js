@@ -10,6 +10,7 @@ class Endboss extends MovableObject {
     left: 30,
     right: 60,
   };
+  latestHit = 0;
   world;
 
   imgsIdle = [

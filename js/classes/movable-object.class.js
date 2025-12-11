@@ -130,10 +130,18 @@ class MovableObject extends DrawableObject {
     return passedTimeS < 1;
   }
 
+  processCharacterHit() {
+    if (this.world.endboss.touchesCharacter()) {
+      this.processCharacterDamage(-30);
+    } else {
+      this.processCharacterDamage(-10);
+    }
+  }
+
   /**
    * Processes character hit.
    */
-  processCharacterHit() {
+  processCharacterDamage(damage) {
     let statusBar;
     this.energy -= 10;
     this.latestHit = new Date().getTime();
@@ -151,6 +159,7 @@ class MovableObject extends DrawableObject {
     statusBar = this.world.statusbars[3];
     statusBar.percentageHealth = this.energy;
     statusBar.setImgByStatusValue("endboss", this.energy);
+    this.latestHit = new Date().getTime();
   }
 
   /**
