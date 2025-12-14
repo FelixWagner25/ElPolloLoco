@@ -243,7 +243,7 @@ class World {
    * Processes sound if character is hit.
    */
   processCharacterHitSounds() {
-    if (this.character.isDead()) playAudioForMs(characterDeadSound, 500);
+    if (this.character.isDead()) playAudioForMs(characterDeadSound, 2000);
     else {
       playAudioForMs(characterHitSound, 250);
     }

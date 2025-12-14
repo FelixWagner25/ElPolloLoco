@@ -1,9 +1,7 @@
 let allSounds = [];
-const characterHitSound = new Audio("audio/350923__cabled_mess__hurt_c_01.wav");
-const enemyHitSound = new Audio("audio/193301__timkahn__match-strike-05.wav");
-const characterDeadSound = new Audio(
-  "audio/350981__cabled_mess__lose_c_09.wav"
-);
+const characterHitSound = new Audio("audio/young-man-being-hurt-95628.mp3");
+const enemyHitSound = new Audio("audio/chicken-single-alarm-call-6056.mp3");
+const characterDeadSound = new Audio("audio/sad-trumpet-46384.mp3");
 const enemyDeadSound = new Audio(
   "audio/165491__chripei__victory-cry-reverb-2.wav"
 );
@@ -12,6 +10,8 @@ const collectedBottleSound = new Audio(
   "audio/387134__rdaly95__collecting_ammo.wav"
 );
 const collectedCoinSound = new Audio("audio/446134__justinvoke__collect-2.wav");
+const jumpSound = new Audio("audio/cartoon-jump-6462.mp3");
+const snoringSound = new Audio("audio/snoring-sound-effect-55854.mp3");
 
 /**
  * Plays audio object for selected time in ms.
@@ -47,6 +47,8 @@ function initializeAllSounds() {
   allSounds.push(bottleBreakSound);
   allSounds.push(collectedBottleSound);
   allSounds.push(collectedCoinSound);
+  allSounds.push(jumpSound);
+  allSounds.push(snoringSound);
 }
 
 /**

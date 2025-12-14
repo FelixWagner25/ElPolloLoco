@@ -62,6 +62,7 @@ class MovableObject extends DrawableObject {
     if (this instanceof Character) {
       this.updateLatestActivityMs();
       this.updateLatestJump();
+      if (!gameMuted) playAudioForMs(jumpSound, 500);
     }
   }
 
