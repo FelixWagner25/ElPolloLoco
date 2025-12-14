@@ -122,18 +122,20 @@ class Character extends MovableObject {
     setInterval(() => {
       if (
         this.world.keyboard.right == true &&
+        !this.isDead() &&
         this.x < this.world.level.levelEndX &&
         this.world.endboss.touchesCharacter() == false
       ) {
         this.moveRight();
         this.otherDirection = false;
       }
-      if (this.world.keyboard.left == true && this.x > -100) {
+      if (this.world.keyboard.left == true && !this.isDead() && this.x > -100) {
         this.moveLeft();
         this.otherDirection = true;
       }
       if (
         (this.world.keyboard.space || this.world.keyboard.up) &&
+        !this.isDead() &&
         !this.isAboveGround()
       ) {
         this.jump();
@@ -147,13 +149,13 @@ class Character extends MovableObject {
    */
   animateImages() {
     let animationInterval = setInterval(() => {
-      if (this.isAboveGround()) {
+      if (this.isAboveGround() && !this.isDead()) {
         this.playAnimation(this.imgsJumping);
       } else if (this.isDead() && this.timeOfDeath !== null) {
         this.organizeDeathAnimation();
-      } else if (this.isHurt()) {
+      } else if (this.isHurt() && !this.isDead()) {
         this.playAnimation(this.imgsHurt);
-      } else if (this.isIdleForMs(3000)) {
+      } else if (this.isIdleForMs(3000) && !this.isDead()) {
         this.playAnimation(this.imgsLongIdle);
       } else {
         this.playAnimation(this.imgsIdle);
@@ -182,7 +184,10 @@ class Character extends MovableObject {
    */
   animateWalkingImages() {
     let walkingInterval = setInterval(() => {
-      if (this.world.keyboard.right || this.world.keyboard.left) {
+      if (
+        (this.world.keyboard.right || this.world.keyboard.left) &&
+        !this.isDead()
+      ) {
         this.playAnimation(this.imgsWalking);
       }
     }, 100);
