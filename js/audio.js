@@ -19,20 +19,18 @@ const snoringSound = new Audio("audio/snoring-sound-effect-55854.mp3");
  * @param {Integer} timeMs -- duration time of audio
  */
 function playAudioForMs(audio, timeMs) {
-  if (gameStatus === "open") {
-    audio.currentTime = 0;
-    let audioStartTime = new Date().getTime();
-    let currentTime = 0;
-    audio.play();
-    let samplingInterval50mS = setInterval(() => {
-      currentTime = new Date().getTime();
-      if (currentTime - audioStartTime >= timeMs) {
-        audio.pause();
-        audio.currentTime = 0;
-        clearInterval(samplingInterval50mS);
-      }
-    }, 50);
-  }
+  audio.currentTime = 0;
+  let audioStartTime = new Date().getTime();
+  let currentTime = 0;
+  audio.play();
+  let samplingInterval50mS = setInterval(() => {
+    currentTime = new Date().getTime();
+    if (currentTime - audioStartTime >= timeMs) {
+      audio.pause();
+      audio.currentTime = 0;
+      clearInterval(samplingInterval50mS);
+    }
+  }, 50);
 }
 
 /**

@@ -227,8 +227,9 @@ class World {
       if (this.character.isColliding(enemy) && !enemy.isDead()) {
         if (this.character.isAboveGround() && !(enemy instanceof Endboss)) {
           enemy.hit();
-          if (!gameMuted) playAudioForMs(enemyHitSound, 250);
-        } else {
+          if (!gameMuted) playAudioForMs(enemyHitSound, 500);
+        }
+        if (this.character.finishedHitCooldown()) {
           this.character.hit();
           if (this.character.isDead() && this.character.timeOfDeath === null) {
             this.character.timeOfDeath = new Date().getTime();
@@ -245,7 +246,7 @@ class World {
   processCharacterHitSounds() {
     if (this.character.isDead()) playAudioForMs(characterDeadSound, 2000);
     else {
-      playAudioForMs(characterHitSound, 250);
+      playAudioForMs(characterHitSound, 1000);
     }
   }
 
