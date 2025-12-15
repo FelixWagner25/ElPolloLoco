@@ -94,10 +94,12 @@ function toggleMute() {
     gameMuted = false;
     saveToLocalStorage("gameMuted", gameMuted);
     showMuteButton(gameMuted);
+    backgroundMusic.play();
   } else {
     gameMuted = true;
     saveToLocalStorage("gameMuted", gameMuted);
     showMuteButton(gameMuted);
+    backgroundMusic.pause();
   }
 }
 

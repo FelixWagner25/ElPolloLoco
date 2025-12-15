@@ -1,4 +1,5 @@
 let allSounds = [];
+const backgroundMusic = new Audio("audio/gamemusic-6082.mp3");
 const characterHitSound = new Audio("audio/young-man-being-hurt-95628.mp3");
 const endbossHitSound = new Audio("audio/chicken-single-alarm-call-6056.mp3");
 const enemyHitSound = new Audio(
@@ -51,6 +52,7 @@ function initializeAllSounds() {
   allSounds.push(jumpSound);
   allSounds.push(snoringSound);
   allSounds.push(endbossHitSound);
+  allSounds.push(backgroundMusic);
 }
 
 /**
