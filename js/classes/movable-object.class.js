@@ -116,8 +116,10 @@ class MovableObject extends DrawableObject {
       this.processCharacterHit();
     } else if (this instanceof Endboss) {
       this.processEndbossHit();
+      if (!gameMuted) playAudioForMs(endbossHitSound, 500);
     } else {
       this.processChickenHit();
+      if (!gameMuted) playAudioForMs(enemyHitSound, 500);
     }
     if (this.energy < 0) {
       this.energy = 0;
@@ -140,8 +142,20 @@ class MovableObject extends DrawableObject {
   processCharacterHit() {
     if (this.world.endboss.touchesCharacter()) {
       this.processCharacterDamage(-50);
+      if (!gameMuted) this.processCharacterHitSounds();
     } else if (this.isEffectivelyOnGround() && this.finishedHitCooldown()) {
       this.processCharacterDamage(-10);
+      if (!gameMuted) this.processCharacterHitSounds();
+    }
+  }
+
+  /**
+   * Processes sound if character is hit.
+   */
+  processCharacterHitSounds() {
+    if (this.isDead()) playAudioForMs(characterDeadSound, 2000);
+    else {
+      playAudioForMs(characterHitSound, 1000);
     }
   }
 

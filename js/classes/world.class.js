@@ -103,8 +103,8 @@ class World {
       this.flipImage(obj);
     }
     obj.draw(this.ctx);
-    // obj.drawFrame(this.ctx);
-    // obj.drawFrameOffset(this.ctx);
+    obj.drawFrame(this.ctx);
+    obj.drawFrameOffset(this.ctx);
     if (obj.otherDirection == true) {
       this.flipImageBack(obj);
     }
@@ -227,27 +227,17 @@ class World {
       if (this.character.isColliding(enemy) && !enemy.isDead()) {
         if (this.character.isAboveGround() && !(enemy instanceof Endboss)) {
           enemy.hit();
-          if (!gameMuted) playAudioForMs(enemyHitSound, 500);
-        }
-        if (this.character.finishedHitCooldown()) {
+        } else if (
+          !this.character.isAboveGround() &&
+          this.character.finishedHitCooldown()
+        ) {
           this.character.hit();
           if (this.character.isDead() && this.character.timeOfDeath === null) {
             this.character.timeOfDeath = new Date().getTime();
           }
-          if (!gameMuted) this.processCharacterHitSounds();
         }
       }
     });
-  }
-
-  /**
-   * Processes sound if character is hit.
-   */
-  processCharacterHitSounds() {
-    if (this.character.isDead()) playAudioForMs(characterDeadSound, 2000);
-    else {
-      playAudioForMs(characterHitSound, 1000);
-    }
   }
 
   /**
