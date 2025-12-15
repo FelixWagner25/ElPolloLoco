@@ -313,6 +313,10 @@ class World {
     }
   }
 
+  /**
+   * Plays game termination sound depending on game status
+   * @param {string} prospectedGameStatus
+   */
   playTerminationSound(prospectedGameStatus) {
     if (!this.terminationSoundPlayed) {
       switch (prospectedGameStatus) {
