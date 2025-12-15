@@ -141,11 +141,11 @@ class MovableObject extends DrawableObject {
    */
   processCharacterHit() {
     if (this.world.endboss.touchesCharacter()) {
-      this.processCharacterDamage(-50);
+      this.processCharacterDamage(50);
       if (!gameMuted && !this.isDead()) playAudioForMs(endbossHitSound, 500);
       if (!gameMuted) this.processCharacterHitSounds();
     } else if (this.isEffectivelyOnGround() && this.finishedHitCooldown()) {
-      this.processCharacterDamage(-10);
+      this.processCharacterDamage(10);
       if (!gameMuted) this.processCharacterHitSounds();
     }
   }
@@ -165,7 +165,7 @@ class MovableObject extends DrawableObject {
    */
   processCharacterDamage(damage) {
     let statusBar;
-    this.energy -= 10;
+    this.energy -= Number(damage);
     this.latestHit = new Date().getTime();
     statusBar = this.world.statusbars[0];
     statusBar.percentageHealth = this.energy;
