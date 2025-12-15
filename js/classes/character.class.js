@@ -97,7 +97,7 @@ class Character extends MovableObject {
     this.loadImages(this.imgsHurt);
     this.applyGravity();
     this.animate();
-    this.updateLatestActivityMs();
+    this.updateTimestampMs("latestActivityMs");
   }
 
   /**
@@ -221,8 +221,7 @@ class Character extends MovableObject {
    * @returns boolean
    */
   isIdleForMs(milliSeconds) {
-    let currentTimeMs = new Date().getTime();
-    return currentTimeMs - this.latestActivityMs > milliSeconds;
+    return timePassedMsSinceEvent(this.latestActivityMs, milliSeconds);
   }
 
   /**

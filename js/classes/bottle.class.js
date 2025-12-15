@@ -60,7 +60,7 @@ class Bottle extends CollectableObject {
       this.modelBottleTrajectory();
       this.setCharacterTimestampLatestThrow();
       this.applyGravity();
-      this.world.character.updateLatestActivityMs();
+      this.world.character.updateTimestampMs("latestActivityMs");
     }
   }
 

@@ -43,7 +43,7 @@ class MovableObject extends DrawableObject {
    */
   moveRight() {
     this.x += this.v;
-    if (this instanceof Character) this.updateLatestActivityMs();
+    if (this instanceof Character) this.updateTimestampMs("latestActivityMs");
   }
 
   /**
@@ -51,7 +51,7 @@ class MovableObject extends DrawableObject {
    */
   moveLeft() {
     this.x -= this.v;
-    if (this instanceof Character) this.updateLatestActivityMs();
+    if (this instanceof Character) this.updateTimestampMs("latestActivityMs");
   }
 
   /**
@@ -60,10 +60,17 @@ class MovableObject extends DrawableObject {
   jump() {
     this.speedY = -25;
     if (this instanceof Character) {
-      this.updateLatestActivityMs();
-      this.updateLatestJump();
+      this.updateTimestampMs("latestActivityMs");
+      this.updateTimestampMs("latestJump");
       if (!gameMuted) playAudioForMs(jumpSound, 500);
     }
+  }
+
+  /**
+   * Updates character's latest acitvity timestemp
+   */
+  updateTimestampMs(property) {
+    this[property] = new Date().getTime();
   }
 
   /**
