@@ -14,11 +14,11 @@ function init() {
   canvas = document.getElementById("canvas");
   hideStartEndScreens();
   initializeAllSounds();
-  if (!gameMuted) backgroundMusic.play();
   if (gameStatus !== "open") {
     gameStatus = "open";
     canvas.style.backgroundImage =
       "url('./img/img_pollo_locco/5_background/layers/air.png')";
+    if (!gameMuted) backgroundMusic.play();
     initLevel();
     world = new World(canvas, keyboard);
   }
