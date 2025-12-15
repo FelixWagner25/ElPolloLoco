@@ -148,6 +148,17 @@ function saveToLocalStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
+/**
+ * Checks whether as certain event has passed for mentioned time in miliseconds
+ * @param {integer} timeEvent
+ * @param {integer} timeMs
+ * @returns boolean
+ */
+function timePassedMsSinceEvent(timeEvent, timeMs) {
+  let currentTime = new Date().getTime();
+  return currentTime - timeEvent > timeMs;
+}
+
 window.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "ArrowUp":

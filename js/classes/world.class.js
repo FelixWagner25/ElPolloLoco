@@ -47,7 +47,7 @@ class World {
    */
   drawOpenGameWorld() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.setGameStatus();
+    this.checkAndProcessGameClosure();
     this.removeRedundantObjectsFromWorld();
     this.addAllObjectsToWorld();
     let self = this;
@@ -294,12 +294,11 @@ class World {
   /**
    * Sets game status.
    */
-  setGameStatus() {
-    let currentTime = new Date().getTime();
+  checkAndProcessGameClosure() {
     if (this.character.isDead() && this.character.timeOfDeath !== null) {
       if (!gameMuted && !terminationSoundPlayed)
         this.playTerminationSound("lost");
-      if (currentTime - this.character.timeOfDeath > 3000) {
+      if (timePassedMsSinceEvent(this.character.timeOfDeath, 3000)) {
         gameStatus = "lost";
         this.clearAllAnimationsAndSounds();
       }
@@ -307,7 +306,7 @@ class World {
     if (this.endboss.isDead()) {
       if (!gameMuted && !terminationSoundPlayed)
         this.playTerminationSound("won");
-      if (currentTime - this.endboss.latestAlive > 3000) {
+      if (timePassedMsSinceEvent(this.endboss.latestAlive, 3000)) {
         gameStatus = "won";
         this.clearAllAnimationsAndSounds();
       }
