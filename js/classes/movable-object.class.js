@@ -143,20 +143,10 @@ class MovableObject extends DrawableObject {
     if (this.world.endboss.touchesCharacter()) {
       this.processCharacterDamage(50);
       if (!gameMuted && !this.isDead()) playAudioForMs(endbossHitSound, 500);
-      if (!gameMuted) this.processCharacterHitSounds();
+      if (!gameMuted && !this.isDead()) playAudioForMs(characterHitSound, 1000);
     } else if (this.isEffectivelyOnGround() && this.finishedHitCooldown()) {
       this.processCharacterDamage(10);
-      if (!gameMuted) this.processCharacterHitSounds();
-    }
-  }
-
-  /**
-   * Processes sound if character is hit.
-   */
-  processCharacterHitSounds() {
-    if (this.isDead()) playAudioForMs(characterDeadSound, 2000);
-    else {
-      playAudioForMs(characterHitSound, 1000);
+      if (!gameMuted && !this.isDead()) playAudioForMs(characterHitSound, 1000);
     }
   }
 

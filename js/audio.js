@@ -5,8 +5,8 @@ const endbossHitSound = new Audio("audio/chicken-single-alarm-call-6056.mp3");
 const enemyHitSound = new Audio(
   "audio/rooster-call-cock-a-doodle-doo-46096.mp3"
 );
-const characterDeadSound = new Audio("audio/sad-trumpet-46384.mp3");
-const enemyDeadSound = new Audio(
+const characterDeadSound = new Audio("audio/verloren-89595.mp3");
+const victorySound = new Audio(
   "audio/165491__chripei__victory-cry-reverb-2.wav"
 );
 const bottleBreakSound = new Audio("audio/566451__johnny97__break06.wav");
@@ -45,7 +45,7 @@ function initializeAllSounds() {
   allSounds.push(characterHitSound);
   allSounds.push(enemyHitSound);
   allSounds.push(characterDeadSound);
-  allSounds.push(enemyDeadSound);
+  allSounds.push(victorySound);
   allSounds.push(bottleBreakSound);
   allSounds.push(collectedBottleSound);
   allSounds.push(collectedCoinSound);

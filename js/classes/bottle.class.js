@@ -92,10 +92,7 @@ class Bottle extends CollectableObject {
       this.world.endboss.hit();
       if (!gameMuted) {
         playAudioForMs(bottleBreakSound, 500);
-        if (this.world.endboss.isDead()) playAudioForMs(enemyDeadSound, 1000);
-        else {
-          playAudioForMs(endbossHitSound, 500);
-        }
+        playAudioForMs(endbossHitSound, 500);
       }
     }
     if (enemy instanceof Chicken || enemy instanceof SmallChicken) {

@@ -6,6 +6,7 @@ let keyboard = new Keyboard();
 let gameStatus = "notStarted";
 let gameMuted = getMuteSettingValue();
 let animationIntervals = [];
+let terminationSoundPlayed = false;
 
 /**
  * Initializes Pollo Loco Game. Creates World.

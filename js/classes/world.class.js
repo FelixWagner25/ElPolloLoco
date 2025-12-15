@@ -36,10 +36,8 @@ class World {
     if (gameStatus == "open") {
       this.drawOpenGameWorld();
     } else if (gameStatus == "lost") {
-      this.clearAllAnimationsAndSounds();
       showEndScreen("end-screen-lost");
     } else if (gameStatus == "won") {
-      this.clearAllAnimationsAndSounds();
       showEndScreen("end-screen-won");
     }
   }
@@ -299,17 +297,34 @@ class World {
   setGameStatus() {
     let currentTime = new Date().getTime();
     if (this.character.isDead() && this.character.timeOfDeath !== null) {
-      if (currentTime - this.character.timeOfDeath > 2000) {
+      if (!gameMuted && !terminationSoundPlayed)
+        this.playTerminationSound("lost");
+      if (currentTime - this.character.timeOfDeath > 3000) {
         gameStatus = "lost";
         this.clearAllAnimationsAndSounds();
       }
     }
-    if (
-      this.endboss.isDead() &&
-      currentTime - this.endboss.latestAlive > 2000
-    ) {
-      gameStatus = "won";
-      this.clearAllAnimationsAndSounds();
+    if (this.endboss.isDead()) {
+      if (!gameMuted && !terminationSoundPlayed)
+        this.playTerminationSound("won");
+      if (currentTime - this.endboss.latestAlive > 3000) {
+        gameStatus = "won";
+        this.clearAllAnimationsAndSounds();
+      }
+    }
+  }
+
+  playTerminationSound(prospectedGameStatus) {
+    if (!this.terminationSoundPlayed) {
+      switch (prospectedGameStatus) {
+        case "lost":
+          playAudioForMs(characterDeadSound, 2000);
+          break;
+        case "won":
+          playAudioForMs(victorySound, 2000);
+          break;
+      }
+      this.terminationSoundPlayed = true;
     }
   }
 
