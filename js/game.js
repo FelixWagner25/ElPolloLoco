@@ -31,6 +31,7 @@ function init() {
 function restartGame() {
   stopGame();
   gameStatus = "notStarted";
+  terminationSoundPlayed = false;
   init();
 }
 
