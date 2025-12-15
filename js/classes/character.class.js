@@ -164,6 +164,10 @@ class Character extends MovableObject {
         }
       } else {
         this.playAnimation(this.imgsIdle);
+        if (this.snorringSoundPlaying) {
+          snoringSound.pause();
+          this.snorringSoundPlaying = false;
+        }
       }
     }, 200);
     animationIntervals.push(animationInterval);
