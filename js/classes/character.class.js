@@ -171,9 +171,7 @@ class Character extends MovableObject {
   organizeDeathAnimation() {
     let currentTime = new Date().getTime();
     if (currentTime - this.timeOfDeath > 2000) {
-      this.character.loadImage(
-        "img/img_pollo_locco/2_character_pepe/5_dead/D-57.png"
-      );
+      this.loadImage("img/img_pollo_locco/2_character_pepe/5_dead/D-57.png");
     } else {
       this.playAnimation(this.imgsDead);
     }
