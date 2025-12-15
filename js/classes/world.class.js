@@ -324,7 +324,7 @@ class World {
           playAudioForMs(victorySound, 2000);
           break;
       }
-      this.terminationSoundPlayed = true;
+      terminationSoundPlayed = true;
     }
   }
 
