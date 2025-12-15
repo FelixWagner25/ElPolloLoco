@@ -142,6 +142,7 @@ class MovableObject extends DrawableObject {
   processCharacterHit() {
     if (this.world.endboss.touchesCharacter()) {
       this.processCharacterDamage(-50);
+      if (!gameMuted) playAudioForMs(endbossHitSound, 500);
       if (!gameMuted) this.processCharacterHitSounds();
     } else if (this.isEffectivelyOnGround() && this.finishedHitCooldown()) {
       this.processCharacterDamage(-10);

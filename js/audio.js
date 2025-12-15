@@ -1,7 +1,7 @@
 let allSounds = [];
 const characterHitSound = new Audio("audio/young-man-being-hurt-95628.mp3");
-const enemyHitSound = new Audio("audio/chicken-single-alarm-call-6056.mp3");
-const endbossHitSound = new Audio(
+const endbossHitSound = new Audio("audio/chicken-single-alarm-call-6056.mp3");
+const enemyHitSound = new Audio(
   "audio/rooster-call-cock-a-doodle-doo-46096.mp3"
 );
 const characterDeadSound = new Audio("audio/sad-trumpet-46384.mp3");
@@ -50,6 +50,7 @@ function initializeAllSounds() {
   allSounds.push(collectedCoinSound);
   allSounds.push(jumpSound);
   allSounds.push(snoringSound);
+  allSounds.push(endbossHitSound);
 }
 
 /**

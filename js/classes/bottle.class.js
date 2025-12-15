@@ -94,7 +94,7 @@ class Bottle extends CollectableObject {
         playAudioForMs(bottleBreakSound, 500);
         if (this.world.endboss.isDead()) playAudioForMs(enemyDeadSound, 1000);
         else {
-          playAudioForMs(enemyHitSound, 500);
+          playAudioForMs(endbossHitSound, 500);
         }
       }
     }
