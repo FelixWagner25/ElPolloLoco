@@ -166,6 +166,7 @@ class MovableObject extends DrawableObject {
   processCharacterDamage(damage) {
     let statusBar;
     this.energy -= Number(damage);
+    if (this.energy < 0) this.energy = 0;
     this.latestHit = new Date().getTime();
     statusBar = this.world.statusbars[0];
     statusBar.percentageHealth = this.energy;
