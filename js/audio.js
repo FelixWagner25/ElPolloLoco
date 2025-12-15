@@ -15,7 +15,7 @@ const collectedBottleSound = new Audio(
 );
 const collectedCoinSound = new Audio("audio/446134__justinvoke__collect-2.wav");
 const jumpSound = new Audio("audio/cartoon-jump-6462.mp3");
-const snoringSound = new Audio("audio/snoring-sound-effect-55854.mp3");
+const snoringSound = new Audio("audio/male-snore-1-29322.mp3");
 
 /**
  * Plays audio object for selected time in ms.

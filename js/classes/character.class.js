@@ -17,6 +17,7 @@ class Character extends MovableObject {
   latestHit = 0;
   latestJump = 0;
   timeOfDeath = null;
+  snorringSoundPlaying = false;
 
   imgsIdle = [
     "img/img_pollo_locco/2_character_pepe/1_idle/idle/I-1.png",
@@ -157,6 +158,10 @@ class Character extends MovableObject {
         this.playAnimation(this.imgsHurt);
       } else if (this.isIdleForMs(3000) && !this.isDead()) {
         this.playAnimation(this.imgsLongIdle);
+        if (!gameMuted && !this.snorringSoundPlaying) {
+          playAudioForMs(snoringSound, 60000);
+          this.snorringSoundPlaying = true;
+        }
       } else {
         this.playAnimation(this.imgsIdle);
       }

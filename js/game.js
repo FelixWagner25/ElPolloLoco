@@ -18,7 +18,7 @@ function init() {
     gameStatus = "open";
     canvas.style.backgroundImage =
       "url('./img/img_pollo_locco/5_background/layers/air.png')";
-    if (!gameMuted) backgroundMusic.play();
+    //if (!gameMuted) backgroundMusic.play();
     initLevel();
     world = new World(canvas, keyboard);
   }
@@ -95,12 +95,12 @@ function toggleMute() {
     gameMuted = false;
     saveToLocalStorage("gameMuted", gameMuted);
     showMuteButton(gameMuted);
-    backgroundMusic.play();
+    //backgroundMusic.play();
   } else {
     gameMuted = true;
     saveToLocalStorage("gameMuted", gameMuted);
     showMuteButton(gameMuted);
-    backgroundMusic.pause();
+    //backgroundMusic.pause();
   }
 }
 
