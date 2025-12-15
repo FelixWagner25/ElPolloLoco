@@ -17,6 +17,7 @@ function init() {
   initializeAllSounds();
   if (gameStatus !== "open") {
     gameStatus = "open";
+    terminationSoundPlayed = false;
     canvas.style.backgroundImage =
       "url('./img/img_pollo_locco/5_background/layers/air.png')";
     if (!gameMuted) backgroundMusic.play();
@@ -31,7 +32,6 @@ function init() {
 function restartGame() {
   stopGame();
   gameStatus = "notStarted";
-  terminationSoundPlayed = false;
   init();
 }
 
