@@ -188,6 +188,9 @@ class Character extends MovableObject {
     this.animateWalkingImages();
   }
 
+  /**
+   * Plays audios related to character animations
+   */
   playAnimationAudios() {
     let audioInterval = setInterval(() => {
       if (this.isIdleForMs(3000) && !this.isDead()) {
@@ -199,6 +202,9 @@ class Character extends MovableObject {
     animationIntervals.push(audioInterval);
   }
 
+  /**
+   * Plays character's snoring audio.
+   */
   playSnoringAudio() {
     if (!this.snorringSoundPlaying) {
       playAudioForMs(snoringSound, 60000);
@@ -206,6 +212,9 @@ class Character extends MovableObject {
     }
   }
 
+  /**
+   * Stops character'S snoring audio.
+   */
   stopSnoringAudio() {
     if (this.snorringSoundPlaying) {
       snoringSound.pause();
