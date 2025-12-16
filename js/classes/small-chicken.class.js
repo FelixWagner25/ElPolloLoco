@@ -63,6 +63,9 @@ class SmallChicken extends MovableObject {
     animationIntervals.push(animationInterval);
   }
 
+  /**
+   * Animates death of small chicken.
+   */
   animateDeath() {
     this.v = 0;
     this.loadImage(

@@ -46,6 +46,9 @@ class Chicken extends MovableObject {
     animationIntervals.push(animationInterval);
   }
 
+  /**
+   * Animates movement of chicken.
+   */
   animateMovement() {
     let movementInterval = setInterval(() => {
       this.moveLeft();
@@ -53,6 +56,9 @@ class Chicken extends MovableObject {
     animationIntervals.push(movementInterval);
   }
 
+  /**
+   * Aniamtes death of chicken.
+   */
   animateDeath() {
     this.v = 0;
     this.loadImage(
