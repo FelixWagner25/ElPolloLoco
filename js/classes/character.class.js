@@ -114,6 +114,7 @@ class Character extends MovableObject {
   animate() {
     this.animateMovement();
     this.animateImages();
+    this.playAnimationAudios();
   }
 
   /**
@@ -121,28 +122,49 @@ class Character extends MovableObject {
    */
   animateMovement() {
     setInterval(() => {
-      if (
-        this.world.keyboard.right == true &&
-        !this.isDead() &&
-        this.x < this.world.level.levelEndX &&
-        this.world.endboss.touchesCharacter() == false
-      ) {
+      if (this.world.keyboard.right == true && this.canMoveRight()) {
         this.moveRight();
         this.otherDirection = false;
-      }
-      if (this.world.keyboard.left == true && !this.isDead() && this.x > -100) {
+      } else if (this.world.keyboard.left == true && this.canMoveLeft()) {
         this.moveLeft();
         this.otherDirection = true;
       }
       if (
         (this.world.keyboard.space || this.world.keyboard.up) &&
-        !this.isDead() &&
-        !this.isAboveGround()
+        this.canJump()
       ) {
         this.jump();
       }
       this.world.cameraX = -this.x + 100;
     }, 50);
+  }
+
+  /**
+   * Checks whether character can move right.
+   * @returns boolean
+   */
+  canMoveRight() {
+    return (
+      !this.isDead() &&
+      this.x < this.world.level.levelEndX &&
+      this.world.endboss.touchesCharacter() == false
+    );
+  }
+
+  /**
+   * Checks whether character can move left.
+   * @returns boolean
+   */
+  canMoveLeft() {
+    return !this.isDead() && this.x > -100;
+  }
+
+  /**
+   * Checks whether character can jump.
+   * @returns boolean
+   */
+  canJump() {
+    return !this.isDead() && !this.isAboveGround();
   }
 
   /**
@@ -158,20 +180,37 @@ class Character extends MovableObject {
         this.playAnimation(this.imgsHurt);
       } else if (this.isIdleForMs(3000) && !this.isDead()) {
         this.playAnimation(this.imgsLongIdle);
-        if (!gameMuted && !this.snorringSoundPlaying) {
-          playAudioForMs(snoringSound, 60000);
-          this.snorringSoundPlaying = true;
-        }
       } else {
         this.playAnimation(this.imgsIdle);
-        if (this.snorringSoundPlaying) {
-          snoringSound.pause();
-          this.snorringSoundPlaying = false;
-        }
       }
     }, 200);
     animationIntervals.push(animationInterval);
     this.animateWalkingImages();
+  }
+
+  playAnimationAudios() {
+    let audioInterval = setInterval(() => {
+      if (this.isIdleForMs(3000) && !this.isDead()) {
+        if (!gameMuted) this.playSnoringAudio();
+      } else {
+        this.stopSnoringAudio();
+      }
+    }, 200);
+    animationIntervals.push(audioInterval);
+  }
+
+  playSnoringAudio() {
+    if (!this.snorringSoundPlaying) {
+      playAudioForMs(snoringSound, 60000);
+      this.snorringSoundPlaying = true;
+    }
+  }
+
+  stopSnoringAudio() {
+    if (this.snorringSoundPlaying) {
+      snoringSound.pause();
+      this.snorringSoundPlaying = false;
+    }
   }
 
   /**
