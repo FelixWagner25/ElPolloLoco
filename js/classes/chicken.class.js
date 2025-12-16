@@ -35,21 +35,28 @@ class Chicken extends MovableObject {
    * Animates Chicken.
    */
   animate() {
-    let movementInterval = setInterval(() => {
-      this.moveLeft();
-    }, this.dt);
-    animationIntervals.push(movementInterval);
-
+    this.animateMovement();
     let animationInterval = setInterval(() => {
       if (this.isDead()) {
-        this.v = 0;
-        this.loadImage(
-          "img/img_pollo_locco/3_enemies_chicken/chicken_normal/2_dead/dead.png"
-        );
+        this.animateDeath();
       } else {
         this.playAnimation(this.imgsWalking);
       }
     }, 250);
     animationIntervals.push(animationInterval);
+  }
+
+  animateMovement() {
+    let movementInterval = setInterval(() => {
+      this.moveLeft();
+    }, this.dt);
+    animationIntervals.push(movementInterval);
+  }
+
+  animateDeath() {
+    this.v = 0;
+    this.loadImage(
+      "img/img_pollo_locco/3_enemies_chicken/chicken_normal/2_dead/dead.png"
+    );
   }
 }
