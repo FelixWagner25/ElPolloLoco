@@ -94,7 +94,6 @@ class MovableObject extends DrawableObject {
     const thisRight = this.x + this.width - this.offset.right;
     const thisTop = this.y + this.offset.top;
     const thisBottom = this.y + this.height - this.offset.bottom;
-
     const objLeft = obj.x + obj.offset.left;
     const objRight = obj.x + obj.width - obj.offset.right;
     const objTop = obj.y + obj.offset.top;

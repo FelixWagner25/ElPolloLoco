@@ -202,20 +202,6 @@ class Character extends MovableObject {
   }
 
   /**
-   * Updates character's latest acitvity timestemp
-   */
-  updateLatestActivityMs() {
-    this.latestActivityMs = new Date().getTime();
-  }
-
-  /**
-   * Updates character's latest jump timestamp
-   */
-  updateLatestJump() {
-    this.latestJump = new Date().getTime();
-  }
-
-  /**
    * Checks whether character is idle for defined time in ms.
    * @param {Integer} milliSeconds
    * @returns boolean

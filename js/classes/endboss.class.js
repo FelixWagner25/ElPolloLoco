@@ -75,6 +75,7 @@ class Endboss extends MovableObject {
     let animationIntervall = setInterval(() => {
       if (this.isHurt()) {
         this.playAnimation(this.imgsHurt);
+        this.moveLeft();
       } else if (this.isDead()) {
         this.playAnimation(this.imgsDead);
       } else if (this.touchesCharacter()) {
