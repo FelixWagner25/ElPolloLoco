@@ -226,8 +226,7 @@ class Character extends MovableObject {
    * Processes character death animation
    */
   organizeDeathAnimation() {
-    let currentTime = new Date().getTime();
-    if (currentTime - this.timeOfDeath > 2000) {
+    if (timePassedMsSinceEvent(this.timeOfDeath, 2000)) {
       this.loadImage("img/img_pollo_locco/2_character_pepe/5_dead/D-57.png");
     } else {
       this.playAnimation(this.imgsDead);
@@ -263,8 +262,7 @@ class Character extends MovableObject {
    * @returns boolean
    */
   finishedBottleCooldown() {
-    let currentTime = new Date().getTime();
-    return currentTime - this.latestThrow > dtBottleThrowCooldown;
+    return timePassedMsSinceEvent(this.latestThrow, dtBottleThrowCooldown);
   }
 
   /**
@@ -272,8 +270,7 @@ class Character extends MovableObject {
    * @returns boolean
    */
   finishedHitCooldown() {
-    let currentTime = new Date().getTime();
-    return currentTime - this.latestHit > dtCharacterHitCooldown;
+    return timePassedMsSinceEvent(this.latestHit, dtCharacterHitCooldown);
   }
 
   /**
@@ -281,7 +278,6 @@ class Character extends MovableObject {
    * @returns boolean
    */
   isEffectivelyOnGround() {
-    let currentTime = new Date().getTime();
-    return currentTime - this.latestJump > dtCharacterStandsOnGround;
+    return timePassedMsSinceEvent(this.latestJump, dtCharacterStandsOnGround);
   }
 }
