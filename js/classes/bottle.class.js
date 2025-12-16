@@ -131,6 +131,9 @@ class Bottle extends CollectableObject {
     this.breakBottle();
   }
 
+  /**
+   * Sets timestamp of character's latestThrow property.
+   */
   setCharacterTimestampLatestThrow() {
     this.world.character.latestThrow = new Date().getTime();
   }
