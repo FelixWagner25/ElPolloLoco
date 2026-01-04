@@ -12,7 +12,24 @@ body {
   height: 100vh;
 }
 
+.allow-sounds-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 140px;
+  width: 480px;
+  background-color: #a8651e;
+  font-family: "indieFlower";
+  border-radius: 12px;
+  z-index: 10000;
+  font-size: 20px;
+  text-align: center;
+  padding: 16px 8px;
+}
+
 .allow-sounds-btn {
+  display: flex;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -20,7 +37,6 @@ body {
   font-family: "indieFlower";
   height: 48px;
   font-size: 32px;
-  display: flex;
   justify-content: center;
   align-items: center;
   padding: 8px 16px;
@@ -31,7 +47,12 @@ body {
   pointer-events: all;
 }
 
+.allow-sounds-btn:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
 .bg-dimmed {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -39,7 +60,7 @@ body {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  pointer-events: none;
+  pointer-events: all;
 }
 
 canvas {

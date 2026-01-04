@@ -33,8 +33,17 @@
   <body onload="processMuteSetting()">
     <h1>El Pollo Loco</h1>
 
-    <section class="bg-dimmed">
-      <button class="allow-sounds-btn">Allow Automatic Sounds</button>
+    <section class="bg-dimmed" id="bg-dimmed">
+      <div class="allow-sounds-wrap">
+        Please allow automatic sounds to contine ...
+        <button
+          class="allow-sounds-btn"
+          id="allow-sounds-btn"
+          onclick="allowSounds()"
+        >
+          Allow Sounds
+        </button>
+      </div>
     </section>
 
     <section class="canvas-btn-wrap" width="720px" height="480px">

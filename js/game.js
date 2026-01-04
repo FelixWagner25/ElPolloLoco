@@ -7,6 +7,8 @@ let gameStatus = "notStarted";
 let gameMuted = getMuteSettingValue();
 let animationIntervals = [];
 let terminationSoundPlayed = false;
+let allowSoundsBtnRef = document.getElementById("allow-sounds-btn");
+let bgDimmedRef = document.getElementById("bg-dimmed");
 
 /**
  * Initializes Pollo Loco Game. Creates World.
@@ -87,7 +89,25 @@ function showHomeScreen() {
 function processMuteSetting() {
   gameMuted = getMuteSettingValue();
   showMuteButton(gameMuted);
-  if (gameMuted == false) backgroundMusic.play();
+  if (gameMuted == false) {
+    showAllowSoundBtn();
+  }
+}
+
+function showAllowSoundBtn() {
+  bgDimmedRef.style.display = "block";
+  bgDimmedRef.style.pointerEvents = "none";
+  allowSoundsBtnRef.display = "flex";
+}
+
+function allowSounds() {
+  hideAllowSoundsBtn();
+  backgroundMusic.play();
+}
+
+function hideAllowSoundsBtn() {
+  bgDimmedRef.style.display = "none";
+  bgDimmedRef.style.pointerEvents = "all";
 }
 
 /**
