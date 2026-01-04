@@ -20,7 +20,7 @@ function init() {
     terminationSoundPlayed = false;
     canvas.style.backgroundImage =
       "url('./img/img_pollo_locco/5_background/layers/air.png')";
-    if (!gameMuted) backgroundMusic.play();
+    //if (!gameMuted) backgroundMusic.play();
     initLevel();
     world = new World(canvas, keyboard);
   }
@@ -87,6 +87,7 @@ function showHomeScreen() {
 function processMuteSetting() {
   gameMuted = getMuteSettingValue();
   showMuteButton(gameMuted);
+  if (gameMuted == false) backgroundMusic.play();
 }
 
 /**

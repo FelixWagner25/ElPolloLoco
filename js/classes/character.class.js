@@ -194,9 +194,11 @@ class Character extends MovableObject {
   playAnimationAudios() {
     let audioInterval = setInterval(() => {
       if (this.isIdleForMs(3000) && !this.isDead()) {
-        if (!gameMuted) this.playSnoringAudio();
-      } else {
-        this.stopSnoringAudio();
+        if (!gameMuted) {
+          this.playSnoringAudio();
+        } else {
+          this.stopSnoringAudio();
+        }
       }
     }, 200);
     animationIntervals.push(audioInterval);
