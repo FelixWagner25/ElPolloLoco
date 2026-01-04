@@ -199,6 +199,8 @@ class Character extends MovableObject {
         } else {
           this.stopSnoringAudio();
         }
+      } else {
+        this.stopSnoringAudio();
       }
     }, 200);
     animationIntervals.push(audioInterval);
