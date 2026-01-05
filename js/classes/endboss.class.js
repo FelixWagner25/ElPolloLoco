@@ -12,7 +12,6 @@ class Endboss extends MovableObject {
   };
   latestHit = 0;
   world;
-  energy = 10;
   deathAnimationStarted = false;
   deathImgIndex = 0;
   deathAnimationFinished = false;
