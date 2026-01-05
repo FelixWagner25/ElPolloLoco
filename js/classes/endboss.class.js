@@ -113,6 +113,10 @@ class Endboss extends MovableObject {
     );
   }
 
+  /**
+   * Organizes endboss death animation
+   * @param {object} animationInterval
+   */
   organizeDeathAnimation(animationInterval) {
     if (!this.deathStarted) {
       this.deathStarted = true;
@@ -127,6 +131,10 @@ class Endboss extends MovableObject {
     }
   }
 
+  /**
+   * Plays animation one time only.
+   * @param {array} imgsArray
+   */
   playAnimationOnce(imgsArray) {
     let path = imgsArray[this.deathImgIndex];
     this.img = this.imgsCache[path];
