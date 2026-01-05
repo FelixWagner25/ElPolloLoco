@@ -13,6 +13,9 @@ class Endboss extends MovableObject {
   latestHit = 0;
   world;
   energy = 10;
+  deathAnimationStarted = false;
+  deathImgIndex = 0;
+  deathAnimationFinished = false;
 
   imgsIdle = [
     "img/img_pollo_locco/4_enemie_boss_chicken/2_alert/G5.png",
@@ -111,11 +114,27 @@ class Endboss extends MovableObject {
   }
 
   organizeDeathAnimation(animationInterval) {
-    if (timePassedMsSinceEvent(this.latestAlive, 1200)) {
+    if (!this.deathStarted) {
+      this.deathStarted = true;
+      this.deadFrameIndex = 0;
+      this.deathAnimationFinished = false;
+    }
+    if (!this.deathAnimationFinished) {
+      this.playAnimationOnce(this.imgsDead);
+    } else {
       this.loadImage("img/img_pollo_locco/2_character_pepe/5_dead/D-57.png");
       clearInterval(animationInterval);
+    }
+  }
+
+  playAnimationOnce(imgsArray) {
+    let path = imgsArray[this.deathImgIndex];
+    this.img = this.imgsCache[path];
+
+    if (this.deathImgIndex < imgsArray.length - 1) {
+      this.deathImgIndex++;
     } else {
-      this.playAnimation(this.imgsDead);
+      this.deathAnimationFinished = true;
     }
   }
 }
