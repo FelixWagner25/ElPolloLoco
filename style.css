@@ -301,7 +301,7 @@ button {
   padding-left: 0;
 }
 
-@media (max-width: 1380px) {
+@media (hover: none) {
   .instruction-wrap {
     display: none;
   }
