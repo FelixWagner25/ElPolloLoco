@@ -282,6 +282,6 @@ class Character extends MovableObject {
   }
 
   isFalling() {
-    return this.speedY > 0;
+    return this.isAboveGround() && this.speedY > 0;
   }
 }
