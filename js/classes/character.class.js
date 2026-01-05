@@ -226,7 +226,7 @@ class Character extends MovableObject {
    * Processes character death animation
    */
   organizeDeathAnimation() {
-    if (timePassedMsSinceEvent(this.timeOfDeath, 2000)) {
+    if (timePassedMsSinceEvent(this.timeOfDeath, 1000)) {
       this.loadImage("img/img_pollo_locco/2_character_pepe/5_dead/D-57.png");
     } else {
       this.playAnimation(this.imgsDead);

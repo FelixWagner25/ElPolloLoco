@@ -298,7 +298,7 @@ class World {
     if (this.character.isDead() && this.character.timeOfDeath !== null) {
       if (!gameMuted && !terminationSoundPlayed)
         this.playTerminationSound("lost");
-      if (timePassedMsSinceEvent(this.character.timeOfDeath, 3000)) {
+      if (timePassedMsSinceEvent(this.character.timeOfDeath, 2000)) {
         gameStatus = "lost";
         this.clearAllAnimationsAndSounds();
       }
@@ -306,7 +306,7 @@ class World {
     if (this.endboss.isDead()) {
       if (!gameMuted && !terminationSoundPlayed)
         this.playTerminationSound("won");
-      if (timePassedMsSinceEvent(this.endboss.latestAlive, 3000)) {
+      if (timePassedMsSinceEvent(this.endboss.latestAlive, 2000)) {
         gameStatus = "won";
         this.clearAllAnimationsAndSounds();
       }
