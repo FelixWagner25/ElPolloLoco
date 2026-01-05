@@ -86,6 +86,9 @@ function showHomeScreen() {
   elementRef.style.display = "block";
 }
 
+/**
+ * Processes the mute settings on page load.
+ */
 function processMuteSetting() {
   gameMuted = getMuteSettingValue();
   showMuteButton(gameMuted);
@@ -94,17 +97,26 @@ function processMuteSetting() {
   }
 }
 
+/**
+ * Shows the allow automatic sounds button.
+ */
 function showAllowSoundBtn() {
   bgDimmedRef.style.display = "block";
   bgDimmedRef.style.pointerEvents = "none";
   allowSoundsBtnRef.display = "flex";
 }
 
+/**
+ * Processes actions after user allowed automatic sounds.
+ */
 function allowSounds() {
   hideAllowSoundsBtn();
   backgroundMusic.play();
 }
 
+/**
+ * Hides the allow sounds button after the user submitted his approval.
+ */
 function hideAllowSoundsBtn() {
   bgDimmedRef.style.display = "none";
   bgDimmedRef.style.pointerEvents = "all";

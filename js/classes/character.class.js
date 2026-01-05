@@ -281,6 +281,10 @@ class Character extends MovableObject {
     return timePassedMsSinceEvent(this.latestJump, dtCharacterStandsOnGround);
   }
 
+  /**
+   * Checks if character is falling.
+   * @returns boolean
+   */
   isFalling() {
     return this.isAboveGround() && this.speedY > 0;
   }
