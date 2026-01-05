@@ -113,7 +113,7 @@ class World {
    */
   removeDeadEnemiesFromWorld() {
     this.level.enemies = this.level.enemies.filter((enemy) => {
-      if (enemy.isDead()) {
+      if (enemy.isDead() && !(enemy instanceof Endboss)) {
         return new Date().getTime() - enemy.latestAlive < 400;
       } else {
         return true;
@@ -306,7 +306,7 @@ class World {
     if (this.endboss.isDead()) {
       if (!gameMuted && !terminationSoundPlayed)
         this.playTerminationSound("won");
-      if (timePassedMsSinceEvent(this.endboss.latestAlive, 2000)) {
+      if (timePassedMsSinceEvent(this.endboss.latestAlive, 3000)) {
         gameStatus = "won";
         this.clearAllAnimationsAndSounds();
       }
