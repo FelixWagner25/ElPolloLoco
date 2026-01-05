@@ -280,4 +280,8 @@ class Character extends MovableObject {
   isEffectivelyOnGround() {
     return timePassedMsSinceEvent(this.latestJump, dtCharacterStandsOnGround);
   }
+
+  isFalling() {
+    return this.speedY > 0;
+  }
 }
