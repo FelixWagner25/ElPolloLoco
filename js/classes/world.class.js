@@ -112,7 +112,7 @@ class World {
   removeDeadEnemiesFromWorld() {
     this.level.enemies = this.level.enemies.filter((enemy) => {
       if (enemy.isDead()) {
-        return new Date().getTime() - enemy.latestAlive < 2000;
+        return new Date().getTime() - enemy.latestAlive < 400;
       } else {
         return true;
       }

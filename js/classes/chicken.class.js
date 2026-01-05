@@ -39,6 +39,7 @@ class Chicken extends MovableObject {
     let animationInterval = setInterval(() => {
       if (this.isDead()) {
         this.animateDeath();
+        clearInterval(animationInterval);
       } else {
         this.playAnimation(this.imgsWalking);
       }
