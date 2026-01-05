@@ -1,7 +1,6 @@
 class SmallChicken extends MovableObject {
   height = 50;
   width = 50;
-  y = canvasHeightPx - this.height - 40;
   v = 0.15 + Math.random() * 0.25;
   offset = {
     top: 5,
@@ -9,6 +8,7 @@ class SmallChicken extends MovableObject {
     left: 8,
     right: 8,
   };
+  y = canvasHeightPx - 45 - this.height + this.offset.bottom; // 45px is the distance between canvas height and ground level y coodinate
 
   imgsWalking = [
     "img/img_pollo_locco/3_enemies_chicken/chicken_small/1_walk/1_w.png",

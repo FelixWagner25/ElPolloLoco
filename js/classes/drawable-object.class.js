@@ -39,4 +39,47 @@ class DrawableObject {
       this.imgsCache[path] = img;
     });
   }
+
+  /**
+   * Draws frame around object on canvas
+   * @param {object} ctx context on canvas
+   */
+  drawFrame(ctx) {
+    if (
+      this instanceof Character ||
+      this instanceof Chicken ||
+      this instanceof Endboss ||
+      this instanceof SmallChicken
+    ) {
+      ctx.lineWidth = "5";
+      ctx.beginPath();
+      ctx.strokeStyle = "blue";
+      ctx.rect(this.x, this.y, this.width, this.height);
+      ctx.stroke();
+    }
+  }
+
+  /**
+   * Draws frame around object subtracting the object's offset
+   * @param {object} ctx context on canvas
+   */
+  drawFrameOffset(ctx) {
+    if (
+      this instanceof Character ||
+      this instanceof Chicken ||
+      this instanceof Endboss ||
+      this instanceof SmallChicken
+    ) {
+      ctx.lineWidth = "5";
+      ctx.beginPath();
+      ctx.strokeStyle = "orange";
+      ctx.rect(
+        this.x + this.offset.left,
+        this.y + this.offset.top,
+        this.width - this.offset.right - this.offset.left,
+        this.height - this.offset.top - this.offset.bottom
+      );
+      ctx.stroke();
+    }
+  }
 }
