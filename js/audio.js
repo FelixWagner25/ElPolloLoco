@@ -52,7 +52,6 @@ function initializeAllSounds() {
   allSounds.push(jumpSound);
   allSounds.push(snoringSound);
   allSounds.push(endbossHitSound);
-  allSounds.push(backgroundMusic);
 }
 
 /**
