@@ -187,5 +187,6 @@ class MovableObject extends DrawableObject {
   processChickenHit() {
     this.energy -= 100;
     this.latestAlive = new Date().getTime();
+    this.animateDeath();
   }
 }
