@@ -119,12 +119,12 @@ button {
 
 .end-screen-won {
   display: none;
-  background-image: url("img/img_pollo_locco/5_background/first_half_background.png");
+  background-image: url("./img/img_pollo_locco/5_background/first_half_background.png");
 }
 
 .end-screen-lost {
   display: none;
-  background-image: url("img/img_pollo_locco/5_background/first_half_background.png");
+  background-image: url("./img/img_pollo_locco/5_background/first_half_background.png");
 }
 
 .end-screen-img {
@@ -243,25 +243,25 @@ button {
 }
 
 .mobile-btn-up {
-  background-image: url("./icons/arrow_up.svg");
+  background-image: url("./icon/arrow_up.svg");
   bottom: 88px;
   right: 24px;
 }
 
 .mobile-btn-left {
-  background-image: url("./icons/arrow_left.svg");
+  background-image: url("./icon/arrow_left.svg");
   bottom: 24px;
   left: 24px;
 }
 
 .mobile-btn-right {
-  background-image: url("./icons/arrow_right.svg");
+  background-image: url("./icon/arrow_right.svg");
   bottom: 88px;
   left: 24px;
 }
 
 .mobile-btn-throw {
-  background-image: url("./icons/handball.svg");
+  background-image: url("./icon/handball.svg");
   bottom: 24px;
   right: 24px;
 }
@@ -274,7 +274,7 @@ button {
 }
 
 .btn-mute {
-  background-image: url("./icons/volume_off.svg");
+  background-image: url("./icon/volume_off.svg");
   background-repeat: no-repeat;
   background-position: center;
   height: 32px;
@@ -317,7 +317,7 @@ button {
   align-items: center;
   padding: 16px 16px;
   border-radius: 12px;
-  background-image: url("./icons/arrow_left.svg");
+  background-image: url("./icon/arrow_left.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-color: #eac073;

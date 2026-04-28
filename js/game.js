@@ -146,10 +146,10 @@ function toggleMute() {
 function showMuteButton(gameMuted) {
   if (gameMuted) {
     document.getElementById("btn-mute").style.backgroundImage =
-      "url('icons/volume_off.svg')";
+      "url('./icon/volume_off.svg')";
   } else {
     document.getElementById("btn-mute").style.backgroundImage =
-      "url('icons/volume_up.svg')";
+      "url('./icon/volume_up.svg')";
   }
 }
 
